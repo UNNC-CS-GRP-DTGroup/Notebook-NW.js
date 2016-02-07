@@ -1,0 +1,11 @@
+{
+  "main": "Untitled.html", // 启动页面
+  "name": "ga",
+  "window": {
+    "toolbar": false, // 工具栏
+    "frame": false,   // 框架
+    "width": 1200,
+    "height": 1200,
+    "resizable": true  
+  }
+}
