@@ -2616,7 +2616,7 @@ textarea#wmd-input {
 }
 
 #logo:before {
-	content: "\e600";
+	content: "\e601";
 	line-height: 1;
 	margin-top: 5px;
 	display: inline-block;
