@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Bootstrap 实例 - 标签页（Tab）插件</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="public/js/dep.min.js?t=2"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+    <style type="text/css">
+        #webpage {
+            overflow: auto;
+            width: 1200px;
+            height: 1800px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <ul id="myTab" class="nav nav-tabs">
+       <li class="active">
+          <a href="#audioRecording" data-toggle="tab">
+             Audio Recording
+          </a>
+       </li>
+       <li><a href="#videoRecording" data-toggle="tab">
+              Video Recording
+           </a>
+        </li>
+       <li><a href="#files" data-toggle="tab">
+              Open Files
+           </a>
+        </li>
+        <li><a href="#webBrowser" data-toggle="tab">
+              Web Browser
+           </a>
+        </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+       <div class="tab-pane fade in active" id="audioRecording">
+          <p>Audio Recording</p>
+       </div>
+       <div class="tab-pane fade" id="videoRecording">
+          <p>Video Recording</p>
+       </div>
+       <div class="tab-pane fade" id="files">
+          <form id="form1" runat="server">
+          <input type='file' id="imgInp" />
+          <iframe id="displayedFile" name="awindow" frameborder=2 width=580 height=440 src=""></iframe>
+        </form>
+       </div>
+       <div class="tab-pane fade" id="webBrowser">
+          <iframe id="webpage" src="http://baidu.com"></iframe>
+       </div>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                $('#displayedFile').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function(){
+            readURL(this);
+        });
+    </script>
+</body>
+</html>
