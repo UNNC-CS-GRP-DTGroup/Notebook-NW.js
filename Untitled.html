@@ -29,20 +29,20 @@
 <!--<link rel="stylesheet" href="public/js/contextmenu/css/contextmenu-min.css?id=1" type="text/css" /> // unknown usage-->
     
 <script>
-// dynamic style sheets
-var hash = location.hash;
-if(hash.indexOf("writing") >= 0) {
-	var files = '<link rel="stylesheet" href="public/css/theme/writting-overwrite.css?t=b" type="text/css" id="themeLink" />'; // unknown usage
-} else {
-	var files ='<link rel="stylesheet" href="public/css/theme/default.css?t=d" type="text/css" id="themeLink" />'; // the most important basic style
-}
-document.write(files);
+    // dynamic style sheets
+    var hash = location.hash;
+    if(hash.indexOf("writing") >= 0) {
+        var files = '<link rel="stylesheet" href="public/css/theme/writting-overwrite.css?t=b" type="text/css" id="themeLink" />'; // unknown usage
+    } else {
+        var files ='<link rel="stylesheet" href="public/css/theme/default.css?t=d" type="text/css" id="themeLink" />'; // the most important basic style
+    }
+    document.write(files);
 </script>
 
 <script>
-function log(o) {
-	
-}
+    function log(o) {
+
+    }
 </script>
      
 </head>
@@ -548,11 +548,47 @@ function log(o) {
 -->
 				</div>	
                 <div class="noteSplit" id="mediaSplitter"></div>
-                <div id="media"> xxxx </div>
+                <div id="media"> 
+                    
+                    <ul id="myTab" class="nav nav-tabs">
+                       <li class="active">
+                          <a href="#audioRecording" data-toggle="tab">
+                             Audio Recording
+                          </a>
+                       </li>
+                       <li><a href="#videoRecording" data-toggle="tab">
+                              Video Recording
+                           </a>
+                        </li>
+                       <li><a href="#files" data-toggle="tab">
+                              Open Files
+                           </a>
+                        </li>
+                        <li><a href="#webBrowser" data-toggle="tab">
+                              Web Browser
+                           </a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                       <div class="tab-pane fade in active" id="audioRecording">
+                          <p>Audio Recording</p>
+                       </div>
+                       <div class="tab-pane fade" id="videoRecording">
+                          <p>Video Recording</p>
+                       </div>
+                       <div class="tab-pane fade" id="files">
+                          <form id="form1" runat="server">
+                          <input type='file' id="imgInp" />
+                          <iframe id="displayedFile" name="awindow" frameborder=2 src="" width=100% height=600px></iframe>
+                        </form>
+                       </div>
+                       <div class="tab-pane fade" id="webBrowser">
+                          <iframe id="webpage" src="http://baidu.com" width=100% height=600px></iframe>
+                       </div>
+                    </div>
+                </div>
 			</div>
-			
-			
-			
+            
 			<div class="modal fade modal-insert-image">
 			    <div class="modal-dialog"  style="width: 840px;max-width:100%;">
 			        <div class="modal-content">
@@ -722,13 +758,17 @@ var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinym
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
 <script src="public/js/editor.js"></script>
 <script src="public/js/DND.js"></script>  
+
 <script src="public/js/i18n/msg.en.js?t=b"></script>
 <script src="public/js/dep.min.js?t=2"></script> 
 <!--"NEW NOTE"; JQuery-->
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
     
 <!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
 <!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
 <script src="public/js/app.min.js?t=d"></script>
+    
 <script>
 initPage();
 
@@ -738,8 +778,8 @@ window.require = {
 </script>
 <script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>
 <script src="https://dn-leanote.qbox.me/js/plugins/main.min.js?t=5"></script>
-
-
+<script src="public/js/media.js"></script>
+<!--    Media Window (must be put after the initPage()-->
 
 </body>
 </html>
