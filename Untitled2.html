@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name=”apple-mobile-web-app-capable” content=”yes” />
+<meta name="keywords" content="leanote,leanote.com">
+<meta name="description" content="Leanote, 不只是笔记!">
+<title>Leanote, 不只是笔记!</title>
+<link href="https://dn-leanote.qbox.me/css/bootstrap-min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://dn-leanote.qbox.me/css/tinymce/skin.min.css" rel="stylesheet"/>
+
+<link href="https://dn-leanote.qbox.me/css/font-awesome-4.2.0/css/font-awesome-min.css" rel="stylesheet" />
+<link href="https://dn-leanote.qbox.me/css/zTreeStyle/zTreeStyle-min.css" rel="stylesheet" />
+
+<link href="https://dn-leanote.qbox.me/md/themes/default-min.css?t=i" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://dn-leanote.qbox.me/js/contextmenu/css/contextmenu-min.css?id=1" type="text/css" />
+<script>
+var hash = location.hash;
+if(hash.indexOf("writing") >= 0) {
+	var files = '<link rel="stylesheet" href="https:\/\/dn-leanote.qbox.me/css/theme/writting-overwrite.css?t=b" type="text/css" id="themeLink" />';
+} else {
+	var files ='<link rel="stylesheet" href="https:\/\/dn-leanote.qbox.me/css/theme/default.css?t=e" type="text/css" id="themeLink" />';
+}
+document.write(files);
+</script>
+
+<script>
+function log(o) {
+	
+}
+</script>
+</head>
+<body>
+	<div id="page">
+		<div id="pageInner">
+			
+			
+			<div id="header">
+			
+				<div id="logo" class="pull-left">
+					
+					
+				</div>
+				<div id="switcher" class="pull-left">
+					 <i class="fa fa-align-justify" id="leftSwitcher" title="隐藏左侧"></i>
+					 <span id="leftSwitcher2" title="展开左侧"></span>
+				</div>
+				
+				<div class="pull-left" id="searchWrap">
+					<form class="navbar-form form-inline col-lg-2" id="searchNote">
+						<input class="form-control" placeholder="搜索笔记" type="text" id="searchNoteInput">
+					</form>
+				</div>
+				
+				<div class="pull-left" style="" id="newNoteWrap">
+					
+					<div id="newMyNote">
+						<a class="new-note" id="newNoteBtn" title="新建普通笔记">
+							
+							<span class="new-note-text">新建普通笔记</span>
+							<span class="new-note-text-abbr">新建</span>
+						</a>
+						<span class="new-split">|</span>
+						<a class="new-note new-markdown" id="newNoteMarkdownBtn" title="新建Markdown笔记">
+							
+							<span class="new-markdown-text">新建Markdown笔记</span>
+							<span class="new-markdown-text-abbr">Md</span>
+						</a>
+						<span class="for-split"> - </span>
+						<span id="curNotebookForNewNote" notebookId=""></span>
+						
+					</div>
+					
+					
+					<div id="newSharedNote" style="display: none">
+						<a id="newSharedNoteBtn" class="new-note">
+							
+							<span class="new-note-text">新建普通笔记</span>
+							<span class="new-note-text-abbr">新建</span>
+						</a>
+						<span class="new-split">|</span>
+						<a id="newShareNoteMarkdownBtn" class="new-note new-markdown" title="新建Markdown笔记">
+							<span class="new-markdown-text">新建Markdown笔记</span>
+							<span class="new-markdown-text-abbr">Md</span>
+						</a>
+						<span class="for-split"> - </span>
+						<span id="curNotebookForNewSharedNote" notebookId="" userId=""></span>
+						
+					</div>				
+				</div>
+				
+				<div class="pull-left" id="leanoteMsg">
+					<span id="msg" style="display: inline-block;"></span>
+					<span id="loading">
+					</span>
+				</div>
+					
+				<div class="pull-right" style="margin: 0 10px" id="myProfile">
+					<div class="dropdown">
+						<a class="dropdown-toggle" title="pan.atopos@outlook.com" data-toggle="dropdown" style="line-height: 60px;"> 
+							<img alt="pan.atopos@outlook.com" title="pan.atopos@outlook.com" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/> 
+							<span class="username">
+								pan.atopos@outlook.com
+							</span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu li-a" role="menu">
+							<li role="presentation">
+								<a href="/member" target="_blank">
+								<i class="fa fa-user"></i> 
+								个人中心
+								</a>
+							</li>
+							
+							<li role="presentation" id="setTheme">
+								<a>
+								<i class="fa fa-sun-o"></i> 
+								主题
+								</a>
+							</li>
+							
+							<li role="presentation" class="divider"></li>
+							<li role="presentation">
+								<a href="/member/blog/index" target="_blank">
+								<i class="fa fa-bold"></i> 
+								博客设置
+								</a>
+							</li>
+							
+							<li role="presentation" class="my-link" >
+								<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com">
+								<i class="fa fa-bold"></i>
+								我的博客</a>
+							</li>
+							
+							<li role="presentation" class="divider my-link writing-mobile-hide"></li>
+							<li role="presentation" class="my-link toggle-editor-mode writing-mobile-hide" >
+								<a href="#writing" title="写作模式 ctrl/cmd+e"><i class="fa fa-rocket"></i>
+								写作模式</a>
+							</li>
+							
+							
+							<li role="presentation" class="divider"></li>
+							<li role="presentation" onclick="logout()">
+								<i class="fa fa-sign-out"></i> 
+								退出
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pull-right top-nav writting-hide lea-blog">
+					<a target="_blank" href="http://leanote.com"> 
+						Leanote 主页
+					</a>
+				</div>
+				<div class="pull-right top-nav writting-hide" id="myBlog">
+					<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com"> 
+						我的博客
+					</a>
+				</div>
+				<div class="pull-right toggle-editor-mode top-nav" id="toggleEditorMode">
+					<a href="#writing"><span>写作模式</span></a>
+				</div>
+				
+				
+				
+				
+				<div style="clear: both"></div>
+			</div>
+			<div id="mainContainer" class="clearfix">
+				<div id="mainMask">
+					<img src="https://dn-leanote.qbox.me/images/loading-30.gif" />
+					<br />
+					<br />
+					loading...
+				</div>
+				<div id="leftNotebook">
+					<div id="notebook">
+						<div class="folderNote opened" id="myNotebooks">
+							<div class="folderHeader clearfix">
+								<i class="fa fa-book pull-left fa-left"></i> 
+								<span class="pull-left">
+									笔记本
+								</span>
+								<div class="pull-right" id="addNotebookPlus" title="添加笔记本">
+									<i class="fa  fa-plus" title="添加笔记本"></i>
+								</div>
+							</div>
+							
+							<div class="folderBody">
+								<input type="text" class="form-control" id="searchNotebookForList" placeholder="搜索笔记本"/>							
+								<ul class="ztree" id="notebookList"></ul>
+								<ul class="ztree" id="notebookListForSearch"></ul>
+							</div>
+						</div>
+						
+						<div class="folderNote closed" id="myTag">
+							<div class="folderHeader">
+								<i class="fa fa-bookmark fa-left"></i>
+								<span>
+									标签
+								</span>
+							</div>
+	
+							<ul class="folderBody clearfix" id="tagNav">
+								<li data-tag="red"><a> <span class="label label-red">红色</span></a></li>
+								<li data-tag="blue"><a> <span class="label label-blue">蓝色</span></a></li>
+								<li data-tag="yellow"><a> <span class="label label-yellow">黄色</span></a></li>
+								<li data-tag="green"><a> <span class="label label-green">绿色</span></a></li>
+							</ul>
+						</div>
+						
+						<div class="folderNote closed" id="myShareNotebooks">
+							<div class="folderHeader">
+								<i class="fa fa-user fa-left"></i>
+								<span>
+									分享
+								</span>
+							</div>
+	
+							<ul class="folderBody" id="shareNotebooks">
+								
+							</ul>
+						</div>
+	
+					</div>
+					
+					
+					<div id="notebookMin">
+						
+						<div target="#notebookList" title="笔记本" class="minContainer">
+							<i class="fa fa-book"></i>
+							<ul class="dropdown-menu" id="minNotebookList">
+							</ul>
+						</div>
+						<div target="#tagNav" title="我的标签" class="minContainer">
+							<i class="fa fa-bookmark"></i>
+							<ul class="dropdown-menu" id="minTagNav">
+							</ul>
+						</div>
+						<div id="minShareNotebooks">
+							<div class="minContainer" target="#friendContainer0" title="分享">
+								<i class="fa fa-user"></i>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="noteSplit" id="notebookSplitter"></div>
+				
+				<div id="noteAndEditor">
+					<div id="noteAndEditorMask">
+						<img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
+						<br />
+						loading...
+					</div>
+					<div id="noteList">
+					<div class="clearfix" id="notesAndSort" style="position: relative">
+						<div class="pull-left">
+							
+							<div class="dropdown" id="myNotebookNavForListNav">
+								<a class="ios7-a dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+									<span id="curNotebookForListNote">最新</span>
+									
+								</a>
+								
+							</div>
+							
+							
+							<div class="dropdown" id="sharedNotebookNavForListNav" style="display: none">
+								<a class="ios7-a dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">
+									<span id="curSharedNotebookForListNote">最新</span>
+									
+								</a>
+								<ul class="dropdown-menu" role="menu"
+									aria-labelledby="dropdownMenu2" style="left: 5px;" id="sharedNotebookNavForListNote">
+								</ul>
+							</div>
+						</div>
+						<div class="pull-left" id="tagSearch" style="line-height: 38px">
+						</div>
+						<div id="sortType">
+							<div class="dropdown">
+								<a class="ios7-a dropdown-toggle" id="dropdownMenu1"
+									data-toggle="dropdown"> 
+									
+								</a>
+								
+							</div>
+						</div>
+					</div>
+					
+					
+					<div id="noteItemListWrap">
+						<ul id="noteItemList">
+						</ul>
+					</div>
+				</div>
+				
+					<div class="noteSplit" id="noteSplitter"></div>
+					
+					<div id="note" class="read-only-editor">
+					
+					
+					<div id="noteMask" class="note-mask"></div>
+					
+					<div id="noteMaskForLoading" class="note-mask">  
+						<img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
+						<br />
+						loading...
+					</div>
+					
+					<div id="editorMask">  
+						该笔记本下空空如也...何不
+						<br />
+						<br />
+						<div id="editorMaskBtns">
+							<a class="note">新建普通笔记</a>
+							<a class="markdown">新建Markdown笔记</a>
+						</div>
+						<div id="editorMaskBtnsEmpty">
+							Sorry, 这里不能添加笔记的. 你需要先选择一个笔记本.
+						</div>
+					</div>
+					<div id="batchMask" class="note-mask">  
+						<div class="batch-ctn" id="batchCtn"></div>
+						<div class="batch-info">
+							当前选中了 <span></span> 篇笔记
+							<p><i class="fa fa-cog"></i></p>
+						</div>
+					</div>
+					
+					<div id="noteTop">
+						
+						<div id="tool" class="clearfix">
+							
+							
+							
+							
+							<div class="pull-left" id="tag">
+								<div id="tags" style="display: inline-block; line-height: 25px;">
+								</div>
+								<div class="dropdown" style="display: inline-block"
+									id="tagDropdown">
+									<i class="fa fa-bookmark-o"></i> 
+									<a
+										class="metro-a dropdown-toggle" data-toggle="dropdown"
+										id="addTagTrigger" style="cursor: text; padding-left: 0">
+										<span class="add-tag-text">
+										点击添加标签
+										</span>
+									</a> 
+									<input type="text" id="addTagInput" />
+									<ul class="dropdown-menu" role="menu" id="tagColor">
+										<li role="presentation"><span class="label label-red">红色</span>
+										</li>
+										<li role="presentation"><span class="label label-blue">蓝色</span>
+										</li>
+										<li role="presentation"><span class="label label-yellow">黄色</span></li>
+										<li role="presentation"><span class="label label-green">绿色</span></li>
+									</ul>
+								</div>
+							</div>
+							
+							<ul class="pull-right" id="editorTool">
+								<li><a class="ios7-a " id="editBtn"
+									data-toggle="dropdown" title="ctrl/cmd+e 编辑与只读切换">
+									<span class="fa"></span></a></li>
+								<li><a class="ios7-a " id="saveBtn"
+									data-toggle="dropdown" title="ctrl/cmd+s 保存">
+									<span class="fa fa-save"></span></a></li>
+								<li class="dropdown" id="noteInfoDropdown">
+									<a class="ios7-a dropdown-toggle" data-toggle="dropdown" title="信息">
+										<span class="fa fa-info"></span>
+									</a>
+									<div class="dropdown-menu" id="noteInfo"></div>
+								</li>
+								<li class="dropdown" id="attachDropdown">
+									<a class="ios7-a dropdown-toggle" data-toggle="dropdown" id="showAttach" title="附件">
+										<span class="fa fa-paperclip"></span>
+										<span id="attachNum"></span>
+									</a>
+									<div class="dropdown-menu" id="attachMenu">
+										<ul id="attachList">
+										</ul>
+										<form id="uploadAttach" method="post" action="/attach/UploadAttach" enctype="multipart/form-data">
+							                <div id="dropAttach" class="dropzone">
+							                    <a class="btn btn-success btn-choose-file">
+													<i class="fa fa-upload"></i>
+							                    	<span>选择文件</span>
+							                    </a>
+							                    <a class="btn btn-default" id="downloadAllBtn">
+								                    <i class="fa fa-download"></i>
+							                    	<span>下载全部</span>
+							                    </a>
+							                    
+							                    <input type="file" name="file" multiple/>
+							                </div>
+							                <div id="attachUploadMsg">
+							                </div>
+							            </form>
+									</div>
+								</li>
+								
+								<li><a class="ios7-a " id="contentHistory"
+									data-toggle="dropdown" title="历史记录">
+									<span class="fa fa-history"></span></a></li>
+								<li><a class="ios7-a " id="tipsBtn"
+									data-toggle="dropdown" title="帮助">
+									<span class="fa fa-question"></span></a></li>
+							</ul>
+						</div>
+						<div id="noteTitleDiv">
+							<input name="noteTitle" id="noteTitle" value="" placeholder="无标题" tabindex="1" />
+						</div>
+						
+						
+						<div id="noteReadTop">
+							<h2 id="noteReadTitle"></h2>
+							<div class="clearfix" id="noteReadInfo">
+								<i class="fa fa-bookmark-o"></i>
+								<span id="noteReadTags"></span>
+								
+								
+								<i class="fa fa-clock-o"></i> 更新 
+								<span id="noteReadUpdatedTime"></span>  
+								
+								
+								<i class="fa fa-clock-o"></i> 创建 
+								<span id="noteReadCreatedTime"></span>
+							</div>
+						</div>
+					</div>
+					<div id="editor" class="read-only">
+						
+						<div id="mceToolbar">
+							<div id="mceToolbarContainer">
+								<div id="popularToolbar" style="position: absolute; right: 30px; left: 0"></div>
+								<a id="moreBtn"> <i class="fa more-fa"></i></a>
+							</div>
+							
+							<div id="infoToolbar" class="info-toolbar invisible">
+				              
+				              <span class="lang">创建</span>: <span class="created-time"></span>
+				              <span class="lang">更新</span>: <span class="updated-time"></span>
+				            </div>
+						</div>
+						<div class="editorBg"></div>
+						<div id="leanoteNav" class="leanoteNav">
+							<h1>
+								<i class="fa fa-align-justify" title="文档导航"></i>
+								<span>文档导航</span>
+							</h1>
+							<div id="leanoteNavContent" class="leanoteNavContent">
+							</div>
+						</div>
+						
+						<form id="upload" method="post" action="/file/uploadImageLeaui" enctype="multipart/form-data" style="margin-top: 5px;">
+			                <div id="drop">
+			                       将图片拖动至此
+			                    <input type="file" name="file" multiple style="display: none"/>
+			                </div>
+			                <ul id="uploadMsg">
+			                </ul>
+			            </form>
+	            
+						
+						<div id="editorContent" name="editorContent" tabindex="2" /></div>
+					</div>
+					
+					<div id="mdEditor" class="read-only">
+						<div class="layout-wrapper-l1">
+						    <div class="layout-wrapper-l2">
+						        <div class="navbar navbar-default">
+						            <div class="navbar-inner" id="wmd-button-bar">
+						            	<div id="mdInfoToolbar" class="info-toolbar invisible">
+							              <span class="lang">创建</span>: <span class="created-time"></span>
+							              <span class="lang">更新</span>: <span class="updated-time"></span>
+							            </div>
+						            	
+						            	<div class="wmd-button-bar-inner clearfix">
+							                <ul class="nav left-buttons">
+							                    <li class="wmd-button-group1 btn-group"></li>
+							                </ul>
+							                <ul class="nav left-buttons">
+							                    <li class="wmd-button-group2 btn-group"></li>
+							                </ul>
+							                <ul class="nav left-buttons">
+							                    <li class="wmd-button-group3 btn-group"></li>
+							                </ul>
+							                <ul class="nav left-buttons">
+							                    <li class="wmd-button-group4 btn-group"></li>
+							                </ul>
+							                
+							                 <ul class="nav left-buttons">
+							                    <li class="wmd-button-group6 btn-group">
+							                    	<li class="wmd-button btn btn-success" id="wmd-help-button" title="Markdown 语法" style="left: 0px; display: none;"><span style="display: none; background-position: 0px 0px;"></span><i class="fa fa-question-circle"></i></li>
+							                    </li>
+							                </ul>
+							               
+							               
+						                </div>
+						            </div>
+						            <div class="editorBg"></div>
+						        </div>
+						        <div class="layout-wrapper-l3">
+						        	<div id="left-column">
+							            <pre id="wmd-input" class="form-control"><div class="editor-content mousetrap" contenteditable=true></div><div class="editor-margin"></div></pre>
+							            
+							            <div class="textarea-helper"></div>
+						            </div>
+						            <div id="right-column">
+						            <div class="preview-panel panel-open" id="preview-panel">
+							            <div id="mdSplitter2" class="layout-resizer layout-resizer-preview open" style="-webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); touch-action: none;"></div>
+						                <div class="layout-toggler layout-toggler-preview btn btn-info open" title="Toggle preview" data-open="1"><i class="fa fa-angle-right"></i></div>
+						                <div class="preview-container">
+						                    <div id="preview-contents">
+						                        <div id="wmd-preview" class="preview-content"></div>
+						                    </div>
+						                </div>
+						            </div>
+						            </div>
+						        </div>
+						        <div class="extension-preview-buttons">
+									<div id="leanoteNavMd" class="leanoteNav">
+										<h1>
+											<i class="fa fa-align-justify" title="文档导航"></i>
+											<span>文档导航</span>
+										</h1>
+										<div id="leanoteNavContentMd" class="leanoteNavContent table-of-contents">
+										</div>
+									</div>
+						        </div>
+						    </div>
+						    <div id="wmd-button-bar" class="hide"></div>
+						</div>	
+					
+						
+					</div>
+				</div>	
+			</div>
+			
+			
+			
+			<div class="modal fade modal-insert-image">
+			    <div class="modal-dialog"  style="width: 840px;max-width:100%;">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal"
+			                    aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">图片</h4>
+			            </div>
+			            <div class="modal-body" style="padding-top: 0; padding-bottom: 0">
+			            	<iframe name="mdImageManager" style="width: 100%; height: 350px" scrolling="no" id="leauiIfrForMD" src="" frameborder="0"></iframe>
+			            </div>
+			            <div class="modal-footer">
+			                 <a href="#" class="btn btn-default"
+			                    data-dismiss="modal">取消</a> <a href="#"
+			                    class="btn btn-primary action-insert-image" data-dismiss="modal">插入</a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			
+			
+			<div class="modal fade bs-modal-sm" id="editorDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="editorDialog-title"></h4>
+				      </div>
+				      <div class="modal-body">
+							<p></p>
+							<div class="input-group">
+							  <span class="input-group-addon">
+							  	<i></i>
+							  </span>
+							  <input type="text" class="form-control" placeholder="">
+							</div>
+				      </div>
+				      
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				        <button type="button" class="btn btn-primary" id="editorDialog-confirm">确认</button>
+				      </div>
+				      
+				    </div>
+				  </div>
+			</div>
+			
+			<div class="modal fade bs-modal-sm" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			</div>
+			
+			<div class="modal fade bs-modal-sm" id="leanoteDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+			
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="modalTitle">操作</h4>
+			      </div>
+			      
+			      <div class="modal-body">
+					内容区
+			      </div>
+			      
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			      
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="modal fade bs-modal-sm" id="sendRegisterEmailDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+			
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" class="modalTitle">邀请好友</h4>
+			      </div>
+			      
+				   <div class="modal-body">
+						<form role="form">
+						  <div class="form-group">
+						  	<div id="registerEmailMsg" class="alert alert-warning" style="display: none">
+						  	</div>
+						  	<input type="hidden" id="toEmail"/>
+						    <label for="emailContent">邮件内容</label>
+						    <textarea class="form-control" id="emailContent">Hi, 我是life, leanote非常好用, 快来注册吧.</textarea>
+						  </div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-success" id="registerEmailBtn">发送</button>
+					</div>
+			      
+			    </div>
+			  </div>
+			</div>
+			
+			
+			<div class="modal fade bs-modal-sm" id="setThemeDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+				  <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" class="modalTitle">主题</h4>
+			      </div>
+					<div class="modal-body">
+				  		<table id="themeForm">
+				  			<tr>
+				  				<td>
+				  					<label>
+				  					<img src="https://dn-leanote.qbox.me/images/slider/all.gif" height="100px"> 
+				  					<br />
+				  					<input type="radio" name="theme" value="default"> 默认
+				  					</label>
+				  				</td>
+				  				<td>
+					  				<label> 
+				  					<img src="https://dn-leanote.qbox.me/images/slider/all-simple.gif" height="100px"> 
+				  					<br />
+				  					<input type="radio" name="theme" value="simple"> 简约
+				  					</label>
+				  				</td>
+				  			</tr>
+				  		</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+			    </div>
+			  </div>
+			</div>
+			
+			
+			
+			
+			
+			<div class="display: hidden">
+			<div class="hide" id="copyDiv"></div>
+		</div>
+	</div>
+</div>
+<script>
+var LEA = {};
+LEA.sPath = "https:\/\/dn-leanote.qbox.me";
+LEA.locale = "zh";
+var UrlPrefix = 'http:\/\/leanote.com';
+var UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"pan.atopos@outlook.com","Verified":false,"Username":"pan.atopos@outlook.com","UsernameRaw":"","CreatedTime":"2016-01-27T10:33:31.321+08:00","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":170,"NoteListWidth":273,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":18,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"http://blog.leanote.com/pan.atopos@outlook.com","PostUrl":"http://blog.leanote.com/post/pan.atopos@outlook.com"};
+var notebooks = [{"NotebookId":"56a82c7bab64417776002a5d","UserId":"56a82c7bab64417776002a5c","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":2,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},{"NotebookId":"56a82c7bab64417776002a5e","UserId":"56a82c7bab64417776002a5c","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},{"NotebookId":"56a82c7bab64417776002a5f","UserId":"56a82c7bab64417776002a5c","ParentNotebookId":"","Seq":-1,"Title":"work","UrlTitle":"","NumberNotes":4,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]}];
+var shareNotebooks = {"52d26b4e99c37b609a000001":[{"ParentNotebookId":"","Title":"Leanote suggestion","UrlTitle":"","NumberNotes":154,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"52d270c7bcbf214cfa000000","IsDefault":false},{"ParentNotebookId":"","Title":"Latest","UrlTitle":"","NumberNotes":25,"IsTrash":false,"IsBlog":true,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62c1","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":0,"Subs":null,"Seq":0,"NotebookId":"52d270d3bcbf214cfa000002","IsDefault":false},{"ParentNotebookId":"","Title":"Leantote manual","UrlTitle":"","NumberNotes":29,"IsTrash":false,"IsBlog":true,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bf","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":0,"Subs":null,"Seq":0,"NotebookId":"52db8460e01c530ef8000000","IsDefault":false}]};
+var sharedUserInfos = [{"UserId":"52d26b4e99c37b609a000001","Email":"leanote@leanote.com","Verified":true,"Username":"leanote","UsernameRaw":"leanote","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"http://leanote.com/public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203082,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
+var curNoteId = '56b6027fab64416aa0002cfc';
+var curNotebookId = '';
+var curSharedNoteNotebookId = '';
+var curSharedUserId = '';
+var notes = [{"NoteId":"56b6027fab64416aa0002cfc","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5d","Title":"","Desc":"feaf afaf e fe fae\u0026nbsp; 带我去dq 撒 s奥迪 asdsadsad saa是的 asd as sda as的   撒 是 da撒dsa","ImgSrc":"","Tags":null,"IsTrash":false,"IsBlog":false,"UrlTitle":"8f864e498566","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:34:35+08:00","UpdatedTime":"2016-02-06T22:32:01.939+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:34:35+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":16,"IsDeleted":false},{"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"","Desc":"dededede  \u0026nbsp;   dedede  \u0026nbsp;   edededed  \u0026nbsp;","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-02-06T22:26:47+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":17,"IsDeleted":false},{"NoteId":"56a82c7bab64417776002a60","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5d","Title":"Welcome to Leanote! 欢迎来到Leanote","Desc":"LEANOTE, NOT JUST A NOTEPAD!\u0026nbsp;\u0026nbsp;   Welcome to Leanote!\u0026nbsp;  Features:    Geek paradise:\u0026nbsp;Wanna Markdown? We support it!    Private notebook: Organize your knowledge \u0026amp; Snap every mom","ImgSrc":"","Tags":["welcome","leanote"],"IsTrash":false,"IsBlog":false,"UrlTitle":"Welcome-to-Leanote-%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0Leanote","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":106,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2014-01-12T18:39:42+08:00","UpdatedTime":"2016-02-06T22:26:12+08:00","RecommendTime":"2014-03-11T15:52:08.521+08:00","PublicTime":"2015-06-18T03:00:01+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":18,"IsDeleted":false},{"NoteId":"56a831aa03f3314265000002","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":" bh","Desc":"de'de'dede'de'de'd得得得得得 dededsdedseses","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"bh","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:33.138+08:00","UpdatedTime":"2016-01-27T19:32:51.806+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:33.138+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":13,"IsDeleted":false},{"NoteId":"56a831a803f3314265000001","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"h'","Desc":"","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"h","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:29.671+08:00","UpdatedTime":"2016-01-27T10:55:29.671+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:29.671+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":7,"IsDeleted":false},{"NoteId":"56a831a703f3314265000000","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"","Desc":"","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"da56ba1df066","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:27.73+08:00","UpdatedTime":"2016-01-27T10:55:27.73+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:27.73+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":6,"IsDeleted":false}];
+var latestNotes = [];
+var noteContentJson = {"NoteId":"56b6027fab64416aa0002cfc","UserId":"56a82c7bab64417776002a5c","IsBlog":false,"Content":"\u003cp\u003efeaf afaf e fe fae\u0026nbsp;\u003c/p\u003e\u003cp\u003e带我去dq\u003c/p\u003e\u003cp\u003e撒\u003c/p\u003e\u003cp\u003es奥迪\u003c/p\u003e\u003cp\u003easdsadsad saa是的\u003c/p\u003e\u003cp\u003easd as sda as的\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003e撒\u003c/p\u003e\u003cp\u003e是\u003c/p\u003e\u003cp\u003eda撒dsa\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","Abstract":"\u003cp\u003efeaf afaf e fe fae\u0026nbsp;\u003c/p\u003e\u003cp\u003e带我去dq\u003c/p\u003e\u003cp\u003e撒\u003c/p\u003e\u003cp\u003es奥迪\u003c/p\u003e\u003cp\u003easdsadsad saa是的\u003c/p\u003e\u003cp\u003easd as sda as的\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003e撒\u003c/p\u003e\u003cp\u003e是\u003c/p\u003e\u003cp\u003eda撒dsa\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","CreatedTime":"2016-01-27T10:34:35+08:00","UpdatedTime":"2016-02-06T22:32:01+08:00","UpdatedUserId":"56a82c7bab64417776002a5c"};
+var tagsJson = [];
+var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
+var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
+</script>
+<script src="https://dn-leanote.qbox.me/js/i18n/msg.zh.js?t=b"></script>
+<script src="https://dn-leanote.qbox.me/js/dep.min.js?t=2"></script>
+<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script>
+
+<script src="https://dn-leanote.qbox.me/libs/ace/ace.js?t=1"></script>
+<script src="https://dn-leanote.qbox.me/js/app.min.js?t=d"></script>
+<script>
+initPage();
+
+window.require = {
+    baseUrl: 'https:\/\/dn-leanote.qbox.me',
+};
+</script>
+<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=i"></script>
+<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js?t=5"></script>
+</body>
+</html>
