@@ -250,10 +250,11 @@ body {
 }
 
 button,input,select,textarea {
-	margin: 0;
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit
+	position: relative;
+    z-index: 1;
+    width: 100%;
+    white-space: pre-wrap;
+    word-break: normal;
 }
 
 a {

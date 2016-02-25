@@ -463,6 +463,7 @@ function log(o) {
                             <div id="noteTitleDiv">
                                 <input name="noteTitle" id="noteTitle" value="" placeholder="UnTitled" tabindex="1" />
                             </div>
+							
 
 
                             <div id="noteReadTop">
@@ -482,12 +483,14 @@ function log(o) {
                             </div>
                         </div>
                         
-                        <div id="editor"> 
+                        <div id="editor" class="read-only" style="display: block;"> 
 <!--                    删除class="read-only"-->
-                            <h1>A</h1>
-                            <div draggable="true">B</div>
-                            <div draggable="true">C</div>
-                        </div>
+                            <div id="noteHead" class="mce-content-body" contenteditable="true" spellcheck="false" style="position: relative;"><p><input name="noteHead" id="noteHead" value="" placeholder="Enter A Headline" data-mce-tabindex="1"></p></div>
+							
+							<div id="noteDescription" class="mce-content-body" contenteditable="true" spellcheck="false" style="position: relative;"><p><br data-mce-bogus="1"></p></div>
+							
+							
+                        
 					</div>
 					
 <!--

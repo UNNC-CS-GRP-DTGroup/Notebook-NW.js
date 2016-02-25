@@ -30,6 +30,26 @@
     margin-top: 20px;
     width: 100%;
     overflow: visible;
+	
+  }
+  
+  #noteHead {
+	display: block;
+    font-family: Georgia,serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: #000;
+	margin:0;
+	}
+	
+  #noteDescription {
+	display: block;
+    font-size: 15px;
+    line-height: 1.6em;
+    color: #666;
+	margin: 0;
   }
   
 /*
