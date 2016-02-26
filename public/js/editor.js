@@ -7,7 +7,7 @@ function initEditor() {
     });
 
     tinymce.init({
-      selector: '#editor div',
+      selector: '#editor',
       inline: true,
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
