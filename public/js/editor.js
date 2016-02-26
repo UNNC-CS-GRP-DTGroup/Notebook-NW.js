@@ -1,10 +1,10 @@
 function initEditor() {
-    tinymce.init({
-      selector: '#editor h1',
-      inline: true,
-      toolbar: 'undo redo',
-      menubar: false
-    });
+//    tinymce.init({
+//      selector: '#editor h1',
+//      inline: true,
+//      toolbar: 'undo redo',
+//      menubar: false
+//    });
 
     tinymce.init({
       selector: '#editor',
