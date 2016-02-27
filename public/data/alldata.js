@@ -200,4 +200,4 @@ function sleep(miliseconds) {
    }
 }
 
-sleep(4000);
+sleep(2000);
