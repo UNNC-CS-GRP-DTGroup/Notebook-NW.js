@@ -32,6 +32,8 @@ var UrlPrefix = 'http:\/\/leanote.com';
 //
 //{"NoteId":"56a831a703f3314265000000","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"","Desc":"","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"da56ba1df066","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:27.73+08:00","UpdatedTime":"2016-01-27T10:55:27.73+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:27.73+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":6,"IsDeleted":false, "Content":"2"},
 //
+//
+////不在notes里！
 //{"NoteId":"56a82c7bab64417776002a60","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5d","Title":"Welcome to Leanote! 欢迎来到Leanote","Desc":"LEANOTE, NOT JUST A NOTEPAD!  Welcome to Leanote!  Features: Geek paradise: Wanna Markdown? We support it! Private notebook: Organize your knowledge \u0026 Snap every moment Awesome blog: Create unique themes \u0026 Share your ideas Collaboration: Learn together with your friends ...Related links: Help us imp","ImgSrc":"","Tags":["welcome","leanote"],"IsTrash":false,"IsBlog":false,"UrlTitle":"Welcome-to-Leanote-%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0Leanote","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":106,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2014-01-12T18:39:42+08:00","UpdatedTime":"2016-01-27T10:33:31.4+08:00","RecommendTime":"2014-03-11T15:52:08.521+08:00","PublicTime":"2015-06-18T03:00:01+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":5,"IsDeleted":false, "Content":"1"}];
 //
 //var noteContentJson = {"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","IsBlog":false,"Content":"\u003cp\u003edededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003ededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003eedededed\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","Abstract":"\u003cp\u003edededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003ededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003eedededed\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","CreatedTime":"2016-01-27T10:55:38.66+08:00","UpdatedTime":"2016-01-27T17:40:20+08:00","UpdatedUserId":"56a82c7bab64417776002a5c"};
@@ -42,7 +44,7 @@ var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSi
 
 var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
 
-////
+
 //////save using localforage
 //localforage.setItem("UserInfo", UserInfo, function(err, value) {
 //    console.log("UserInfo saved");
@@ -74,10 +76,6 @@ var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinym
 //
 //localforage.setItem("curSharedUserId", curSharedUserId, function(err, value) {
 //    console.log("curSharedUserId saved");
-//});
-//
-//localforage.setItem("notes", notes, function(err, value) {
-//    console.log("notes saved");
 //});
 //
 //localforage.setItem("notes", notes, function(err, value) {
