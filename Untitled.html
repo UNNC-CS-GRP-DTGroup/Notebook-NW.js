@@ -573,6 +573,16 @@
                     <div id="myTabContent" class="tab-content">
                        <div class="tab-pane fade in active" id="audioRecording">
                           <p>Audio Recording</p>
+        <div id = "test" style="visibility:hidden;">
+		<audio controls="controls"></audio>
+		</div>
+
+		<input onclick="startRecording()" type="button" value="RECORD" />&nbsp&nbsp&nbsp
+		<input onclick="stopRecording()" type="button" value="STOP" />&nbsp&nbsp&nbsp
+		<button onclick="download()"> DOWNLOAD </button>&nbsp
+&nbsp
+		<button onclick="clearRecord()"> CLEAR </button><br/>
+		<b id="count"></b>
                        </div>
                        <div class="tab-pane fade" id="videoRecording">
                           <p>Video Recording</p>
@@ -778,6 +788,77 @@ window.require = {
     baseUrl: 'https:\/\/dn-leanote.qbox.me',
 };
 </script>
+
+
+<script>
+			var c=1;
+
+			
+
+			var onFail = function(e) {
+				console.log('Rejected!', e);
+			};
+
+			var onSuccess = function(s) {
+				var context = new AudioContext();
+				var mediaStreamSource = context.createMediaStreamSource(s);
+				recorder = new Recorder(mediaStreamSource);
+				recorder.record();
+
+				// audio loopback
+				// mediaStreamSource.connect(context.destination);
+			}
+
+			window.URL = window.URL || window.webkitURL;
+			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+			
+			var audio = document.querySelector('audio');
+			var inter;
+			var recorder;
+			var realaudio;
+
+			function startRecording() {
+				if (navigator.getUserMedia) {
+					navigator.getUserMedia({audio: true}, onSuccess, onFail);
+					inter = window.setInterval(function (){
+				document.getElementById("count").style.visibility="visible";
+				document.getElementById("count").innerHTML = c + "s";
+				c=c+1;
+			},1000);
+				} else {
+					console.log('navigator.getUserMedia not present');
+				}
+			}
+
+			function stopRecording() {
+				inter = window.clearInterval(inter);
+				c=1;
+				document.getElementById("test").style.visibility="visible";
+				recorder.stop();
+				recorder.exportWAV(function(s) {
+					audio.src = window.URL.createObjectURL(s);
+					//Recorder.forceDownload(s);
+					realaudio = s;
+					
+				});
+
+			}
+
+			function clearRecord() {
+				recorder.clear();
+				document.getElementById("test").style.visibility="hidden";
+				document.getElementById("count").style.visibility="hidden";
+			}
+
+			function download() {
+				Recorder.forceDownload(realaudio);
+			}
+		</script>
+
+<script src="public/js/recorder/recorder.js"> </script>
+<script src="public/js/recorder/recorderWorker.js"> </script>
+
 <script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>
 <script src="https://dn-leanote.qbox.me/js/plugins/main.min.js?t=5"></script>
 <script src="public/js/media.js"></script>
