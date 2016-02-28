@@ -1,3 +1,0 @@
-<%=uri.params()["callback"]%>({
-  "data": "<%=uri.params()["data"]%>"
-});
