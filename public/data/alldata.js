@@ -39,10 +39,10 @@ var UrlPrefix = 'http:\/\/leanote.com';
 //var noteContentJson = {"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","IsBlog":false,"Content":"\u003cp\u003edededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003ededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003eedededed\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","Abstract":"\u003cp\u003edededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003ededede\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e\u003cp\u003eedededed\u003c/p\u003e\u003cp\u003e\u003cbr data-mce-bogus=\"1\"\u003e\u003c/p\u003e","CreatedTime":"2016-01-27T10:55:38.66+08:00","UpdatedTime":"2016-01-27T17:40:20+08:00","UpdatedUserId":"56a82c7bab64417776002a5c"};
 //
 //var tagsJson = [];
-
-var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
-
-var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
+//
+//var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
+//
+//var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
 
 
 //////save using localforage
@@ -200,4 +200,4 @@ function sleep(miliseconds) {
    }
 }
 
-sleep(2000);
+sleep(500);

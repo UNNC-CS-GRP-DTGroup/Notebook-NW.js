@@ -1,0 +1,59 @@
+{
+  "name": "stratifiedjs",
+  "description": "StratifiedJS Framework",
+  "author": {
+    "name": "Oni Labs",
+    "email": "maintainers@onilabs.com"
+  },
+  "version": "0.19.0",
+  "homepage": "http://onilabs.com/stratifiedjs",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/onilabs/stratifiedjs.git"
+  },
+  "main": "stratified-node.js",
+  "keywords": [
+    "stratifiedjs",
+    "async",
+    "language"
+  ],
+  "bin": {
+    "sjs": "sjs"
+  },
+  "devDependencies": {
+    "karma-sjs-adapter": "~0.2.2",
+    "karma-chrome-launcher": "*",
+    "karma-firefox-launcher": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-script-launcher": "*"
+  },
+  "engines": {
+    "node": ">=0.4.1"
+  },
+  "bugs": {
+    "url": "https://github.com/onilabs/stratifiedjs/issues"
+  },
+  "_id": "stratifiedjs@0.19.0",
+  "_shasum": "3bc0086d2f0f3e113d782b5452d928f13963b58c",
+  "_resolved": "https://registry.npmjs.org/stratifiedjs/-/stratifiedjs-0.19.0.tgz",
+  "_from": "stratifiedjs@*",
+  "scripts": {},
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "onilabs",
+    "email": "maintainers@onilabs.com"
+  },
+  "maintainers": [
+    {
+      "name": "onilabs",
+      "email": "maintainers@onilabs.com"
+    }
+  ],
+  "dist": {
+    "shasum": "3bc0086d2f0f3e113d782b5452d928f13963b58c",
+    "tarball": "http://registry.npmjs.org/stratifiedjs/-/stratifiedjs-0.19.0.tgz"
+  },
+  "directories": {},
+  "readme": "ERROR: No README data found!"
+}
