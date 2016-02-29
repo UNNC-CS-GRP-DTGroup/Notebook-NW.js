@@ -7,8 +7,9 @@
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name=”apple-mobile-web-app-capable” content=”yes” />
 <meta name="keywords" content="leanote,leanote.com">
-<meta name="description" content="Leanote, Not Just A Notepad!">
-<title>Leanote, Not Just A Notepad!</title>
+<meta name="description" content="QuickWrite">
+<title>QuickWrite</title>
+<link rel="shortcut icon" href="public/images/favicon2.ico" type="image/x-icon" />
 
 <link href="public/css/bootstrap-min.css" rel="stylesheet" /> 
 <!--    responsible for part of basic style(bootstrap)-->
@@ -63,8 +64,8 @@
 				</div>
                 
 				<div id="switcher" class="pull-left">
-					 <i class="fa fa-align-justify" id="leftSwitcher" title="Hidden slide bar"></i>
-					 <span id="leftSwitcher2" title="Show slide bar"><img src="public/images/logo/quickwrite10.png" height=25></span>
+					 <i class="fa fa-align-justify" id="leftSwitcher" title="Hide sidebar"></i>
+					 <span id="leftSwitcher2" title="Show sidebar"><img src="public/images/logo/quickwrite10.png" height=25></span>
 				</div>
 				
 				<div class="pull-left" id="searchWrap">
@@ -586,11 +587,11 @@
 		<audio controls="controls"></audio>
 		</div>
 
-		<input onclick="startRecording()" type="button" value="RECORD" />&nbsp&nbsp&nbsp
-		<input onclick="stopRecording()" type="button" value="STOP" />&nbsp&nbsp&nbsp
-		<button onclick="download()"> DOWNLOAD </button>&nbsp
+		<input onclick="startRecording()" type="image" src="public\images\buttons\record.png" height=35 alt="Record" title="Record"/>&nbsp&nbsp&nbsp
+		<input onclick="stopRecording()" type="image" src="public\images\buttons\stop.png" height=35 alt="Stop" title="Stop"/>&nbsp&nbsp&nbsp
+		<input onclick="download()" type="image" src="public\images\buttons\download.png" height=35 alt="Download" title="Download"/>&nbsp
 &nbsp
-		<button onclick="clearRecord()"> CLEAR </button><br/>
+		<input onclick="clearRecord()" type="image" src="public\images\buttons\clear.png" height=35 alt="Clear" title="Clear"/><br/>
 		<b id="count"></b>
                        </div>
                        <div class="tab-pane fade" id="videoRecording">

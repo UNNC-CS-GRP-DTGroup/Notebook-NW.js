@@ -771,7 +771,7 @@ a:hover {
 }
 
 #mediaSplitter {
-	left: 1218px
+	left: 1150px
 }
 
 #media {
@@ -779,8 +779,8 @@ a:hover {
 	bottom: 0;
 	top: 0;
 	right: 0px;
-    left: 1218px;
-	padding-left: 5px;
+    left: 1150px;
+	padding-left: 0px;
 	overflow-y: hidden;
 	overflow-x: auto;
 	background-color: #fff;
