@@ -1,4 +1,4 @@
-::selection {
+﻿::selection {
 	background: #000;
 	color: #fff
 }
@@ -2618,8 +2618,7 @@ textarea#wmd-input {
 	content: "\e603"
 }
 
-#logo:before {
-	content: "\e602"; //原本为600
+#logo:before { 
 	line-height: 1;
 	margin-top: 5px;
 	display: inline-block;
@@ -2628,7 +2627,7 @@ textarea#wmd-input {
 
 /*logo在缩小后的*/
 #switcher span:before {
-	content: "\e602" 
+	 
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
