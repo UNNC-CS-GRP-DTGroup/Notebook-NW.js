@@ -413,11 +413,11 @@
 .noteSplit {
 	position: absolute;
 	top: 0;
-	width: 5px;
+	width: 8px;
 	height: 100%;
 	overflow: hidden;
 	z-index: 3333;
-	cursor: col-resize
+	cursor: col-resize;
 }
 
 a.raw {
@@ -771,7 +771,7 @@ a:hover {
 }
 
 #mediaSplitter {
-	right: 310px
+	left: 1218px
 }
 
 #media {
@@ -779,11 +779,12 @@ a:hover {
 	bottom: 0;
 	top: 0;
 	right: 0px;
-    left: 1250px;
+    left: 1218px;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
-	background-color: #fff
+	background-color: #fff;
+	border-left: 1px solid #cfcfcf;
 }
 .ace_editor,.ace_editor * {
 	font-family: Monaco,Menlo,'Ubuntu Mono',Consolas,source-code-pro,Hiragino Sans GB,"Microsoft YaHei","微软雅黑"
