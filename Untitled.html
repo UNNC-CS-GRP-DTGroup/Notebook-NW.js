@@ -31,7 +31,9 @@
     
 <!--    load data -->
 <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
-<script src="public/data/alldata.js"></script>
+<!--<script src="public/data/alldata.js"></script>-->
+<script src="public/data/alldata2.js"></script>
+
 
 <script>
     // dynamic style sheets
@@ -586,10 +588,9 @@
 		<audio controls="controls"></audio>
 		</div>
 
-		<input onclick="startRecording()" type="button" value="RECORD" />&nbsp&nbsp&nbsp
-		<input onclick="stopRecording()" type="button" value="STOP" />&nbsp&nbsp&nbsp
-		<button onclick="download()"> DOWNLOAD </button>&nbsp
-&nbsp
+		<input onclick="startRecording()" type="button" value="RECORD" />
+		<input onclick="stopRecording()" type="button" value="STOP" />
+		<button onclick="download()"> DOWNLOAD </button>
 		<button onclick="clearRecord()"> CLEAR </button><br/>
 		<b id="count"></b>
                        </div>
@@ -753,6 +754,7 @@
 </div>
     
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+<!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
 <script src="public/js/editor.js"></script>
 <script src="public/js/DND.js"></script>  
 
@@ -768,18 +770,34 @@
     
 <script>
     initPage();
-    window.require = {
-        baseUrl: 'https:\/\/dn-leanote.qbox.me',
-    };
+//    window.require = {
+//        baseUrl: 'https:\/\/dn-leanote.qbox.me',
+//    };
 </script>
-
+<!--
+<script>
+    var gui = require('nw.gui');
+    win = gui.Window.get();
+    var nativeMenuBar = new gui.Menu({ type: "menubar" });
+    try {
+        nativeMenuBar.createMacBuiltin("My App");
+        win.menu = nativeMenuBar;
+    } catch (ex) {
+        console.log(ex.message);
+    }
+</script>
+-->
 
 <script src="public/js/recorder/configRecorder.js"> </script>
 <script src="public/js/recorder/recorder.js"> </script>
 <script src="public/js/recorder/recorderWorker.js"> </script>
 
-<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>
-<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js?t=5"></script>
+<!--<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>-->
+    
+<!--unknown usage-->
+<!--<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js"></script>-->
+<script src="public/js/plugins/main.min.js"></script>
+    
 <script src="public/js/media.js"></script>
 <!--    Media Window (must be put after the initPage()-->
 
