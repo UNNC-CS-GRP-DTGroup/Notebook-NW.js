@@ -17,7 +17,8 @@ function initEditor() {
     //                                      去除掉“paste”，DD时正常（不会多余复制）
       ],
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+        imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io', 'www.baidu.com', 'www.ss.bdimg.com', 'ss.bdimg.com'], // enable to edit the image
+        imagetools_proxy: 'proxy.php' // enable to show the image editor
 //        content_css: [
 ////            'http://fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
 //            '/public/css/tinymce/codepen.min.css'
