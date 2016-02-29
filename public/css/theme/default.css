@@ -2618,15 +2618,16 @@ textarea#wmd-input {
 }
 
 #logo:before {
-	content: "\e600";
+	content: "\e602"; //原本为600
 	line-height: 1;
 	margin-top: 5px;
 	display: inline-block;
 	vertical-align: top
 }
 
+/*logo在缩小后的*/
 #switcher span:before {
-	content: "\e601"
+	content: "\e602" 
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
