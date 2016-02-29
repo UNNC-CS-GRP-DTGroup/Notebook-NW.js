@@ -17,6 +17,8 @@ var tagsJson = [];
 var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
 var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
 
+var trackingLog;
+
 function sleep(miliseconds) {
    var currentTime = new Date().getTime();
 
@@ -193,6 +195,13 @@ localforage.getItem('UserInfo', function(err, value) {
 //            };
             
         });
+        
+//        localforage.getItem('trackingLog', function(err, value) {
+//            // Run this code once the value has been
+//            // loaded from the offline store.
+//            trackingLog = value;
+//            console.log("trackingLog loaded");
+//        });
     }
     else {
         //save using localforage
@@ -278,6 +287,13 @@ localforage.getItem('UserInfo', function(err, value) {
         localforage.setItem("tagsJson", tagsJson, function(err, value) {
             console.log("tagsJson saved");
         });
+        
+        // trackingLog
+        trackingLog = [];
+        localforage.setItem("trackingLog", trackingLog, function(err, value) {
+            console.log("trackingLog saved");
+        });
+        
     }
 });
 
