@@ -1,11 +1,9 @@
 {
-  "main": "Untitled.html", // 启动页面
-  "name": "ga"
-  // "window": {
-  //   // "toolbar": true, // 工具栏
-  //   // "frame": true,   // 框架
-  //   "width": 1200,
-  //   "height": 1200,
-  //   "resizable": true  
-  // }
+    "main": "Untitled.html", // 启动页面
+    "name": "ga",
+    "window": {
+        "toolbar": true, // 工具栏
+        "frame": true,   // 框架
+        "resizable": true  
+    }
 }

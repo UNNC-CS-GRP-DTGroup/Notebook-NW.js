@@ -9,7 +9,7 @@
     -webkit-user-drag: element;
   }
 
-  #editor div{
+  #editor .drggableDiv{
 /*
     height: 150px;
     width: 150px;
@@ -57,12 +57,12 @@
   }
 */
   
-  #editor div.over {
+  #editor .drggableDiv.over {
     border: 2px dashed #000;
   }
   
 
-  #editable div::selection {
+  #editable .drggableDiv::selection {
       background: #a4cdff;
   }
 

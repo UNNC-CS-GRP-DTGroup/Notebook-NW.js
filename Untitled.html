@@ -743,6 +743,7 @@
 </div>
     
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+<!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
 <script src="public/js/editor.js"></script>
 <script src="public/js/DND.js"></script>  
 
@@ -758,12 +759,29 @@
     
 <script>
     initPage();
-    window.require = {
-        baseUrl: 'https:\/\/dn-leanote.qbox.me',
-    };
+//    window.require = {
+//        baseUrl: 'https:\/\/dn-leanote.qbox.me',
+//    };
 </script>
-<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>
-<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js?t=5"></script>
+<!--
+<script>
+    var gui = require('nw.gui');
+    win = gui.Window.get();
+    var nativeMenuBar = new gui.Menu({ type: "menubar" });
+    try {
+        nativeMenuBar.createMacBuiltin("My App");
+        win.menu = nativeMenuBar;
+    } catch (ex) {
+        console.log(ex.message);
+    }
+</script>
+-->
+<!--<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>-->
+    
+<!--unknown usage-->
+<!--<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js"></script>-->
+<script src="public/js/plugins/main.min.js"></script>
+    
 <script src="public/js/media.js"></script>
 <!--    Media Window (must be put after the initPage()-->
 
