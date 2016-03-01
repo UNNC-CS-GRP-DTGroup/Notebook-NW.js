@@ -658,9 +658,265 @@
 				  </div>
 			</div>
 			
+<!--
 			<div class="modal fade bs-modal-sm" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			</div>
+-->
+            
+<!--            share开始-->
+            <div class="modal fade bs-modal-sm in" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">  
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="modalTitle">Share <b>Welcome to Leanote! 欢迎来到Leanote</b></h4>
+                        </div>
+
+
+                        <div class="modal-body">
+                            <ul id="myTab" class="nav nav-tabs">
+                                <li class="active"><a href="#baseInfo" data-toggle="tab">Share to friends</a></li>
+                                <li class=""><a href="#groupInfo" data-toggle="tab">Share to group</a></li>
+
+                                <li class=""><a href="#shareInfo" data-toggle="tab">Share by password</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="baseInfo">
+                                    <button class="btn btn-primary" id="addShareNotebookBtn">Add Friend</button>
+                                        <div id="shareMsg" class="alert alert-danger" style="display: none; margin: 5px 0 0 0;"></div>
+                                        <table class="table table-hover" id="shareNotebookTable">
+                                            <thead>
+                                              <tr>
+                                                <th>#</th>
+                                                <th>Friend email</th>
+                                                <th>Permission</th>
+                                                <th width="150px">Delete</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr id="tr1">
+                                                <td>#</td>
+                                                <td>
+                                                    <input id="friendsEmail" type="text" class="form-control" placeholder="Friend email">
+                                                </td>
+                                                <td>
+                                                    <label for="readPerm1"><input type="radio" name="perm1" checked="checked" value="0" id="readPerm1"> Read only</label> 
+                                                    <label for="writePerm1"><input type="radio" name="perm1" value="1" id="writePerm1"> Writable</label>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-success" data-loading-text="..." onclick="addShareNoteOrNotebook(1)">Share</button>
+                                                    <button class="btn btn-warning" onclick="deleteShareNoteOrNotebook(1)">Delete</button>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table> 
+                                </div>
+                                <div class="tab-pane" id="groupInfo">
+                                    <p>
+                                    If you share your note to group, the member belongs to group will have the right to access the note.
+                                    <a href="/member/group/index" target="_blank">Manage group/member</a>
+                                    </p>
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Group Name</th>
+                                            <th>Permission</th>
+                                            <th width="150px">Operation</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+
+                                    </tbody></table>
+                                </div>
+
+                                <div class="tab-pane" id="shareInfo">
+                                    <p>
+                                        <button class="btn btn-primary" id="genShareLink">Get link and password</button>
+                                        <button class="btn btn-danger" id="disableShare" disabled="disabled">Cancel</button>
+                                    </p>
+
+                                    <form class="form-horizontal">
+                                      <div class="form-group">
+                                        <label for="shareLink" class="col-sm-2 control-label">Share link</label>
+                                        <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="shareLink">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="sharePass" class="col-sm-2 control-label">Access password</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="sharePass">	
+                                        </div>
+                                      </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                Share.dialogIsNote =  true ;
+                Share.dialogNoteOrNotebookId = '56d53e56ab64417fb1001e25';
+
+                var getHost = function(url) { 
+                    var host = "null";
+                    if(typeof url == "undefined"
+                                    || null == url)
+                            url = window.location.href;
+                    var regex = /.*\:\/\/([^\/]*).*/;
+                    var match = url.match(regex);
+                    if(typeof match != "undefined"
+                                    && null != match)
+                            host = match[1];
+                    return host;
+                }
+
+                $(function() {
+
+                setTimeout(function() {
+                    $("#tr1 #friendsEmail").focus();
+                }, 500);
+
+                var host = getHost();
+                if (Share.dialogIsNote) {
+                    var url = "/share/querySharePass";
+                    var data = {noteId: Share.dialogNoteOrNotebookId};
+                    ajaxPost(url, data, function(re) {
+                        if(reIsOk(re)) {
+                            if (re.Item >= 1000 && re.Item < 10000) {
+                                var shareLink = host + '/share/note/56d53e56ab64417fb1001e25';
+                                $("#shareLink").val(shareLink);
+                                $("#sharePass").val(re.Item);
+                            }
+                        }
+                    });
+                }
+
+                var shareLink = "";
+
+                if ( false  && "") {
+                    shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
+                    $("#shareLink").val(shareLink);	
+                    $("#sharePass").val("");
+                    $("#disableShare").attr("disabled", false);
+                }
+
+                $("#shareLink, #sharePass").click(function() {
+                    $(this).focus(function(){
+
+                    }).select();
+                });
+
+
+
+                $("#groupInfo").on("click", ".btn-share-or-not", function() {
+                    var $t = $(this);
+                    var $ptd = $t.closest("td");
+                    var $ptr = $t.closest("tr");
+                    var hasShared = $ptr.data('uid');
+                    var groupId = $ptr.data('id');
+                    var data = {groupId: groupId};
+                    var url = "";
+                    if(!hasShared) {
+                        var perm = $ptr.find("input:checked").val();
+                        data.perm = perm;
+                        if(Share.dialogIsNote) {
+                            data.noteId = Share.dialogNoteOrNotebookId;
+                            url = "/share/addShareNoteGroup";
+                        } else {
+                            data.notebookId = Share.dialogNoteOrNotebookId;
+                            url = "/share/addShareNotebookGroup";
+                        }
+                    } else {
+                        if(Share.dialogIsNote) {
+                            data.noteId = Share.dialogNoteOrNotebookId;
+                            url = "/share/deleteShareNoteGroup";
+                        } else {
+                            data.notebookId = Share.dialogNoteOrNotebookId;
+                            url = "/share/deleteShareNotebookGroup";
+                        }
+                    }
+                    ajaxPost(url, data, function(re) {
+                        if(reIsOk(re)) {
+                            if(!hasShared) {
+                                var text = '<button class="btn btn-success btn-share-or-not">已分享</button>';
+                                $ptr.data('uid', 'xxxxxx');
+                            } else {
+                                var text = '<button class="btn btn-default btn-share-or-not">未分享</button>';
+                                $ptr.data('uid', '');
+                            }
+                            $ptd.html(text);
+                        }
+                    });
+                });
+
+
+                $("#genShareLink").on("click", function() {
+                    var sharePass = $("#sharePass").val();
+
+                    $("#disableShare").attr("disabled", false);
+                    var url = "/share/genShareLinkPass";
+                    var shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
+                    var data = {noteId: Share.dialogNoteOrNotebookId};
+                    ajaxPost(url, data, function(re) {
+                        if(reIsOk(re)) {
+                            $("#shareLink").val(shareLink);
+                            $("#sharePass").val(re.Item);
+                        }
+                    });
+                });
+
+                $("#disableShare").on("click", function() {
+                    var url = "/share/disableShare";
+                    var data = {noteId: Share.dialogNoteOrNotebookId};
+                    ajaxPost(url, data, function(re) {
+                        if(reIsOk(re)) {
+                            $("#shareLink").val("");
+                            $("#sharePass").val("");
+                            $("#disableShare").attr("disabled", "disabled");
+                        } else {
+                            alert(getMsg("error"));
+                        }
+                    });
+                });
+
+                $(".group-perm").click(function() {
+                    var $t = $(this);
+                    var $ptr = $t.closest("tr");
+                    var hasShared = $ptr.data('uid');
+                    if(!hasShared) {
+                        return;
+                    }
+                    var groupId = $ptr.data('id');
+                    var data = {groupId: groupId, perm: $t.val()};
+                    var url = ""
+                    if(Share.dialogIsNote) {
+                        data.noteId = Share.dialogNoteOrNotebookId;
+                        url = "/share/updateShareNoteGroupPerm";
+                    } else {
+                        data.notebookId = Share.dialogNoteOrNotebookId;
+                        url = "/share/updateShareNotebookGroupPerm";
+                    }
+                    ajaxPost(url, data, function(re) {
+                        if(!reIsOk(re)) {
+                            alert(re.Msg);
+                        }
+                    });
+                });
+
+                });
+                </script>
+            </div>
 			
+<!--            share结束-->
+            
 			<div class="modal fade bs-modal-sm" id="leanoteDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">

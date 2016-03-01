@@ -28,7 +28,7 @@
 
 			function startRecording() {
 				if (navigator.getUserMedia) {
-                    TrackLogRecord.newRecordingRecord(); 
+                    TrackLogRecord.newStartRecordingRecord(); 
                     
 					navigator.getUserMedia({audio: true}, onSuccess, onFail);
 					inter = window.setInterval(function (){
