@@ -28,6 +28,8 @@
 
 			function startRecording() {
 				if (navigator.getUserMedia) {
+                    TrackLogRecord.newRecordingRecord(); 
+                    
 					navigator.getUserMedia({audio: true}, onSuccess, onFail);
 					inter = window.setInterval(function (){
 				document.getElementById("count").innerHTML = c + "s";
@@ -40,6 +42,8 @@
 			}
 
 			function stopRecording() {
+                TrackLogRecord.newStopRecordingRecord();
+                
 				inter = window.clearInterval(inter);
 				c=1;
 				document.getElementById("test").style.visibility="visible";

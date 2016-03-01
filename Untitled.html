@@ -572,7 +572,7 @@
                               Video Recording
                            </a>
                         </li>
-                       <li><a href="#files" data-toggle="tab">
+                       <li><a href="#files" data-toggle="tab" onclick="TrackLogRecord.newCheckFileRecord()">
                               Open Files
                            </a>
                         </li>
@@ -583,23 +583,23 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                        <div class="tab-pane fade in active" id="audioRecording">
-                          <p>Audio Recording</p>
-        <div id = "test" style="visibility:hidden;">
-		<audio controls="controls"></audio>
-		</div>
+                            <p>Audio Recording</p>
+                            <div id = "test" style="visibility:hidden;">
+                            <audio controls="controls"></audio>
+                            </div>
 
-		<input onclick="startRecording()" type="button" value="RECORD" />
-		<input onclick="stopRecording()" type="button" value="STOP" />
-		<button onclick="download()"> DOWNLOAD </button>
-		<button onclick="clearRecord()"> CLEAR </button><br/>
-		<b id="count"></b>
+                            <input onclick="startRecording()" type="button" value="RECORD" />
+                            <input onclick="stopRecording()" type="button" value="STOP" />
+                            <button onclick="download()"> DOWNLOAD </button>
+                            <button onclick="clearRecord()"> CLEAR </button><br/>
+                            <b id="count"></b>
                        </div>
                        <div class="tab-pane fade" id="videoRecording">
                           <p>Video Recording</p>
                        </div>
                        <div class="tab-pane fade" id="files">
                           <form id="form1" runat="server">
-                          <input type='file' id="imgInp" />
+                          <input type='file' id="imgInp" onChange="TrackLogRecord.newOpenFileRecord()"/> // log the opening file activity
                           <iframe id="displayedFile" name="awindow" frameborder=2 src="" width=100% height=600px></iframe>
                         </form>
                        </div>
@@ -755,7 +755,6 @@
     
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
 <!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
-<script src="public/js/editor.js"></script>
 <script src="public/js/DND.js"></script>  
 
 <script src="public/js/i18n/msg.en.js?t=b"></script>
@@ -767,7 +766,8 @@
 <!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
 <!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
 <script src="public/js/app.min.js"></script>
-    
+<script src="public/js/editor.js"></script>
+
 <script>
     initPage();
 //    window.require = {

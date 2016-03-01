@@ -59,6 +59,15 @@ function initEditor() {
             "CC99FF", "Plum"
           ],
         media_filter_html: false,
+        
+        // change event handler
+        setup : function(ed) {
+            ed.on('change', function(e) {
+                console.log('the content '+ed.getContent());
+                TrackLogRecord.newWritingRecord(ed.getContent());
+            });
+        },
+        
         imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io', 'www.baidu.com', 'www.ss.bdimg.com', 'ss.bdimg.com'], // enable to edit the image
         imagetools_proxy: 'proxy.php' // enable to show the image editor
 //        content_css: [
