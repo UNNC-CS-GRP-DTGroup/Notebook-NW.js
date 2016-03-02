@@ -762,156 +762,157 @@
                     </div>
                 </div>
                 <script>
-                Share.dialogIsNote =  true ;
-                Share.dialogNoteOrNotebookId = '56d53e56ab64417fb1001e25';
-
-                var getHost = function(url) { 
-                    var host = "null";
-                    if(typeof url == "undefined"
-                                    || null == url)
-                            url = window.location.href;
-                    var regex = /.*\:\/\/([^\/]*).*/;
-                    var match = url.match(regex);
-                    if(typeof match != "undefined"
-                                    && null != match)
-                            host = match[1];
-                    return host;
-                }
-
-                $(function() {
-
-                setTimeout(function() {
-                    $("#tr1 #friendsEmail").focus();
-                }, 500);
-
-                var host = getHost();
-                if (Share.dialogIsNote) {
-                    var url = "/share/querySharePass";
-                    var data = {noteId: Share.dialogNoteOrNotebookId};
-                    ajaxPost(url, data, function(re) {
-                        if(reIsOk(re)) {
-                            if (re.Item >= 1000 && re.Item < 10000) {
-                                var shareLink = host + '/share/note/56d53e56ab64417fb1001e25';
-                                $("#shareLink").val(shareLink);
-                                $("#sharePass").val(re.Item);
-                            }
-                        }
-                    });
-                }
-
-                var shareLink = "";
-
-                if ( false  && "") {
-                    shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
-                    $("#shareLink").val(shareLink);	
-                    $("#sharePass").val("");
-                    $("#disableShare").attr("disabled", false);
-                }
-
-                $("#shareLink, #sharePass").click(function() {
-                    $(this).focus(function(){
-
-                    }).select();
-                });
-
-
-
-                $("#groupInfo").on("click", ".btn-share-or-not", function() {
-                    var $t = $(this);
-                    var $ptd = $t.closest("td");
-                    var $ptr = $t.closest("tr");
-                    var hasShared = $ptr.data('uid');
-                    var groupId = $ptr.data('id');
-                    var data = {groupId: groupId};
-                    var url = "";
-                    if(!hasShared) {
-                        var perm = $ptr.find("input:checked").val();
-                        data.perm = perm;
-                        if(Share.dialogIsNote) {
-                            data.noteId = Share.dialogNoteOrNotebookId;
-                            url = "/share/addShareNoteGroup";
-                        } else {
-                            data.notebookId = Share.dialogNoteOrNotebookId;
-                            url = "/share/addShareNotebookGroup";
-                        }
-                    } else {
-                        if(Share.dialogIsNote) {
-                            data.noteId = Share.dialogNoteOrNotebookId;
-                            url = "/share/deleteShareNoteGroup";
-                        } else {
-                            data.notebookId = Share.dialogNoteOrNotebookId;
-                            url = "/share/deleteShareNotebookGroup";
-                        }
-                    }
-                    ajaxPost(url, data, function(re) {
-                        if(reIsOk(re)) {
-                            if(!hasShared) {
-                                var text = '<button class="btn btn-success btn-share-or-not">已分享</button>';
-                                $ptr.data('uid', 'xxxxxx');
-                            } else {
-                                var text = '<button class="btn btn-default btn-share-or-not">未分享</button>';
-                                $ptr.data('uid', '');
-                            }
-                            $ptd.html(text);
-                        }
-                    });
-                });
-
-
-                $("#genShareLink").on("click", function() {
-                    var sharePass = $("#sharePass").val();
-
-                    $("#disableShare").attr("disabled", false);
-                    var url = "/share/genShareLinkPass";
-                    var shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
-                    var data = {noteId: Share.dialogNoteOrNotebookId};
-                    ajaxPost(url, data, function(re) {
-                        if(reIsOk(re)) {
-                            $("#shareLink").val(shareLink);
-                            $("#sharePass").val(re.Item);
-                        }
-                    });
-                });
-
-                $("#disableShare").on("click", function() {
-                    var url = "/share/disableShare";
-                    var data = {noteId: Share.dialogNoteOrNotebookId};
-                    ajaxPost(url, data, function(re) {
-                        if(reIsOk(re)) {
-                            $("#shareLink").val("");
-                            $("#sharePass").val("");
-                            $("#disableShare").attr("disabled", "disabled");
-                        } else {
-                            alert(getMsg("error"));
-                        }
-                    });
-                });
-
-                $(".group-perm").click(function() {
-                    var $t = $(this);
-                    var $ptr = $t.closest("tr");
-                    var hasShared = $ptr.data('uid');
-                    if(!hasShared) {
-                        return;
-                    }
-                    var groupId = $ptr.data('id');
-                    var data = {groupId: groupId, perm: $t.val()};
-                    var url = ""
-                    if(Share.dialogIsNote) {
-                        data.noteId = Share.dialogNoteOrNotebookId;
-                        url = "/share/updateShareNoteGroupPerm";
-                    } else {
-                        data.notebookId = Share.dialogNoteOrNotebookId;
-                        url = "/share/updateShareNotebookGroupPerm";
-                    }
-                    ajaxPost(url, data, function(re) {
-                        if(!reIsOk(re)) {
-                            alert(re.Msg);
-                        }
-                    });
-                });
-
-                });
+//                var Share
+//                Share.dialogIsNote =  true ;
+//                Share.dialogNoteOrNotebookId = '56d53e56ab64417fb1001e25';
+//
+//                var getHost = function(url) { 
+//                    var host = "null";
+//                    if(typeof url == "undefined"
+//                                    || null == url)
+//                            url = window.location.href;
+//                    var regex = /.*\:\/\/([^\/]*).*/;
+//                    var match = url.match(regex);
+//                    if(typeof match != "undefined"
+//                                    && null != match)
+//                            host = match[1];
+//                    return host;
+//                }
+//
+//                $(function() {
+//
+//                setTimeout(function() {
+//                    $("#tr1 #friendsEmail").focus();
+//                }, 500);
+//
+//                var host = getHost();
+//                if (Share.dialogIsNote) {
+//                    var url = "/share/querySharePass";
+//                    var data = {noteId: Share.dialogNoteOrNotebookId};
+//                    ajaxPost(url, data, function(re) {
+//                        if(reIsOk(re)) {
+//                            if (re.Item >= 1000 && re.Item < 10000) {
+//                                var shareLink = host + '/share/note/56d53e56ab64417fb1001e25';
+//                                $("#shareLink").val(shareLink);
+//                                $("#sharePass").val(re.Item);
+//                            }
+//                        }
+//                    });
+//                }
+//
+//                var shareLink = "";
+//
+//                if ( false  && "") {
+//                    shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
+//                    $("#shareLink").val(shareLink);	
+//                    $("#sharePass").val("");
+//                    $("#disableShare").attr("disabled", false);
+//                }
+//
+//                $("#shareLink, #sharePass").click(function() {
+//                    $(this).focus(function(){
+//
+//                    }).select();
+//                });
+//
+//
+//
+//                $("#groupInfo").on("click", ".btn-share-or-not", function() {
+//                    var $t = $(this);
+//                    var $ptd = $t.closest("td");
+//                    var $ptr = $t.closest("tr");
+//                    var hasShared = $ptr.data('uid');
+//                    var groupId = $ptr.data('id');
+//                    var data = {groupId: groupId};
+//                    var url = "";
+//                    if(!hasShared) {
+//                        var perm = $ptr.find("input:checked").val();
+//                        data.perm = perm;
+//                        if(Share.dialogIsNote) {
+//                            data.noteId = Share.dialogNoteOrNotebookId;
+//                            url = "/share/addShareNoteGroup";
+//                        } else {
+//                            data.notebookId = Share.dialogNoteOrNotebookId;
+//                            url = "/share/addShareNotebookGroup";
+//                        }
+//                    } else {
+//                        if(Share.dialogIsNote) {
+//                            data.noteId = Share.dialogNoteOrNotebookId;
+//                            url = "/share/deleteShareNoteGroup";
+//                        } else {
+//                            data.notebookId = Share.dialogNoteOrNotebookId;
+//                            url = "/share/deleteShareNotebookGroup";
+//                        }
+//                    }
+//                    ajaxPost(url, data, function(re) {
+//                        if(reIsOk(re)) {
+//                            if(!hasShared) {
+//                                var text = '<button class="btn btn-success btn-share-or-not">已分享</button>';
+//                                $ptr.data('uid', 'xxxxxx');
+//                            } else {
+//                                var text = '<button class="btn btn-default btn-share-or-not">未分享</button>';
+//                                $ptr.data('uid', '');
+//                            }
+//                            $ptd.html(text);
+//                        }
+//                    });
+//                });
+//
+//
+//                $("#genShareLink").on("click", function() {
+//                    var sharePass = $("#sharePass").val();
+//
+//                    $("#disableShare").attr("disabled", false);
+//                    var url = "/share/genShareLinkPass";
+//                    var shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
+//                    var data = {noteId: Share.dialogNoteOrNotebookId};
+//                    ajaxPost(url, data, function(re) {
+//                        if(reIsOk(re)) {
+//                            $("#shareLink").val(shareLink);
+//                            $("#sharePass").val(re.Item);
+//                        }
+//                    });
+//                });
+//
+//                $("#disableShare").on("click", function() {
+//                    var url = "/share/disableShare";
+//                    var data = {noteId: Share.dialogNoteOrNotebookId};
+//                    ajaxPost(url, data, function(re) {
+//                        if(reIsOk(re)) {
+//                            $("#shareLink").val("");
+//                            $("#sharePass").val("");
+//                            $("#disableShare").attr("disabled", "disabled");
+//                        } else {
+//                            alert(getMsg("error"));
+//                        }
+//                    });
+//                });
+//
+//                $(".group-perm").click(function() {
+//                    var $t = $(this);
+//                    var $ptr = $t.closest("tr");
+//                    var hasShared = $ptr.data('uid');
+//                    if(!hasShared) {
+//                        return;
+//                    }
+//                    var groupId = $ptr.data('id');
+//                    var data = {groupId: groupId, perm: $t.val()};
+//                    var url = ""
+//                    if(Share.dialogIsNote) {
+//                        data.noteId = Share.dialogNoteOrNotebookId;
+//                        url = "/share/updateShareNoteGroupPerm";
+//                    } else {
+//                        data.notebookId = Share.dialogNoteOrNotebookId;
+//                        url = "/share/updateShareNotebookGroupPerm";
+//                    }
+//                    ajaxPost(url, data, function(re) {
+//                        if(!reIsOk(re)) {
+//                            alert(re.Msg);
+//                        }
+//                    });
+//                });
+//
+//                });
                 </script>
             </div>
 			
