@@ -13,7 +13,7 @@ function initEditor() {
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table contextmenu imagetools'
+            'insertdatetime media table contextmenu imagetools paste'
     //                                      去除掉“paste”，DD时正常（不会多余复制）
       ],
         toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
