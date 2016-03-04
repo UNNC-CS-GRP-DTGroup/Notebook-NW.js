@@ -36,6 +36,21 @@ var allAppData = {};
 
 
 // 开始
+var check = false;
+async.series([
+    function(callback) {
+        localforage.getItem('allAppData', function(err, value) {
+            console.log("check");
+            if(value != null) check = true;
+        });
+        callback();
+    },
+    
+    function(callback) {
+        if(check) console.log("true");
+        else console.log("false");
+    }
+
 function getAllAppData(UserId) {
     //             var stringifiedJson = JSON.stringify(jsonData);
     $.ajax({

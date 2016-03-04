@@ -1,0 +1,78 @@
+<html>
+
+<body>
+
+<script type="text/javascript">     
+    
+</script>
+<script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
+<script src="public/js/async.js"></script>
+<!--<script src="public/data/alldata4.js"></script>-->
+<script>
+//function callbackhandler(err, results) {
+//    console.log('It came back with this ' + results);
+//}   
+//
+//function takes5Seconds(callback) {
+//    console.log('Starting 5 second task');
+//    setTimeout( function() { 
+//        console.log('Just finshed 5 seconds');
+//        callback(null, 'five');
+//    }, 5000);
+//}   
+//
+//function takes2Seconds(callback) {
+//    console.log('Starting 2 second task');
+//    setTimeout( function() { 
+//        console.log('Just finshed 2 seconds');
+//        callback(null, 'two');
+//    }, 2000); 
+//}   
+//
+////async.series([takes2Seconds(callbackhandler), 
+////              takes5Seconds(callbackhandler)], function(err, results){
+////    console.log('Result of the whole run is ' + results);
+////}) 
+//    
+//async.series([
+//    takes2Seconds,
+//    takes5Seconds
+//], function (err, results) {
+//    // Here, results is an array of the value from each function
+//    console.log(results); // outputs: ['two', 'five']
+//});
+    var check = false;
+    function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+    async.series([
+        function(callback) {
+            localforage.getItem('allAppData', function(err, value) {
+                console.log("check");
+                if(value != null) check = true;
+                callback();
+            });
+          //  callback();
+        },
+
+        function(callback) {
+            if(check) console.log("true");
+            else console.log("false");
+            
+            callback();
+        },
+        
+        function(callback) {
+            console.log("at the end");
+            callback();
+        }
+    ]);
+    
+    sleep(1000);
+    console.log("at the end2");
+</script>
+</body>
+</html>

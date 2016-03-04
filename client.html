@@ -8,21 +8,22 @@
             
 //        var object = {}
 
-        function transfer(jsonData) {
-            var stringifiedJson = JSON.stringify(jsonData);
+        function getAllAppData(UserId) {
+//             var stringifiedJson = JSON.stringify(jsonData);
             $.ajax({
-                type: 'POST', // added,
-                url: 'http://cs-linux.nottingham.edu.cn:8080',
-                data: stringifiedJson,
+                type: 'GET', // added,
+                url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
+                data: "UserId=" + UserId ,
 //                dataType: "json",
 //                contentType: "application/json; charset=UTF-8",
                 //dataType: 'jsonp' - removed
                 //jsonpCallback: 'callback' - removed
                 contentType: "text/plain",
                 success: function (data) {
-//                    var ret = jQuery.parseJSON(data);
+                    var parsedData = jQuery.parseJSON(data);
 //                    $('#lblResponse').html(ret.msg);
-                    console(JSON.parse(data).msg);
+                    // var parsedData = JSON.parse(data);
+                    console.log(parsedData.UserInfo.UserId);
                 },
                 error: function (xhr, status, error) {
                     console.log('Error: ' + error.message);
@@ -31,7 +32,7 @@
             });
         }
         
-           transfer(UserInfo); 
+           getAllAppData("123"); 
         </script>
     </body>
 </html>
