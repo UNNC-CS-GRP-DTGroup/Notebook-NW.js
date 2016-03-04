@@ -755,8 +755,8 @@ a:hover {
 	bottom: 0;
 	top: 0;
 	right: 0px;
-    left: 850px;
-	/* width: 23%; */
+    left: 855px;
+	width: 38%;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -785,7 +785,7 @@ a:hover {
 }
 
 #mediaSplitter {
-	left: 850px
+	left: 855px
 }
 
 .ace_editor,.ace_editor * {
