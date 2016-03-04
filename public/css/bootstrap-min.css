@@ -10,6 +10,10 @@
 	border: 0
 }
 
+@font-face {
+	font-family:FontAwesome;src:url(../fonts/fontawesome-webfont.eot?v=4.2.0);src:url(../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0) format('embedded-opentype'),url(../fonts/fontawesome-webfont.woff?v=4.2.0) format('woff'),url(../fonts/fontawesome-webfont.ttf?v=4.2.0) format('truetype'),url(../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular) format('svg');font-weight:400;font-style:normal
+}
+
 body,figure {
 	margin: 0
 }
@@ -652,8 +656,34 @@ pre code {
 	margin-left: -15px
 }
 
+input[type=file]
+{
+	font-size: 0px;
+}
+
 input[type=file],legend {
-	display: block
+	display: inline-block;
+	width: 100px;
+	color: white;
+}
+
+#file-caption
+{
+	margin-left: 5px;
+}
+
+.display
+{
+	width: 98%;
+	height: 520px;
+	border-radius: 7px;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1.5px solid #ccc;
 }
 
 .col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9 {
@@ -6179,4 +6209,54 @@ td.hidden-lg,th.hidden-lg {
 
 #content .MathJax * {
 	font-size: inherit
+}
+
+.browseFile::-webkit-file-upload-button {
+	visibility: hidden;
+}
+
+.browseFile::before 
+{
+	content: "\f07c";
+	font-family: FontAwesome;
+	display: inline-block;
+	background: -webkit-linear-gradient(top, #02f7ba, #00dba4);
+	border-radius: 3px;
+	padding: 0px 8px;
+	outline: none;
+	white-space: 1px;
+	-webkit-user-select: none;
+	font-color: white;
+	font-size: 28px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.browseFile:hover::before
+{
+	background: -webkit-linear-gradient(top, #96ffe5, #17ffc5);
+}
+
+.browseFile:active::before
+{
+	background: -webkit-linear-gradient(top, #02f7ba, #00dba4);
+}
+
+.browseFile
+{
+	content: 'Choose a file';
+	text-align: right;
+}
+
+.audio-buttons:hover
+{
+	border: 4px;
+	border-color: yellow;
+}
+
+.audio-buttons:active
+{
+	border: 3px;
+	border-color: red;
 }
