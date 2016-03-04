@@ -750,6 +750,20 @@ a:hover {
 	zoom: 1
 }
 
+#media {
+    position: absolute;
+	bottom: 0;
+	top: 0;
+	right: 0px;
+    left: 850px;
+	/* width: 23%; */
+	padding-left: 5px;
+	overflow-y: hidden;
+	overflow-x: auto;
+	background-color: #fff;
+	border-left: 1px solid #cfcfcf;
+}
+
 #mainMask {
 	position: absolute;
 	left: 0;
@@ -771,22 +785,9 @@ a:hover {
 }
 
 #mediaSplitter {
-	left: 1046px
+	left: 850px
 }
 
-#media {
-    position: absolute;
-	bottom: 0;
-	top: 0;
-	right: 0px;
-    left: 1046px;
-	width: 23%;
-	padding-left: 5px;
-	overflow-y: hidden;
-	overflow-x: auto;
-	background-color: #fff;
-	border-left: 1px solid #cfcfcf;
-}
 .ace_editor,.ace_editor * {
 	font-family: Monaco,Menlo,'Ubuntu Mono',Consolas,source-code-pro,Hiragino Sans GB,"Microsoft YaHei","微软雅黑"
 }
@@ -798,10 +799,10 @@ a:hover {
 #editor,#mdEditor {
 	position: absolute;
 	z-index: 2;
-	top: 66px;
-	bottom: 0;
-	right: 0;
-	left: 5px;
+	top: 102px;
+	bottom: 1px;
+	right: 1px;
+	left: 1px;
 	padding: 0;
 	display: none;
     overflow:auto;
@@ -1687,27 +1688,28 @@ textarea#wmd-input {
 	position: absolute;
 	bottom: 0;
 	top: 0;
-	right: 320px;
+	right: 516px;
 	left: 170px
 }
 
 #noteList {
 	position: absolute;
-	bottom: 0;
 	top: 0;
-	width: 250px;
-	border-right: 1px solid #cfcfcf;
-	border-left: 1px solid #cfcfcf;
+	left: 0;
+	right: 0;
+	width: 680px;
+	height: 36px;
+	border-top: 1px solid #cfcfcf;
+	border-bottom: 1px solid #cfcfcf;
 	z-index: 333
 }
 
 #note {
 	position: absolute;
-	bottom: 0;
 	top: 0;
-	left: 250px;
-/*	right: 0px;*/
-    width: 800px;
+	left: 0;
+    width: 100%;
+	height: 100%;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -1715,9 +1717,12 @@ textarea#wmd-input {
 }
 
 #notesAndSort {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 66px;
 	background-color: #eee;
-	border-bottom: 1px solid #ebeff2;
-	height: 36px
+	border-right: 1px solid #ebeff2;
 }
 
 #sortType {
@@ -1726,10 +1731,10 @@ textarea#wmd-input {
 
 #noteItemListWrap {
 	position: absolute;
-	left: 0;
+	left: 66px;
 	right: 0;
-	top: 36px;
-	bottom: 3px
+	top: 0;
+	bottom: 0
 }
 
 #noteAndEditorMask {
@@ -1883,8 +1888,10 @@ textarea#wmd-input {
 }
 
 #tool {
-	border-bottom: 1px solid #ddd;
+	top: 36px;
+	left:0;
 	height: 36px;
+	border-bottom: 1px solid #ddd;
 	margin-left: -5px;
 	position: relative
 }
@@ -2199,6 +2206,9 @@ textarea#wmd-input {
 }
 
 #noteTitleDiv {
+	position: absolute;
+	top: 72px;
+	left:0;
 	height: 30px;
 	border-bottom: 1px solid #ddd
 }
@@ -2280,7 +2290,7 @@ textarea#wmd-input {
 
 #editorMask {
 	position: absolute;
-	top: 0;
+	top: 150px;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -2489,7 +2499,7 @@ textarea#wmd-input {
 
 #tag {
 	position: absolute;
-	right: 300px;
+	right: 400px;
 	top: 0;
 	left: 5px;
 	bottom: 0
