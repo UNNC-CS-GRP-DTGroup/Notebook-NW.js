@@ -12,7 +12,8 @@ var app = express();
 app.use(expressMongoDb('mongodb://localhost:27017/NoteTakingApp'));
 console.log("db starts");
 
-app.use(bodyParser.text());
+//app.use(bodyParser.text());
+//app.use(bodyParser.json());
 
 console.log("server starts");
 
@@ -29,8 +30,8 @@ app.use(function(req, res, next) {
 
 app.post("/updateAll", function(req, res) {
 	// res.header('Access-Control-Allow-Origin', '*'); // implementation of CORS
-	console.log("get data");
-	console.log(req);
+	console.log("post activated");
+	// console.log(req);
     	console.log("Body is: " + req.body);
 	var parsedData = JSON.parse(req.body);
     	console.log("The UserId is: " + parsedData.UserInfo.UserId);
@@ -40,6 +41,24 @@ app.post("/updateAll", function(req, res) {
 			console.log("data saved to db");
 		}
 	});
+});
+
+app.get("/getAll", function(req, res) {
+	// res.header('Access-Control-Allow-Origin', '*'); // implementation of CORS
+	console.log("get activated");
+	// console.log(req);
+	var UserId = req.query.UserId;
+    	console.log("UserId is: " + UserId);
+	var query = {"UserInfo.UserId": "56a82c7bab64417776002a5c"};
+	var cursor = req.db.collection("allAppData").find(query);
+	cursor.each(function(err, doc) {
+		if(err) console.log("err is: " + err);
+		else {
+			console.log(doc.UserInfo.UserId);
+			break;
+		}
+	});
+	//res.json(JSON.stringify(cursor[0]));
 });
 
 app.listen(8000);
