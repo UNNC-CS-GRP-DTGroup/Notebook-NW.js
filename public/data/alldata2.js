@@ -3,7 +3,7 @@ LEA.sPath = "https:\/\/dn-leanote.qbox.me";
 LEA.locale = "en";
 var UrlPrefix = 'http:\/\/leanote.com';
 var UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"me@nottingham.edu.cn","Verified":false,"Username":"me@nottingham.edu.cn","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":""};
-var notebook     2 s;
+var notebooks;
 var shareNotebooks;
 var sharedUserInfos;
 var curNoteId;
