@@ -564,7 +564,7 @@ a.raw:hover {
 	cursor: pointer
 }
 
-#page.mini-left #notebook,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
+#page.mini-left #notebook,#page.mini-left #mediaSplitter,#page.mini-left #media,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
 	display: none
 }
 
@@ -576,8 +576,18 @@ a.raw:hover {
 	width: 30px!important
 }
 
+/*#page.mini-left #media {
+	width: 0px!important
+}*/
+
 #page.mini-left #noteAndEditor {
-	left: 30px!important
+	left: 30px!important;
+	width: 100%!important
+}
+
+#page.mini-left #note {
+	width: 100%!important;
+	right: 0px
 }
 
 a {
@@ -763,7 +773,7 @@ a:hover {
 }
 
 #notebookSplitter {
-	left: 170px
+	left:200px
 }
 
 #noteSplitter {
@@ -775,11 +785,11 @@ a:hover {
 }
 
 #media {
-    position: absolute;
+  position: absolute;
 	bottom: 0;
 	top: 0;
-	right: 0px;
-    left: 1218px;
+	right: auto;
+  left: 1218px;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -2618,7 +2628,7 @@ textarea#wmd-input {
 	content: "\e603"
 }
 
-#logo:before { 
+#logo:before {
 	line-height: 1;
 	margin-top: 5px;
 	display: inline-block;
@@ -2627,7 +2637,7 @@ textarea#wmd-input {
 
 /*logo在缩小后的*/
 #switcher span:before {
-	 
+
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
