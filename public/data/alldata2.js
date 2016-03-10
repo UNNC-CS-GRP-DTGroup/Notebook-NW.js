@@ -71,95 +71,97 @@ function sleep(miliseconds) {
 //            });
 //        });
 
-localforage.getItem('UserInfo', function(err, value) {
-    console.log("check");
-    if(value != null) {
-//        console.log("value is not null");
-//        flag = true;
-        //load 
-        console.log("Start loading");
-        localforage.getItem('notebooks', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            notebooks = value;
-            console.log("notebooks loaded");
-        });
+// localforage.getItem('UserInfo', function(err, value) {
+//     console.log("check");
+//     if(false) {
+// //        console.log("value is not null");
+// //        flag = true;
+//         //load 
+//         console.log("Start loading");
+//         localforage.getItem('notebooks', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             notebooks = value;
+//             console.log("notebooks loaded");
+//         });
 
-        localforage.getItem('shareNotebooks', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            shareNotebooks = value;
-            console.log("shareNotebooks loaded");
-        });
+//         localforage.getItem('shareNotebooks', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             shareNotebooks = value;
+//             console.log("shareNotebooks loaded");
+//         });
 
-        localforage.getItem('sharedUserInfos', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            sharedUserInfos = value;
-            console.log("sharedUserInfos loaded");
-        });
+//         localforage.getItem('sharedUserInfos', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             sharedUserInfos = value;
+//             console.log("sharedUserInfos loaded");
+//         });
 
-        localforage.getItem('curNoteId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curNoteId = value;
-            console.log("curNoteId loaded");
-        });
+//         localforage.getItem('curNoteId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curNoteId = value;
+//             console.log("curNoteId loaded");
+//         });
 
-        localforage.getItem('curNotebookId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curNotebookId = value;
-            console.log("curNotebookId loaded");
-        });
+//         localforage.getItem('curNotebookId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curNotebookId = value;
+//             console.log("curNotebookId loaded");
+//         });
 
-        localforage.getItem('curSharedNoteNotebookId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curSharedNoteNotebookId = value;
-            console.log("curSharedNoteNotebookId loaded");
-        });
+//         localforage.getItem('curSharedNoteNotebookId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curSharedNoteNotebookId = value;
+//             console.log("curSharedNoteNotebookId loaded");
+//         });
 
-        localforage.getItem('curSharedUserId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curSharedUserId = value;
-            console.log("curSharedUserId loaded");
-        });
+//         localforage.getItem('curSharedUserId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curSharedUserId = value;
+//             console.log("curSharedUserId loaded");
+//         });
 
-        localforage.getItem('notes', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            notes = value;
-            console.log("notes loaded");
-        });
+//         localforage.getItem('notes', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             notes = value;
+//             console.log("notes loaded");
+//         });
 
-        localforage.getItem('latestNotes', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            latestNotes = value;
-            console.log("latestNotes loaded");
-        });
+//         localforage.getItem('latestNotes', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             latestNotes = value;
+//             console.log("latestNotes loaded");
+//         });
 
-        localforage.getItem('noteContentJson', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            noteContentJson = value;
-            console.log("noteContentJson loaded" + noteContentJson);
-        });
+//         localforage.getItem('noteContentJson', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             noteContentJson = value;
+//             console.log("noteContentJson loaded" + noteContentJson);
+//         });
 
-        localforage.getItem('tagsJson', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            tagsJson = value;
-            console.log("tagsJson loaded");
-        });
+//         localforage.getItem('tagsJson', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             tagsJson = value;
+//             console.log("tagsJson loaded");
+//         });
             
-        localforage.getItem('UserInfo', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            UserInfo = value;
-            console.log("UserInfo loaded");
+//         localforage.getItem('UserInfo', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             UserInfo = value;
+//             console.log("UserInfo loaded");
+
+            
 //            include("https:\/\/cdn.tinymce.com\/4\/tinymce.min.js");
 //            include("public\/js\/editor.js");
 //            include("public\/js\/DND.js");
@@ -192,9 +194,9 @@ localforage.getItem('UserInfo', function(err, value) {
 //                baseUrl: 'https:\/\/dn-leanote.qbox.me',
 //            };
             
-        });
-    }
-    else {
+    //     });
+    // }
+    // else {
         //save using localforage
         // UserInfo
         UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"me@nottingham.edu.cn","Verified":false,"Username":"me@nottingham.edu.cn","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":""};
@@ -278,10 +280,10 @@ localforage.getItem('UserInfo', function(err, value) {
         localforage.setItem("tagsJson", tagsJson, function(err, value) {
             console.log("tagsJson saved");
         });
-    }
-});
+//     }
+// });
 
-sleep(4000);
+sleep(1000);
 
 ////alert("1s later and flag is " + flag);
 //console.log("the flag is " + flag);
