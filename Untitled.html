@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html >
+<html lang="zh" ng-app="app">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,6 +34,7 @@
 <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
 <!--<script src="public/data/alldata.js"></script>-->
 <script src="public/data/alldata2.js"></script>
+<!--    for horizontal scroll-->
 
 
 <script>
@@ -51,9 +53,16 @@
 
     }
 </script>
-     
+    
+<style>
+	.scrolls { 
+		overflow-x: scroll;
+		overflow-y: hidden;
+		height: 80px;
+	} 
+</style>
 </head>
-<body>
+<body ng-controller="Ctrl as ctrl" class="ng-scope">
 	<div id="page">
 		<div id="pageInner">
 			
@@ -339,9 +348,20 @@
 									</div>
 								</div>
 							</div>
-								<div id="noteItemListWrap">
-									<ul id="noteItemList">
+<!--
+								<div id="noteItemListWrap" >
+									<div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100%; height: 150px;">
+                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
 									</ul>
+                                    </div>
+								</div>
+-->
+                            
+                                <div id="noteItemListWrap" >
+									<div class="scrolls">
+                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
+									</ul>
+                                    </div>
 								</div>
 						</div>
 
@@ -750,7 +770,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+<!--</div>-->
     
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
 <!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
@@ -760,18 +780,23 @@
 <script src="public/js/i18n/msg.en.js?t=b"></script>
 <script src="public/js/dep.min.js?t=2"></script> 
 <!--"NEW NOTE"; JQuery-->
+<script src="public/js/angular.min.js"></script>
+<script src="public/js/jquery-slimscroll/jquery.slimscroll.min.js"></script> 
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
     
 <!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
 <!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
 <script src="public/js/app.min.js"></script>
+<script src="public/js/ngSlimscroll.js"></script>
     
 <script>
     initPage();
-//    window.require = {
-//        baseUrl: 'https:\/\/dn-leanote.qbox.me',
-//    };
+    var app = angular.module('app', ['jkuri.slimscroll']);
+    app.controller('Ctrl', [function() {
+        var self = this;
+    //	self.enabled = true;
+    }]);
 </script>
 <!--
 <script>
@@ -799,6 +824,6 @@
     
 <script src="public/js/media.js"></script>
 <!--    Media Window (must be put after the initPage()-->
-</table>
+
 </body>
 </html>

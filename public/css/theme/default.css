@@ -1,4 +1,4 @@
-﻿::selection {
+::selection {
 	background: #000;
 	color: #fff
 }
@@ -1697,7 +1697,7 @@ textarea#wmd-input {
 	top: 0;
 	left: 0;
 	right: 0;
-	width: 680px;
+	width: 100%;
 	height: 36px;
 	border-top: 1px solid #cfcfcf;
 	border-bottom: 1px solid #cfcfcf;
@@ -1757,12 +1757,14 @@ textarea#wmd-input {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	width: 100%;
+	width: 100%!important;
+    height: 120px;
 	overflow-y: hidden;
 	padding: 0 5px
 }
 
 #noteItemList .item {
+    width: 100px;
 	position: relative;
 	height: 110px;
 	overflow: hidden;
@@ -3177,4 +3179,9 @@ h1,h2,h3 {
 	#mdEditor.read-only .preview-container {
 		left: 10px
 	}
+}
+
+#noteItemList li{
+/*    float:left;*/
+    display: inline-block;
 }

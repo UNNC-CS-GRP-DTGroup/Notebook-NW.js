@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html >
+<html lang="zh" ng-app="app">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name=”apple-mobile-web-app-capable” content=”yes” />
+<meta name="keywords" content="leanote,leanote.com">
+<meta name="description" content="Leanote, Not Just A Notepad!">
+<title>Leanote, Not Just A Notepad!</title>
+
+<link href="public/css/bootstrap-min.css" rel="stylesheet" /> 
+<!--    responsible for part of basic style(bootstrap)-->
+
+<!--<link rel="stylesheet" href="public/css/tinymce/skin.min.css" rel="stylesheet"/> // style sheet for tinymce-->
+
+<link href="public/css/font-awesome-4.2.0/css/font-awesome-min.css" rel="stylesheet" />
+<!--    responsible for icons-->
+    
+<link href="public/css/zTreeStyle/zTreeStyle-min.css" rel="stylesheet" />
+<!--    use part of open source: zTreeStyle-->
+    
+<link href="public/css/DND.css" rel="stylesheet" />
+<!--    responsible for darg-and-drop part-->
+
+<!--<link href="public/md/themes/default-min.css?t=h" rel="stylesheet" /> // related to markdown to-do list-->
+
+<link rel="stylesheet" href="public/js/contextmenu/css/contextmenu-min.css?id=1" type="text/css" />
+<!--    选项按钮-->
+    
+<!--    load data -->
+<script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
+<!--<script src="public/data/alldata.js"></script>-->
+<script src="public/data/alldata2.js"></script>
+<!--    for horizontal scroll-->
+
+
+<script>
+    // dynamic style sheets
+    var hash = location.hash;
+    if(hash.indexOf("writing") >= 0) {
+        var files = '<link rel="stylesheet" href="public/css/theme/writting-overwrite.css?t=b" type="text/css" id="themeLink" />'; // unknown usage
+    } else {
+        var files ='<link rel="stylesheet" href="public/css/theme/default.css?t=d" type="text/css" id="themeLink" />'; // the most important basic style
+    }
+    document.write(files);
+</script>
+
+<script>
+    function log(o) {
+
+    }
+</script>
+     <style type="text/css">
+    ul { 
+     width: 200px;
+     height: 100px;
+     overflow: auto; 
+     }
+    li 
+    { 
+     width: 80px;
+     display: inline-block;
+/*        float: left;*/
+     }
+    </style>   
+</head>
+<body ng-controller="Ctrl as ctrl" class="ng-scope">
+    
+    <div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 500px; height: 150px;">
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+    </div>
+    
+    <div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100px; height: 150px;">
+       <ul>
+         <li>one</li>
+         <li>two</li>
+         <li>three</li>
+         <li>four</li>
+       </ul>
+    </div>
+    
+<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+<!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
+<script src="public/js/editor.js"></script>
+<script src="public/js/DND.js"></script>  
+
+<script src="public/js/i18n/msg.en.js?t=b"></script>
+<script src="public/js/dep.min.js?t=2"></script> 
+<!--"NEW NOTE"; JQuery-->
+<script src="public/js/angular.min.js"></script>
+<script src="public/js/jquery-slimscroll/jquery.slimscroll.min.js"></script> 
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    
+<!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
+<!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
+<script src="public/js/app.min.js"></script>
+<script src="public/js/ngSlimscroll.js"></script>
+    
+<script>
+    initPage();
+    var app = angular.module('app', ['jkuri.slimscroll']);
+    app.controller('Ctrl', [function() {
+        var self = this;
+    //	self.enabled = true;
+    }]);
+</script>
+<!--
+<script>
+    var gui = require('nw.gui');
+    win = gui.Window.get();
+    var nativeMenuBar = new gui.Menu({ type: "menubar" });
+    try {
+        nativeMenuBar.createMacBuiltin("My App");
+        win.menu = nativeMenuBar;
+    } catch (ex) {
+        console.log(ex.message);
+    }
+</script>
+-->
+
+<script src="public/js/recorder/configRecorder.js"> </script>
+<script src="public/js/recorder/recorder.js"> </script>
+<script src="public/js/recorder/recorderWorker.js"> </script>
+
+<!--<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>-->
+    
+<!--unknown usage-->
+<!--<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js"></script>-->
+<script src="public/js/plugins/main.min.js"></script>
+    
+<script src="public/js/media.js"></script>
+<!--    Media Window (must be put after the initPage()-->
+
+</body>
+</html>

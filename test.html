@@ -1,40 +1,149 @@
-<html>
+<!--
+<!DOCTYPE html>
+<html ng-app="app">
+<body ng-controller="Ctrl as ctrl">
 
-<body>
+  <div ng-slimscroll>long content ... </div>
 
-<script type="text/javascript">     
-//<!--       
-//    window.onbeforeunload = onbeforeunload_handler;     
-//    window.onunload = onunload_handler;     
-//    function onbeforeunload_handler(){     
-//        var warning="quit?";             
-//        return warning;     
-//    }     
-//         
-//    function onunload_handler(){     
-//        var warning="welcome";     
-//        alert(warning);     
-//    }     
-//// -->     
-</script>
-<script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
-<!--<script src="public/data/data.js"></script>-->
-<script>
-var tagsJson;
-    var tagsJon;
-    localforage.getItem('tagsJson', function(err, value) {
-        // Run this code once the value has been
-        // loaded from the offline store.
-        tagsJson = value;
-        console.log("tagsJson loaded");
-    });
-
-    function sleep(miliseconds) {
-       var currentTime = new Date().getTime();
-
-       while (currentTime + miliseconds >= new Date().getTime()) {
-       }
-    }    
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/ngSlimscroll/src/js/ngSlimscroll.js"></script>
+<script type="text/javascript">
+var app = angular.module('app', ['jkuri.slimscroll']);
+app.controller('Ctrl', [function() {
+    var self = this;
+}]);
 </script>
 </body>
+</html>
+-->
+
+
+<html ng-app="app">
+<head>
+<style type="text/css">
+    .wrapper { 
+		background:#EFEFEF; 
+		box-shadow: 1px 1px 10px #999; 
+		margin: auto; 
+		text-align: center; 
+		position: relative;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 20px !important;
+		width: 800px;
+		padding-top: 5px;
+	}
+	.scrolls { 
+		overflow-x: scroll;
+		overflow-y: hidden;
+		height: 80px;
+	} 
+	.imageDiv { 
+		margin: 0;
+		height: 80px;
+    width: 1200px;
+	} 
+	.imageDiv img { 
+		box-shadow: 1px 1px 10px #999; 
+		margin: 2px;
+		max-height: 50px;
+		cursor: pointer;
+	}
+    
+    
+    
+    ul { 
+     width: 200px;
+     height: 100px;
+     overflow-x:auto;; 
+     }
+    li 
+    { 
+     width: 80px;
+     display: inline-block;
+/*        float: left;*/
+     }
+    </style>    
+</head>
+<body ng-controller="Ctrl as ctrl" class="ng-scope">
+<script src="public/js/angular.min.js"></script>
+<script>
+var LEA = {};    
+    var app = angular.module('app', ['jkuri.slimscroll']);
+</script>
+<script src="public/js/dep.min.js?t=2"></script> 
+
+<script type="text/javascript" src="public/js/jquery-slimscroll/jquery.slimscroll.min.js"></script> 
+    
+<script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
+<script type="text/javascript" src="public/js/ngSlimscroll.js"></script>
+<script type="text/javascript">
+var app = angular.module('app', ['jkuri.slimscroll']);
+app.controller('Ctrl', [function() {
+	var self = this;
+//	self.enabled = true;
+}]);
+</script>
+    <div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 500px; height: 150px;">
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+			LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.LoremIpsumissimplydummytextoftheprintingandtypesettingindustry.LoremIpsumhasbeentheindustry's.
+			<br>
+    </div>
+    
+    <div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100px; height: 150px;">
+       <ul>
+         <li>one</li>
+         <li>two</li>
+         <li>three</li>
+         <li>four</li>
+       </ul>
+    </div>
+    
+    <div>
+        <ul>
+         <li>one</li>
+         <li>two</li>
+         <li>three</li>
+         <li>four</li>
+       </ul>
+    </div>
+    
+    <div class="wrapper">
+      <div class="scrolls">
+          <div class="imageDiv">
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+                <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+                <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+               <img src="http://placehold.it/50x50" />
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
