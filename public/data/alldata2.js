@@ -258,7 +258,7 @@ function sleep(miliseconds) {
         });
 
         // notes
-        notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
+        notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":["test"],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
         localforage.setItem("notes", notes, function(err, value) {
             console.log("notes saved");
         });
@@ -276,7 +276,8 @@ function sleep(miliseconds) {
         });
 
         // tagsJson
-        tagsJson = [];
+        tagsJson = [{"TagId":"56e22e07ab64415989000c75","UserId":"56a82c7bab64417776002a5c","Tag":"test3","Usn":94,"Count":1,"CreatedTime":"2016-03-11T10:31:35.207+08:00","UpdatedTime":"2016-03-11T10:31:35.207+08:00","IsDeleted":false},{"TagId":"56e22e03ab64415add000da7","UserId":"56a82c7bab64417776002a5c","Tag":"test2","Usn":92,"Count":1,"CreatedTime":"2016-03-11T10:31:31.876+08:00","UpdatedTime":"2016-03-11T10:31:31.876+08:00","IsDeleted":false},{"TagId":"56e22e02ab64415add000da6","UserId":"56a82c7bab64417776002a5c","Tag":"test","Usn":90,"Count":1,"CreatedTime":"2016-03-11T10:31:30.348+08:00","UpdatedTime":"2016-03-11T10:31:30.348+08:00","IsDeleted":false},{"TagId":"56d13aa6ab64417fb100002b","UserId":"56a82c7bab64417776002a5c","Tag":"","Usn":39,"Count":0,"CreatedTime":"2016-02-27T13:56:54.704+08:00","UpdatedTime":"2016-02-27T13:56:59.159+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002e","UserId":"56a82c7bab64417776002a5c","Tag":"leanote","Usn":42,"Count":1,"CreatedTime":"2016-02-27T13:56:59.079+08:00","UpdatedTime":"2016-02-27T13:56:59.079+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002d","UserId":"56a82c7bab64417776002a5c","Tag":"welcome","Usn":41,"Count":1,"CreatedTime":"2016-02-27T13:56:59.078+08:00","UpdatedTime":"2016-02-27T13:56:59.078+08:00","IsDeleted":false}];
+
         localforage.setItem("tagsJson", tagsJson, function(err, value) {
             console.log("tagsJson saved");
         });
