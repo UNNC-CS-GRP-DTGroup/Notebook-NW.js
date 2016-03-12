@@ -1697,11 +1697,11 @@ textarea#wmd-input {
 	top: 0;
 	left: 0;
 	right: 0;
-	width: 100%;
+	width: 100%!important;
 	height: 120px;
 	border-top: 1px solid #cfcfcf;
 	border-bottom: 1px solid #cfcfcf;
-	z-index: 333
+	/*z-index: 333*/
 }
 
 #note {
