@@ -1,3 +1,7 @@
+function changeSrc(href) {
+                document.getElementById("webpage").src = href;
+            }; 
+
 function initEditor() {
 //    tinymce.init({
 //      selector: '#editor h1',
@@ -10,6 +14,7 @@ function initEditor() {
         selector: '#editor',
         inline: true,
         theme: 'modern',
+        //valid_elements: 'a[href|target=_blank]',
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',

@@ -73,95 +73,97 @@ function sleep(miliseconds) {
 //            });
 //        });
 
-localforage.getItem('UserInfo', function(err, value) {
-    console.log("check");
-    if(value != null) {
-//        console.log("value is not null");
-//        flag = true;
-        //load 
-        console.log("Start loading");
-        localforage.getItem('notebooks', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            notebooks = value;
-            console.log("notebooks loaded");
-        });
+// localforage.getItem('UserInfo', function(err, value) {
+//     console.log("check");
+//     if(false) {
+// //        console.log("value is not null");
+// //        flag = true;
+//         //load 
+//         console.log("Start loading");
+//         localforage.getItem('notebooks', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             notebooks = value;
+//             console.log("notebooks loaded");
+//         });
 
-        localforage.getItem('shareNotebooks', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            shareNotebooks = value;
-            console.log("shareNotebooks loaded");
-        });
+//         localforage.getItem('shareNotebooks', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             shareNotebooks = value;
+//             console.log("shareNotebooks loaded");
+//         });
 
-        localforage.getItem('sharedUserInfos', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            sharedUserInfos = value;
-            console.log("sharedUserInfos loaded");
-        });
+//         localforage.getItem('sharedUserInfos', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             sharedUserInfos = value;
+//             console.log("sharedUserInfos loaded");
+//         });
 
-        localforage.getItem('curNoteId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curNoteId = value;
-            console.log("curNoteId loaded");
-        });
+//         localforage.getItem('curNoteId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curNoteId = value;
+//             console.log("curNoteId loaded");
+//         });
 
-        localforage.getItem('curNotebookId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curNotebookId = value;
-            console.log("curNotebookId loaded");
-        });
+//         localforage.getItem('curNotebookId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curNotebookId = value;
+//             console.log("curNotebookId loaded");
+//         });
 
-        localforage.getItem('curSharedNoteNotebookId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curSharedNoteNotebookId = value;
-            console.log("curSharedNoteNotebookId loaded");
-        });
+//         localforage.getItem('curSharedNoteNotebookId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curSharedNoteNotebookId = value;
+//             console.log("curSharedNoteNotebookId loaded");
+//         });
 
-        localforage.getItem('curSharedUserId', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            curSharedUserId = value;
-            console.log("curSharedUserId loaded");
-        });
+//         localforage.getItem('curSharedUserId', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             curSharedUserId = value;
+//             console.log("curSharedUserId loaded");
+//         });
 
-        localforage.getItem('notes', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            notes = value;
-            console.log("notes loaded");
-        });
+//         localforage.getItem('notes', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             notes = value;
+//             console.log("notes loaded");
+//         });
 
-        localforage.getItem('latestNotes', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            latestNotes = value;
-            console.log("latestNotes loaded");
-        });
+//         localforage.getItem('latestNotes', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             latestNotes = value;
+//             console.log("latestNotes loaded");
+//         });
 
-        localforage.getItem('noteContentJson', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            noteContentJson = value;
-            console.log("noteContentJson loaded" + noteContentJson);
-        });
+//         localforage.getItem('noteContentJson', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             noteContentJson = value;
+//             console.log("noteContentJson loaded" + noteContentJson);
+//         });
 
-        localforage.getItem('tagsJson', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            tagsJson = value;
-            console.log("tagsJson loaded");
-        });
+//         localforage.getItem('tagsJson', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             tagsJson = value;
+//             console.log("tagsJson loaded");
+//         });
             
-        localforage.getItem('UserInfo', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
-            UserInfo = value;
-            console.log("UserInfo loaded");
+//         localforage.getItem('UserInfo', function(err, value) {
+//             // Run this code once the value has been
+//             // loaded from the offline store.
+//             UserInfo = value;
+//             console.log("UserInfo loaded");
+
+            
 //            include("https:\/\/cdn.tinymce.com\/4\/tinymce.min.js");
 //            include("public\/js\/editor.js");
 //            include("public\/js\/DND.js");
@@ -193,9 +195,6 @@ localforage.getItem('UserInfo', function(err, value) {
 //            window.require = {
 //                baseUrl: 'https:\/\/dn-leanote.qbox.me',
 //            };
-            
-        });
-        
 //        localforage.getItem('trackingLog', function(err, value) {
 //            // Run this code once the value has been
 //            // loaded from the offline store.
@@ -203,7 +202,7 @@ localforage.getItem('UserInfo', function(err, value) {
 //            console.log("trackingLog loaded");
 //        });
     }
-    else {
+//    else {
         //save using localforage
         // UserInfo
         UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"me@nottingham.edu.cn","Verified":false,"Username":"me@nottingham.edu.cn","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":""};
@@ -265,7 +264,7 @@ localforage.getItem('UserInfo', function(err, value) {
         });
 
         // notes
-        notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
+        notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"56a82c7bab64417776002a5c","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":["test"],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
         localforage.setItem("notes", notes, function(err, value) {
             console.log("notes saved");
         });
@@ -283,7 +282,8 @@ localforage.getItem('UserInfo', function(err, value) {
         });
 
         // tagsJson
-        tagsJson = [];
+        tagsJson = [{"TagId":"56e22e07ab64415989000c75","UserId":"56a82c7bab64417776002a5c","Tag":"test3","Usn":94,"Count":1,"CreatedTime":"2016-03-11T10:31:35.207+08:00","UpdatedTime":"2016-03-11T10:31:35.207+08:00","IsDeleted":false},{"TagId":"56e22e03ab64415add000da7","UserId":"56a82c7bab64417776002a5c","Tag":"test2","Usn":92,"Count":1,"CreatedTime":"2016-03-11T10:31:31.876+08:00","UpdatedTime":"2016-03-11T10:31:31.876+08:00","IsDeleted":false},{"TagId":"56e22e02ab64415add000da6","UserId":"56a82c7bab64417776002a5c","Tag":"test","Usn":90,"Count":1,"CreatedTime":"2016-03-11T10:31:30.348+08:00","UpdatedTime":"2016-03-11T10:31:30.348+08:00","IsDeleted":false},{"TagId":"56d13aa6ab64417fb100002b","UserId":"56a82c7bab64417776002a5c","Tag":"","Usn":39,"Count":0,"CreatedTime":"2016-02-27T13:56:54.704+08:00","UpdatedTime":"2016-02-27T13:56:59.159+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002e","UserId":"56a82c7bab64417776002a5c","Tag":"leanote","Usn":42,"Count":1,"CreatedTime":"2016-02-27T13:56:59.079+08:00","UpdatedTime":"2016-02-27T13:56:59.079+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002d","UserId":"56a82c7bab64417776002a5c","Tag":"welcome","Usn":41,"Count":1,"CreatedTime":"2016-02-27T13:56:59.078+08:00","UpdatedTime":"2016-02-27T13:56:59.078+08:00","IsDeleted":false}];
+
         localforage.setItem("tagsJson", tagsJson, function(err, value) {
             console.log("tagsJson saved");
         });
@@ -297,7 +297,8 @@ localforage.getItem('UserInfo', function(err, value) {
     }
 });
 
-sleep(4000);
+
+sleep(1000);
 
 ////alert("1s later and flag is " + flag);
 //console.log("the flag is " + flag);

@@ -7,20 +7,23 @@
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name=”apple-mobile-web-app-capable” content=”yes” />
 <meta name="keywords" content="leanote,leanote.com">
-<meta name="description" content="Leanote, Not Just A Notepad!">
-<title>Leanote, Not Just A Notepad!</title>
-
-<link href="public/css/bootstrap-min.css" rel="stylesheet" /> 
+<meta name="description" content="QuickWrite">
+<title>QuickWrite</title>
+<link rel="shortcut icon" href="public/images/favicon2.ico" type="image/x-icon" />
+    
+<script src="public/js/dep.min.js?t=2"></script>
+<!--定制版的JQuery；需要放在bootstrap之前-->
+<link href="public/css/bootstrap-min.css" rel="stylesheet" />
 <!--    responsible for part of basic style(bootstrap)-->
 
 <!--<link rel="stylesheet" href="public/css/tinymce/skin.min.css" rel="stylesheet"/> // style sheet for tinymce-->
 
 <link href="public/css/font-awesome-4.2.0/css/font-awesome-min.css" rel="stylesheet" />
 <!--    responsible for icons-->
-    
+
 <link href="public/css/zTreeStyle/zTreeStyle-min.css" rel="stylesheet" />
 <!--    use part of open source: zTreeStyle-->
-    
+
 <link href="public/css/DND.css" rel="stylesheet" />
 <!--    responsible for darg-and-drop part-->
 
@@ -28,8 +31,6 @@
 
 <link rel="stylesheet" href="public/js/contextmenu/css/contextmenu-min.css?id=1" type="text/css" />
 <!--    选项按钮-->
-    
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
     
 <!--    load data -->
 <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
@@ -92,54 +93,61 @@
     var trackingLog = [];
     var allAppData = {};
 </script>
+
+<script>
+function webaddress(){
+	var x =document.getElementById("address");
+	document.getElementById("webpage").src = x.value;
+}
+</script>
 </head>
 <body>
 	<div id="page">
 		<div id="pageInner">
-			
-			
+
+
 			<div id="header">
-			
+
 				<div id="logo" class="pull-left">
 					<img src="public/images/logo/quickwrite.png" height=50>
 				</div>
-                
+
 				<div id="switcher" class="pull-left">
-					 <i class="fa fa-align-justify" id="leftSwitcher" title="Hidden slide bar"></i>
-					 <span id="leftSwitcher2" title="Show slide bar"><img src="public/images/logo/quickwrite10.png" height=25></span>
+					 <i class="fa fa-align-justify" id="leftSwitcher" title="Hide sidebar"></i>
+					 <span id="leftSwitcher2" title="Show sidebar"><img src="public/images/logo/quickwrite10.png" height=25></span>
 				</div>
-				
+
 				<div class="pull-left" id="searchWrap">
 					<form class="navbar-form form-inline col-lg-2" id="searchNote">
 						<input class="form-control" placeholder="Search Note" type="text" id="searchNoteInput">
 					</form>
 				</div>
-				
+
 				<div class="pull-left" style="" id="newNoteWrap">
-					
+
 					<div id="newMyNote">
 						<a class="new-note" id="newNoteBtn" title="New note">
-							
+
 							<span class="new-note-text">New note</span>
 							<span class="new-note-text-abbr">New</span>
 						</a>
 						<span class="new-split">|</span>
 						<a class="new-note new-markdown" id="newNoteMarkdownBtn" title="New markdown note">
-							
+
 							<span class="new-markdown-text">New markdown note</span>
 							<span class="new-markdown-text-abbr">Md</span>
 						</a>
 						<span class="for-split"> - </span>
-                        
+
 <!--                        为了方便获取当前notebookId：用于创建新note-->
-						<span id="curNotebookForNewNote" notebookId=""></span> 
-						
+						<span id="curNotebookForNewNote" notebookId=""></span>
+
 					</div>
-					
-					
+
+
 					<div id="newSharedNote" style="display: none">
 						<a id="newSharedNoteBtn" class="new-note">
-							
+
 							<span class="new-note-text">New note</span>
 							<span class="new-note-text-abbr">New</span>
 						</a>
@@ -150,20 +158,20 @@
 						</a>
 						<span class="for-split"> - </span>
 						<span id="curNotebookForNewSharedNote" notebookId="" userId=""></span>
-						
-					</div>				
+
+					</div>
 				</div>
-				
+
 				<div class="pull-left" id="leanoteMsg">
 					<span id="msg" style="display: inline-block;"></span>
 					<span id="loading">
 					</span>
 				</div>
-					
+
 				<div class="pull-right" style="margin: 0 10px" id="myProfile">
 					<div class="dropdown">
-						<a class="dropdown-toggle" title="pan.atopos@outlook.com" data-toggle="dropdown" style="line-height: 60px;"> 
-							<img alt="pan.atopos@outlook.com" title="pan.atopos@outlook.com" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/> 
+						<a class="dropdown-toggle" title="pan.atopos@outlook.com" data-toggle="dropdown" style="line-height: 60px;">
+							<img alt="pan.atopos@outlook.com" title="pan.atopos@outlook.com" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/>
 							<span class="username">
 								pan.atopos@outlook.com
 							</span>
@@ -172,52 +180,58 @@
 						<ul class="dropdown-menu li-a" role="menu">
 							<li role="presentation">
 								<a href="/member" target="_blank">
-								<i class="fa fa-user"></i> 
+								<i class="fa fa-user"></i>
 								Member Center
 								</a>
 							</li>
-							
+
 							<li role="presentation" id="setTheme">
 								<a>
-								<i class="fa fa-sun-o"></i> 
+								<i class="fa fa-sun-o"></i>
 								Theme
 								</a>
 							</li>
-							
+
+<!--
 							<li role="presentation" class="divider"></li>
 							<li role="presentation">
 								<a href="/member/blog/index" target="_blank">
-								<i class="fa fa-bold"></i> 
+								<i class="fa fa-bold"></i>
 								Blog Settings
 								</a>
 							</li>
-							
+-->
+
+<!--
 							<li role="presentation" class="my-link" >
 								<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com">
 								<i class="fa fa-bold"></i>
 								Blog</a>
 							</li>
-							
+-->
+
+<!--
 							<li role="presentation" class="divider my-link writing-mobile-hide"></li>
 							<li role="presentation" class="my-link toggle-editor-mode writing-mobile-hide" >
 								<a href="#writing" title="Writing Mode ctrl/cmd+e"><i class="fa fa-rocket"></i>
 								Writing Mode</a>
 							</li>
-							
-							
+-->
+
+
 							<li role="presentation" class="divider"></li>
 							<li role="presentation" onclick="logout()">
-								<i class="fa fa-sign-out"></i> 
+								<i class="fa fa-sign-out"></i>
 								Logout
 							</li>
 						</ul>
 					</div>
 				</div>
-    
+
 <!--                前往leannote主页的button-->
 <!--
 				<div class="pull-right top-nav writting-hide lea-blog">
-					<a target="_blank" href="http://leanote.com"> 
+					<a target="_blank" href="http://leanote.com">
 						Leanote Home
 					</a>
 				</div>
@@ -225,7 +239,7 @@
 <!--                前往blog的button-->
 <!--
 				<div class="pull-right top-nav writting-hide" id="myBlog">
-					<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com"> 
+					<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com">
 						Blog
 					</a>
 				</div>
@@ -236,11 +250,11 @@
 					<a href="#writing"><span>Writing Mode</span></a>
 				</div>
 -->
-				
-				
+
+
 				<div style="clear: both"></div>
 			</div>
-            
+
 			<div id="mainContainer" class="clearfix">
 				<div id="mainMask">
 					<img src="https://dn-leanote.qbox.me/images/loading-30.gif" />
@@ -248,12 +262,12 @@
 					<br />
 					loading...
 				</div>
-                
+
 				<div id="leftNotebook">
 					<div id="notebook">
 						<div class="folderNote opened" id="myNotebooks">
 							<div class="folderHeader clearfix">
-								<i class="fa fa-book pull-left fa-left"></i> 
+								<i class="fa fa-book pull-left fa-left"></i>
 								<span class="pull-left">
 									Notebook
 								</span>
@@ -261,14 +275,14 @@
 									<i class="fa  fa-plus" title="Add notebook"></i>
 								</div>
 							</div>
-							
+
 							<div class="folderBody">
-								<input type="text" class="form-control" id="searchNotebookForList" placeholder="Search Notebook"/>							
+								<input type="text" class="form-control" id="searchNotebookForList" placeholder="Search Notebook"/>
 								<ul class="ztree" id="notebookList"></ul>
 								<ul class="ztree" id="notebookListForSearch"></ul>
 							</div>
 						</div>
-						
+
 						<div class="folderNote closed" id="myTag">
 							<div class="folderHeader">
 								<i class="fa fa-bookmark fa-left"></i>
@@ -276,7 +290,7 @@
 									Tag
 								</span>
 							</div>
-	
+
 							<ul class="folderBody clearfix" id="tagNav">
 								<li data-tag="red"><a> <span class="label label-red">red</span></a></li>
 								<li data-tag="blue"><a> <span class="label label-blue">blue</span></a></li>
@@ -284,7 +298,7 @@
 								<li data-tag="green"><a> <span class="label label-green">green</span></a></li>
 							</ul>
 						</div>
-						
+
 						<div class="folderNote closed" id="myShareNotebooks">
 							<div class="folderHeader">
 								<i class="fa fa-user fa-left"></i>
@@ -292,17 +306,17 @@
 									Share
 								</span>
 							</div>
-	
+
 							<ul class="folderBody" id="shareNotebooks">
-								
+
 							</ul>
 						</div>
-	
+
 					</div>
-					
-					
+
+
 					<div id="notebookMin">
-						
+
 						<div target="#notebookList" title="Notebook" class="minContainer">
 							<i class="fa fa-book"></i>
 							<ul class="dropdown-menu" id="minNotebookList">
@@ -319,13 +333,13 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 				</div>
-                
+
 <!--                左一split-->
 				<div class="noteSplit" id="notebookSplitter"></div>
-				
+
 <!--                笔记list+笔记部分-->
 				<div id="noteAndEditor">
 					<div id="noteAndEditorMask">
@@ -333,7 +347,7 @@
 						<br />
 						loading...
 					</div>
-                    
+
 <!--                    笔记list-->
 					<div id="noteList">
                         <div class="clearfix" id="notesAndSort" style="position: relative">
@@ -358,44 +372,44 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             <div class="pull-left" id="tagSearch" style="line-height: 38px">
                             </div>
-                            
+
                             <div id="sortType">
                                 <div class="dropdown">
                                     <a class="ios7-a dropdown-toggle" id="dropdownMenu1"
-                                        data-toggle="dropdown"> 
+                                        data-toggle="dropdown">
 
                                     </a>
 
                                 </div>
                             </div>
                         </div>
-					
-					
+
+
                         <div id="noteItemListWrap">
                             <ul id="noteItemList">
                             </ul>
                         </div>
 				    </div>
-				
+
 <!--                左二split-->
 				    <div class="noteSplit" id="noteSplitter"></div>
-					
-                    <div id="note"> 
+
+                    <div id="note">
 <!--                删除class="read-only-editor"-->
-					
-					
+
+
                         <div id="noteMask" class="note-mask"></div>
 
-                        <div id="noteMaskForLoading" class="note-mask">  
+                        <div id="noteMaskForLoading" class="note-mask">
                             <img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
                             <br />
                             loading...
                         </div>
 
-                        <div id="editorMask">  
+                        <div id="editorMask">
                             The notebook is empty, why not...
                             <br />
                             <br />
@@ -407,7 +421,7 @@
                                 Sorry, cannot new note in here, please choose a notebook at first.
                             </div>
                         </div>
-                        <div id="batchMask" class="note-mask">  
+                        <div id="batchMask" class="note-mask">
                             <div class="batch-ctn" id="batchCtn"></div>
                             <div class="batch-info">
                                 <span></span> notes selected
@@ -422,14 +436,14 @@
                                     </div>
                                     <div class="dropdown" style="display: inline-block"
                                         id="tagDropdown">
-                                        <i class="fa fa-bookmark-o"></i> 
+                                        <i class="fa fa-bookmark-o"></i>
                                         <a
                                             class="metro-a dropdown-toggle" data-toggle="dropdown"
                                             id="addTagTrigger" style="cursor: text; padding-left: 0">
                                             <span class="add-tag-text">
                                             Click to add Tag
                                             </span>
-                                        </a> 
+                                        </a>
                                         <input type="text" id="addTagInput" />
                                         <ul class="dropdown-menu" role="menu" id="tagColor">
                                             <li role="presentation"><span class="label label-red">red</span>
@@ -452,13 +466,13 @@
                                     <li><a class="ios7-a " id="saveBtn"
                                         data-toggle="dropdown" title="ctrl/cmd+s Save">
                                         <span class="fa fa-save"></span></a></li>
-                                    
+
                                     <li class="dropdown" id="noteInfoDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" title="Information">
                                             <span class="fa fa-info"></span>
                                         </a>
                                         <div class="dropdown-menu" id="noteInfo"></div>
-                                        
+
                                     </li>
                                     <li class="dropdown" id="attachDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" id="showAttach" title="Attachments">
@@ -507,25 +521,25 @@
                                     <span id="noteReadTags"></span>
 
 
-                                    <i class="fa fa-clock-o"></i> Update 
-                                    <span id="noteReadUpdatedTime"></span>  
+                                    <i class="fa fa-clock-o"></i> Update
+                                    <span id="noteReadUpdatedTime"></span>
 
 
-                                    <i class="fa fa-clock-o"></i> Create 
+                                    <i class="fa fa-clock-o"></i> Create
                                     <span id="noteReadCreatedTime"></span>
                                 </div>
                             </div>
                         </div>
-                        
+
 <!--                        editor !!!! ! ! ! ! !-->
-                        <div id="editor"> 
+                        <div id="editor">
 <!--                    删除class="read-only"-->
 <!--                            <h1>A</h1>-->
 <!--                            <div draggable="true">B</div>-->
 <!--                            <div draggable="true">C</div>-->
                         </div>
 					</div>
-					
+
 <!--
 					<div id="mdEditor" class="read-only">
 						<div class="layout-wrapper-l1">
@@ -536,7 +550,7 @@
 							              <span class="lang">Created</span>: <span class="created-time"></span>
 							              <span class="lang">Updated</span>: <span class="updated-time"></span>
 							            </div>
-						            	
+
 						            	<div class="wmd-button-bar-inner clearfix">
 							                <ul class="nav left-buttons">
 							                    <li class="wmd-button-group1 btn-group"></li>
@@ -550,14 +564,14 @@
 							                <ul class="nav left-buttons">
 							                    <li class="wmd-button-group4 btn-group"></li>
 							                </ul>
-							                
+
 							                 <ul class="nav left-buttons">
 							                    <li class="wmd-button-group6 btn-group">
 							                    	<li class="wmd-button btn btn-success" id="wmd-help-button" title="Markdown syntax" style="left: 0px; display: none;"><span style="display: none; background-position: 0px 0px;"></span><i class="fa fa-question-circle"></i></li>
 							                    </li>
 							                </ul>
-							               
-							               
+
+
 						                </div>
 						            </div>
 						            <div class="editorBg"></div>
@@ -565,7 +579,7 @@
 						        <div class="layout-wrapper-l3">
 						        	<div id="left-column">
 							            <pre id="wmd-input" class="form-control"><div class="editor-content mousetrap" contenteditable=true></div><div class="editor-margin"></div></pre>
-							            
+
 							            <div class="textarea-helper"></div>
 						            </div>
 						            <div id="right-column">
@@ -592,64 +606,71 @@
 						        </div>
 						    </div>
 						    <div id="wmd-button-bar" class="hide"></div>
-						</div>	
-					
-						
+						</div>
+
+
 					</div>
 -->
-				</div>	
+				</div>
                 <div class="noteSplit" id="mediaSplitter"></div>
-                
-                <div id="media"> 
-                    
+
+                <div id="media">
+
                     <ul id="myTab" class="nav nav-tabs">
                        <li class="active">
-                          <a href="#audioRecording" data-toggle="tab">
-                             Audio Recording
+                          <a href="#audioRecording" data-toggle="tab" title="Audio Recording">
+                             <big><big><i class="fa fa-microphone"></i></big></big>
                           </a>
                        </li>
-                       <li><a href="#videoRecording" data-toggle="tab">
-                              Video Recording
+                       <li><a href="#videoRecording" data-toggle="tab" title="Video Recording">
+                              <big><big><i class="fa fa-video-camera"></i></big></big>
                            </a>
                         </li>
                        <li><a href="#files" data-toggle="tab" onclick="TrackLogRecord.newCheckFileRecord()">
                               Open Files
                            </a>
                         </li>
-                        <li><a href="#webBrowser" data-toggle="tab">
-                              Web Browser
+                        <li><a href="#webBrowser" data-toggle="tab" title="Web Browser">
+                              <big><big><i class="fa fa-globe"></i></big></big>
                            </a>
                         </li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                        <div class="tab-pane fade in active" id="audioRecording">
-                            <p>Audio Recording</p>
-                            <div id = "test" style="visibility:hidden;">
-                            <audio controls="controls"></audio>
-                            </div>
+							<p>Audio Recording</p>
+					        <div id = "test" style="visibility:hidden;">
+							<audio controls="controls"></audio>
+							</div>
 
-                            <input onclick="startRecording()" type="button" value="RECORD" />
-                            <input onclick="stopRecording()" type="button" value="STOP" />
-                            <button onclick="download()"> DOWNLOAD </button>
-                            <button onclick="clearRecord()"> CLEAR </button><br/>
-                            <b id="count"></b>
+							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=35 alt="Record" title="Record"/>
+							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=35 alt="Stop" title="Stop"/>
+							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=35 alt="Download" title="Download"/>
+							<input onclick="clearRecord()" type="image" class="audio-buttons" src="public\images\buttons\clear.png" height=35 alt="Clear" title="Clear"/><br/>
+
+							<b id="count"></b>
                        </div>
                        <div class="tab-pane fade" id="videoRecording">
-                          <p>Video Recording</p>
+                          <p>Video Recording</p> 
                        </div>
+
                        <div class="tab-pane fade" id="files">
                           <form id="form1" runat="server">
-                          <input type='file' id="imgInp" onChange="TrackLogRecord.newOpenFileRecord()"/> // log the opening file activity
-                          <iframe id="displayedFile" name="awindow" frameborder=2 src="" width=100% height=600px></iframe>
+
+                          <input type='file' id="imgInp" class="browseFile" title="Choose a file" width=400px onChange="TrackLogRecord.newOpenFileRecord()"/>
+                          <div id="file-caption">Click on the button to display a file</div>
+                          <iframe id="displayedFile" class="display" name="awindow" frameborder=1 src="" height=600px></iframe>
                         </form>
                        </div>
                        <div class="tab-pane fade" id="webBrowser">
-                          <iframe id="webpage" src="http://baidu.com" width=100% height=600px></iframe>
+
+                       <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>
+                       <iframe id="webpage" src="http://baidu.com" width=100% height=900></iframe>
+                          <!-- <iframe id="webpage" class="display" src="http://baidu.com"></iframe> -->
                        </div>
                     </div>
                 </div>
 			</div>
-            
+
 			<div class="modal fade modal-insert-image">
 			    <div class="modal-dialog"  style="width: 840px;max-width:100%;">
 			        <div class="modal-content">
@@ -669,12 +690,12 @@
 			        </div>
 			    </div>
 			</div>
-			
-			
+
+
 			<div class="modal fade bs-modal-sm" id="editorDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm">
 				    <div class="modal-content">
-				
+
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				        <h4 class="modal-title" id="editorDialog-title"></h4>
@@ -688,16 +709,15 @@
 							  <input type="text" class="form-control" placeholder="">
 							</div>
 				      </div>
-				      
+
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 				        <button type="button" class="btn btn-primary" id="editorDialog-confirm">Confirm</button>
 				      </div>
-				      
+
 				    </div>
 				  </div>
-			</div>
-			
+			</div>			
 <!--
 			<div class="modal fade bs-modal-sm" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			</div>
@@ -957,38 +977,37 @@
             </div>
 			
 <!--            share结束-->
-            
 			<div class="modal fade bs-modal-sm" id="leanoteDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">
-			
+
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			        <h4 class="modal-title" id="modalTitle">操作</h4>
 			      </div>
-			      
+
 			      <div class="modal-body">
 					内容区
 			      </div>
-			      
+
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			        <button type="button" class="btn btn-primary">Save changes</button>
 			      </div>
-			      
+
 			    </div>
 			  </div>
 			</div>
-			
+
 			<div class="modal fade bs-modal-sm" id="sendRegisterEmailDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">
-			
+
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			        <h4 class="modal-title" class="modalTitle">邀请好友</h4>
 			      </div>
-			      
+
 				   <div class="modal-body">
 						<form role="form">
 						  <div class="form-group">
@@ -1004,12 +1023,12 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 						<button type="button" class="btn btn-success" id="registerEmailBtn">发送</button>
 					</div>
-			      
+
 			    </div>
 			  </div>
 			</div>
-			
-			
+
+
 			<div class="modal fade bs-modal-sm" id="setThemeDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">
@@ -1022,14 +1041,14 @@
 				  			<tr>
 				  				<td>
 				  					<label>
-				  					<img src="https://dn-leanote.qbox.me/images/slider/all.gif" height="100px"> 
+				  					<img src="https://dn-leanote.qbox.me/images/slider/all.gif" height="100px">
 				  					<br />
 				  					<input type="radio" name="theme" value="default"> Default
 				  					</label>
 				  				</td>
 				  				<td>
-					  				<label> 
-				  					<img src="https://dn-leanote.qbox.me/images/slider/all-simple.gif" height="100px"> 
+					  				<label>
+				  					<img src="https://dn-leanote.qbox.me/images/slider/all-simple.gif" height="100px">
 				  					<br />
 				  					<input type="radio" name="theme" value="simple"> Simple
 				  					</label>
@@ -1043,23 +1062,22 @@
 			    </div>
 			  </div>
 			</div>
-			
+
 			<div class="display: hidden">
 			<div class="hide" id="copyDiv"></div>
 		</div>
 	</div>
 </div>
 
+
 <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
 <!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
 <script src="public/js/DND.js"></script>  
-
 <script src="public/js/i18n/msg.en.js?t=b"></script>
-<script src="public/js/dep.min.js?t=2"></script> 
-<!--"NEW NOTE"; JQuery-->
+
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-    
+
 <!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
 <!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
 <script src="public/js/app.min.js"></script>
@@ -1068,13 +1086,32 @@
 <script src="public/data/alldata5.js"></script>
 <script src="public/js/editor.js"></script>
 
+
 <script>
 //    initPage();
 //    window.require = {
 //        baseUrl: 'https:\/\/dn-leanote.qbox.me',
 //    };
 </script>
-<!--
+
+<script>
+/*	setInterval(addClickHandlers,1000);
+
+	function addClickHandlers(){
+		var edi = document.getElementById("editor");
+                var alla = edi.getElementsByTagName("a");
+
+                for (var i=0; i<alla.length; i++){
+
+                    alla[i].onclick = changeSrc(alla[i].href);
+                }
+	}
+
+	function changeSrc(href) {
+                document.getElementById("webpage").src = href;
+            };*/
+</script>
+
 <script>
     var gui = require('nw.gui');
     win = gui.Window.get();
@@ -1086,18 +1123,18 @@
         console.log(ex.message);
     }
 </script>
--->
+
 
 <script src="public/js/recorder/configRecorder.js"> </script>
 <script src="public/js/recorder/recorder.js"> </script>
 <script src="public/js/recorder/recorderWorker.js"> </script>
 
 <!--<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>-->
-    
+
 <!--unknown usage-->
 <!--<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js"></script>-->
 <script src="public/js/plugins/main.min.js"></script>
-    
+
 <script src="public/js/media.js"></script>
 <!--    Media Window (must be put after the initPage()-->
 

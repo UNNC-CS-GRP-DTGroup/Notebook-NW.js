@@ -564,7 +564,7 @@ a.raw:hover {
 	cursor: pointer
 }
 
-#page.mini-left #notebook,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
+#page.mini-left #notebook,#page.mini-left #mediaSplitter,#page.mini-left #media,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
 	display: none
 }
 
@@ -576,8 +576,18 @@ a.raw:hover {
 	width: 30px!important
 }
 
+/*#page.mini-left #media {
+	width: 0px!important
+}*/
+
 #page.mini-left #noteAndEditor {
-	left: 30px!important
+	left: 30px!important;
+	width: 100%!important
+}
+
+#page.mini-left #note {
+	width: 100%!important;
+	right: 0px
 }
 
 a {
@@ -763,7 +773,7 @@ a:hover {
 }
 
 #notebookSplitter {
-	left: 170px
+	left:200px
 }
 
 #noteSplitter {
@@ -775,10 +785,10 @@ a:hover {
 }
 
 #media {
-    position: absolute;
+  position: absolute;
 	bottom: 0;
 	top: 0;
-	right: 0px;
+	right: 0;
     left: 1218px;
 	padding-left: 5px;
 	overflow-y: hidden;
@@ -1706,7 +1716,7 @@ textarea#wmd-input {
 	top: 0;
 	left: 250px;
 /*	right: 0px;*/
-    width: 800px;
+    width: 760px;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -1772,7 +1782,7 @@ textarea#wmd-input {
 }
 
 .item-active,#noteItemList .item-active:hover {
-	background-color: #65bd77!important;
+	background-color: #00bf8f!important;
 	color: #fff
 }
 
@@ -2618,7 +2628,7 @@ textarea#wmd-input {
 	content: "\e603"
 }
 
-#logo:before { 
+#logo:before {
 	line-height: 1;
 	margin-top: 5px;
 	display: inline-block;
@@ -2627,7 +2637,7 @@ textarea#wmd-input {
 
 /*logo在缩小后的*/
 #switcher span:before {
-	 
+
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
@@ -3167,3 +3177,25 @@ h1,h2,h3 {
 		left: 10px
 	}
 }
+
+
+/*add by Livia*/
+#file-caption
+{
+	margin-left: 5px;
+}
+
+.display
+{
+	width: 98%;
+	height: 600px;
+	border-radius: 7px;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1.5px solid #ccc;
+}
+
