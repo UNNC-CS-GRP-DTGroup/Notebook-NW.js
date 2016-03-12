@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Material Login Form</title>
+    <title>Quick Write Log in</title>
 
 
     <link rel="stylesheet" href="public/logIn/css/reset.css">
@@ -40,7 +40,7 @@
           <div class="button-container">
             <button id="loginBtn"><span>Sign in</span></button>
           </div>
-          <div class="footer"><a href="#">Forgot your password?</a></div>
+<!--          <div class="footer"><a href="#">Forgot your password?</a></div>-->
         </form>
       </div>
       <div class="card alt">
@@ -82,6 +82,7 @@
     
 <!--    Log in-->
     <script>
+    var baseUrl = "http:\/\/cs-linux.nottingham.edu.cn:8000\/";    
     var allAppData = {};
     // sign in 被click时
     $("#loginBtn").click(function(e){
@@ -103,7 +104,7 @@
                 console.log("not match with local, check server")
                 var jsonData = {"Email": Email, "Password": Password}; 
                 var stringifiedJson = JSON.stringify(jsonData);
-                var url = 'http://cs-linux.nottingham.edu.cn:8000/logIn';
+                var url = baseUrl + 'logIn';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -184,7 +185,7 @@
             var UserId = getObjectId();
             var jsonData = {"Email": Email, "Password": Password, "UserId": UserId};
             var stringifiedJson = JSON.stringify(jsonData);
-            var url = 'http://cs-linux.nottingham.edu.cn:8000/register';
+            var url = baseUrl + 'register';
             $.ajax({
                 type: 'POST',
                 url: url,

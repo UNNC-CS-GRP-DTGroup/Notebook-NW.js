@@ -325,7 +325,7 @@ UserInfo = {"UserId": UserId,"Email": Email,"Verified": true, "Username":Email, 
 //同步策略三
 $.ajax({
     type: 'GET', // added,
-    url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
+    url: baseUrl + 'getAll',
     data: "UserId=" + UserId ,
 //                dataType: "json",
 //                contentType: "application/json; charset=UTF-8",
