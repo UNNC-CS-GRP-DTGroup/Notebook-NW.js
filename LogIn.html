@@ -156,15 +156,21 @@
       
 <!--      Register-->
     <script>
+        // gernerate a hashcode as the object ID
+        function getObjectId() {
+            return ObjectId() // JQuery function
+        };
+        
         $("#regBtn").click(function(e){
             e.preventDefault();
-            var email = $("#Username2").val();
-            var pwd = $("#Password2").val();
-            var jsonData = {"Email": email, "Password": pwd};
+            var Email = $("#Username2").val();
+            var Password = $("#Password2").val();
+            var UserId = getObjectId();
+            var jsonData = {"Email": Email, "Password": Password, "UserId": UserId};
             var stringifiedJson = JSON.stringify(jsonData);
             var url = 'http://cs-linux.nottingham.edu.cn:8000/register';
             $.ajax({
-                type: 'POST', // added,
+                type: 'POST',
                 url: url,
                 data: stringifiedJson,
                 contentType: "text/plain",
