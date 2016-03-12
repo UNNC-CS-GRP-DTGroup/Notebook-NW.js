@@ -27,7 +27,7 @@
     var noteContentJson = [];
 
     //需要同步的初始数据
-    var UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"me@nottingham.edu.cn","Verified":false,"Username":"me@nottingham.edu.cn","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":""};
+    var UserInfo = {"UserId":"56a82c7bab64417776002a5c","Email":"me@nottingham.edu.cn","Verified":false,"Username":"zy14897@nottingham.edu.cn","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"123456"};
 
     var notebooks = [{"NotebookId":"0","UserId":"56a82c7bab64417776002a5c","Title":"Newest","UrlTitle":"","NumberNotes":1,"CreatedTime":"0001-01-01T00:00:00Z", "drop":!1, "drag":!1},
     {"NotebookId":"56a82c7bab64417776002a5d","UserId":"56a82c7bab64417776002a5c","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        {"NotebookId":"56a82c7bab64417776002a5e","UserId":"56a82c7bab64417776002a5c","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
@@ -59,9 +59,12 @@
     allAppData.tagsJson = tagsJson;
     allAppData.trackingLog = trackingLog;
 </script>    
+
+<!--<link rel="stylesheet" href="public/css/theme/default.css" type="text/css" id="themeLink"/>-->
     
 <script src="public/js/dep.min.js"></script>
 <!--定制版的JQuery；需要放在bootstrap之前-->
+    
 <link href="public/css/bootstrap-min.css" rel="stylesheet" />
 <!--    responsible for part of basic style(bootstrap)-->
 
@@ -180,10 +183,10 @@ function webaddress(){
 
 				<div class="pull-right" style="margin: 0 10px" id="myProfile">
 					<div class="dropdown">
-						<a class="dropdown-toggle" title="pan.atopos@outlook.com" data-toggle="dropdown" style="line-height: 60px;">
-							<img alt="pan.atopos@outlook.com" title="pan.atopos@outlook.com" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/>
-							<span class="username">
-								pan.atopos@outlook.com
+						<a class="dropdown-toggle" title="<semail" data-toggle="dropdown" style="line-height: 60px;">
+							<img alt="" title="" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/>
+							<span class="username" id="username"> 
+<!--								pan.atopos@outlook.com-->
 							</span>
 							<i class="fa fa-angle-down"></i>
 						</a>

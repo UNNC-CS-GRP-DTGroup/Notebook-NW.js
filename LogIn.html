@@ -5,12 +5,12 @@
     <title>Material Login Form</title>
 
 
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="public/logIn/css/reset.css">
 
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/logIn/css/style.css">
   </head>
 
   <body>
@@ -75,8 +75,10 @@
     <!-- CodePen-->
     <!-- <a id="codepen" href="http://codepen.io/andytran/" title="Follow me!"><i class="fa fa-codepen"></i></a> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="js/index.js"></script>    
+    <script src="public/logIn/js/index.js"></script> 
+      <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
     <script>
+    var allAppData = {};
     // sign in 被click时
     $("#loginBtn").click(function(e){
         e.preventDefault();
@@ -87,11 +89,24 @@
         
 //        本地check
         localforage.getItem('allAppData', function(err, value) {
-            console.log("get allAppData");
-            var allAppData = value;
-            if(allAppData.UserInfo.Email == email && allAppData.UserInfo.Password = pwd) {
-                location.href = "Untitled/html";
+            allAppData = value;
+            if(allAppData != null) { // 如果本地有数据
+                console.log("get allAppData: " + value);
+                console.log(email);
+                console.log(pwd);
+                console.log("right " + allAppData.UserInfo.Email);
+                console.log("right " + allAppData.UserInfo.Password);
+                if(allAppData.UserInfo.Email == email && allAppData.UserInfo.Password == pwd) {
+                    location.href = "Untitled.html";
+                }
+                else { // 与本地数据不匹配
+//                    alert("Wrong password");
+                }
             }
+            else { // 如果本地没数据：从server端check
+                
+            }
+        });
 //        var captcha = $("#captcha").val()
 //        if(!email) {
 //            showMsg("input username", "email");

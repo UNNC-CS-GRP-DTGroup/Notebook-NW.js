@@ -188,63 +188,109 @@ function sleep(miliseconds) {
    }
 }
 
+//加载用户名：
+var email = localStorage.email;
+$("#username").html(email);
+var UserId = "56a82c7bab64417776002a5c";
+var isConnected = true;
+
 localforage.getItem('allAppData', function(err, value) {
     console.log("check");
     if(value != null) { //如果本地有数据，使用本地的
-//        console.log("value is not null");
-//        flag = true;
-        //load 
-        console.log("Start loading");
-        localforage.getItem('allAppData', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
             allAppData = value;
-            console.log("allAppData loaded");
+            console.log("allAppData loaded from local");
             
             UserInfo = allAppData.UserInfo;
-            console.log("UserInfo updated");
+            console.log("UserInfo updated from local");
             notebooks = allAppData.notebooks;
-            console.log("notebooks updated");
+            console.log("notebooks updated from local");
             shareNotebooks = allAppData.shareNotebooks;
-            console.log("shareNotebooks updated");
+            console.log("shareNotebooks updated from local");
             sharedUserInfos = allAppData.sharedUserInfos;
-            console.log("sharedUserInfos updated");
+            console.log("sharedUserInfos updated from local");
             notes = allAppData.notes;
-            console.log("notes updated");
+            console.log("notes updated from local");
             latestNotes = allAppData.latestNotes;
-            console.log("latestNotes updated");
+            console.log("latestNotes updated from local");
             tagsJson = allAppData.tagsJson;
-            console.log("tagsJson updated");
+            console.log("tagsJson updated from local");
             trackingLog = allAppData.trackingLog;
-            console.log("trackingLog updated");
-            console.log("call initPage()");
+            console.log("trackingLog updated from local");
+            console.log("call initPage() from local");
             initPage();
-        });
+            localforage.setItem("allAppData", allAppData, function(err, value) {
+                console.log("allAppData saved");
+            });
     }
     else { //如果没有：1 从server端拿；2 使用初始数据
         // load initial data
-        
-        var isConnected = false;
+    
         if(isConnected) { //从server端拿
-            allAppData = getAllAppData(UserInfo.UserId);
-            console.log(allAppData);
-            console.log("Retrieving data from server");
-            UserInfo = allAppData.UserInfo;
-            console.log("UserInfo updated");
-            notebooks = allAppData.notebooks;
-            console.log("notebooks updated");
-            shareNotebooks = allAppData.shareNotebooks;
-            console.log("shareNotebooks updated");
-            sharedUserInfos = allAppData.sharedUserInfos;
-            console.log("sharedUserInfos updated");
-            notes = allAppData.notes;
-            console.log("notes updated");
-            latestNotes = allAppData.latestNotes;
-            console.log("latestNotes updated");
-            tagsJson = allAppData.tagsJson;
-            console.log("tagsJson updated");
-            trackingLog = allAppData.trackingLog;
-            console.log("trackingLog updated");
+            $.ajax({
+                type: 'GET', // added,
+                url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
+                data: "UserId=" + UserId ,
+            //                dataType: "json",
+            //                contentType: "application/json; charset=UTF-8",
+                //dataType: 'jsonp' - removed
+                //jsonpCallback: 'callback' - removed
+                contentType: "text/plain", 
+                async:false, 
+                success: function (data) {
+                    var parsedData = jQuery.parseJSON(data);
+                    allAppData = parsedData;    
+                    console.log(allAppData.UserInfo.UserId);
+                
+                    console.log("allAppData loaded from server");
+
+                    UserInfo = allAppData.UserInfo;
+                    console.log("UserInfo updated from server");
+                    notebooks = allAppData.notebooks;
+                    console.log("notebooks updated from server");
+                    shareNotebooks = allAppData.shareNotebooks;
+                    console.log("shareNotebooks updated from server");
+                    sharedUserInfos = allAppData.sharedUserInfos;
+                    console.log("sharedUserInfos updated from server");
+                    notes = allAppData.notes;
+                    console.log("notes updated from server");
+                    latestNotes = allAppData.latestNotes;
+                    console.log("latestNotes updated from server");
+                    tagsJson = allAppData.tagsJson;
+                    console.log("tagsJson updated from server");
+                    trackingLog = allAppData.trackingLog;
+                    console.log("trackingLog updated from server");
+                    console.log("call initPage()");
+                    initPage();
+                    localforage.setItem("allAppData", allAppData, function(err, value) {
+                        console.log("allAppData saved");
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.log('Error: ' + error.message);
+                    $('#lblResponse').html('Error connecting to the server.');
+                }
+            });
+            
+            //调用函数
+//            allAppData = getAllAppData(UserInfo.UserId);
+//            console.log(allAppData);
+//
+//            UserInfo = allAppData.UserInfo;
+//            console.log("UserInfo updated");
+//            notebooks = allAppData.notebooks;
+//            console.log("notebooks updated");
+//            shareNotebooks = allAppData.shareNotebooks;
+//            console.log("shareNotebooks updated");
+//            sharedUserInfos = allAppData.sharedUserInfos;
+//            console.log("sharedUserInfos updated");
+//            notes = allAppData.notes;
+//            console.log("notes updated");
+//            latestNotes = allAppData.latestNotes;
+//            console.log("latestNotes updated");
+//            tagsJson = allAppData.tagsJson;
+//            console.log("tagsJson updated");
+//            trackingLog = allAppData.trackingLog;
+//            console.log("trackingLog updated");
         }
         else { //使用初始数据
             //initial data    
@@ -257,13 +303,12 @@ localforage.getItem('allAppData', function(err, value) {
             allAppData.tagsJson = tagsJson;
             allAppData.trackingLog = trackingLog;
             console.log("using initial data");
-        }
-        console.log("call initPage()");
-        initPage();
-        
-        localforage.setItem("allAppData", allAppData, function(err, value) {
+            console.log("call initPage()");
+            initPage();
+            localforage.setItem("allAppData", allAppData, function(err, value) {
             console.log("allAppData saved");
         });
+        }
     }
 });
 
