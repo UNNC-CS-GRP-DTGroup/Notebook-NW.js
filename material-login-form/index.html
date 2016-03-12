@@ -38,7 +38,7 @@
             <div class="bar"></div>
           </div>
           <div class="button-container">
-            <button><span>Go</span></button>
+            <button id="loginBtn"><span>Sign in</span></button>
           </div>
           <div class="footer"><a href="#">Forgot your password?</a></div>
         </form>
@@ -76,5 +76,54 @@
     <!-- <a id="codepen" href="http://codepen.io/andytran/" title="Follow me!"><i class="fa fa-codepen"></i></a> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="js/index.js"></script>    
+    <script>
+    // sign in 被click时
+    $("#loginBtn").click(function(e){
+        e.preventDefault();
+        var email = $("#Username").val();
+        var pwd = $("#Password").val();
+//        var captcha = $("#captcha").val()
+//        if(!email) {
+//            showMsg("input username", "email");
+//            return;
+//        }
+//        if(!pwd) {
+//            showMsg("Password is required", "pwd");
+//            return;
+//        } else {
+//            if(pwd.length < 6) {
+//                showMsg("Wrong password", "pwd");
+//                return;
+//            }
+//        }
+//        if(needCaptcha && !captcha) {
+//            showMsg("Captcha is required", "captcha");
+//            return;
+//        }
+
+        $("#loginBtn").html("Sign in...").addClass("disabled");
+
+        document.cookie = "LEANOTE_SESSION=; expires=" + (new Date(0).toUTCString()) + ';domain=leanote.com; path=/';
+
+        document.cookie = "LEANOTE_SESSION=; expires=" + (new Date(0).toUTCString()); 
+
+        $.post("/doLogin", {email: email, pwd: pwd, captcha: $("#captcha").val()}, function(e) {
+            $("#loginBtn").html("Sign in").removeClass("disabled");
+            if(e.Ok) {
+                $("#loginBtn").html("login success...");
+    //				var from = $("#from").val() || "/note";
+    //				location.href = from;
+                location.href = "Untitled.html";
+            } else {
+                if(e.Item && $.trim($("#captchaContainer").text()) == "") {
+                    $("#captchaContainer").html($("#tCaptcha").html());
+                    needCaptcha = true
+                }
+
+                showMsg(e.Msg);
+            }
+        });
+    });
+    </script>
   </body>
 </html>
