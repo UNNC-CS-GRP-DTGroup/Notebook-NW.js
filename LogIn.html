@@ -50,12 +50,12 @@
         </h1>
         <form>
           <div class="input-container">
-            <input type="text" id="Username" required="required"/>
+            <input type="text" id="Username2" required="required"/>
             <label for="Username">Username</label>
             <div class="bar"></div>
           </div>
           <div class="input-container">
-            <input type="password" id="Password" required="required"/>
+            <input type="password" id="Password2" required="required"/>
             <label for="Password">Password</label>
             <div class="bar"></div>
           </div>
@@ -65,7 +65,7 @@
             <div class="bar"></div>
           </div>
           <div class="button-container">
-            <button><span>Next</span></button>
+            <button id="regBtn"><span>Register</span></button>
           </div>
         </form>
       </div>
@@ -76,7 +76,9 @@
     <!-- <a id="codepen" href="http://codepen.io/andytran/" title="Follow me!"><i class="fa fa-codepen"></i></a> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="public/logIn/js/index.js"></script> 
-      <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
+    <script src="public/data/localForage-1.4.0/dist/localforage.js"></script>
+    
+<!--    Log in-->
     <script>
     var allAppData = {};
     // sign in 被click时
@@ -151,5 +153,32 @@
 //        });
     });
     </script>
+      
+<!--      Register-->
+    <script>
+        $("#regBtn").click(function(e){
+            e.preventDefault();
+            var email = $("#Username2").val();
+            var pwd = $("#Password2").val();
+            var jsonData = {"Email": email, "Password": pwd};
+            var stringifiedJson = JSON.stringify(jsonData);
+            var url = 'http://cs-linux.nottingham.edu.cn:8000/register';
+            $.ajax({
+                type: 'POST', // added,
+                url: url,
+                data: stringifiedJson,
+                contentType: "text/plain",
+                success: function (data) {
+        //                    var ret = jQuery.parseJSON(data);
+        //                    $('#lblResponse').html(ret.msg);
+                    console.log(JSON.parse(data).msg);
+                },
+                error: function (xhr, status, error) {
+                    alert('Error: ' + error.message);
+                }
+            });
+
+      
+      </script>
   </body>
 </html>
