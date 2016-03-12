@@ -267,4 +267,4 @@ localforage.getItem('allAppData', function(err, value) {
     }
 });
 
-sleep(2000);
+//sleep(2000);
