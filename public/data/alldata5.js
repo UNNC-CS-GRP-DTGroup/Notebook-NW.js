@@ -63,144 +63,26 @@ function getAllAppData(UserId) {
 }
 
 
-// 开始
-var isAtLocal = false;
-var isConnected = true;
-
-async.series([
-    function(callback) {
-        localforage.getItem('allAppData', function(err, value) {
-            console.log("check");
-            if(value != null) { // at local
-                isAtLocal = true;
-                allAppData = value;
-            }
-            callback();
-        });
-    },
-    
-    function(callback) {
-        console.log(isAtLocal);
-        if(isAtLocal) {
-            console.log("loading data from local");
-            UserInfo = allAppData.UserInfo;
-            console.log("UserInfo updated");
-            notebooks = allAppData.notebooks;
-            console.log("notebooks updated");
-            shareNotebooks = allAppData.shareNotebooks;
-            console.log("shareNotebooks updated");
-            sharedUserInfos = allAppData.sharedUserInfos;
-            console.log("sharedUserInfos updated");
-            notes = allAppData.notes;
-            console.log("notes updated");
-            latestNotes = allAppData.latestNotes;
-            console.log("latestNotes updated");
-            tagsJson = allAppData.tagsJson;
-            console.log("tagsJson updated");
-            trackingLog = allAppData.trackingLog;
-            console.log("trackingLog updated");
-            callback();
-        }
-    },
-    
-    function(callback) {
-        console.log("Test");
-        if(!isAtLocal && isConnected) {
-            console.log("loading from the server");
-            $.ajax({
-                type: 'GET', // added,
-                url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
-                data: "UserId=" + UserInfo.UserId ,
-            //                dataType: "json",
-            //                contentType: "application/json; charset=UTF-8",
-                //dataType: 'jsonp' - removed
-                //jsonpCallback: 'callback' - removed
-                contentType: "text/plain", 
-                async:false, 
-                success: function (data) {
-                    console.log("Retrieved data from server");
-                    var parsedData = jQuery.parseJSON(data);
-            //                    $('#lblResponse').html(ret.msg);
-                    // var parsedData = JSON.parse(data);
-                    console.log(parsedData.UserInfo.UserId);
-                    allAppData = parsedData;
-                    callback();
-                },
-                error: function (xhr, status, error) {
-                    console.log('Error: ' + error.message);
-                    $('#lblResponse').html('Error connecting to the server.');
-                    callback();
-                }
-            });
-        }
-    },
-    
-    function(callback) {
-        if(!isAtLocal && isConnected) {
-            UserInfo = allAppData.UserInfo;
-            console.log("UserInfo updated");
-            notebooks = allAppData.notebooks;
-            console.log("notebooks updated");
-            shareNotebooks = allAppData.shareNotebooks;
-            console.log("shareNotebooks updated");
-            sharedUserInfos = allAppData.sharedUserInfos;
-            console.log("sharedUserInfos updated");
-            notes = allAppData.notes;
-            console.log("notes updated");
-            latestNotes = allAppData.latestNotes;
-            console.log("latestNotes updated");
-            tagsJson = allAppData.tagsJson;
-            console.log("tagsJson updated");
-            trackingLog = allAppData.trackingLog;
-            console.log("trackingLog updated");
-        }
-        else if(!isAtLocal && !isConnected) {
-            //initial data    
-            allAppData.UserInfo = UserInfo;
-            allAppData.notebooks = notebooks;
-            allAppData.shareNotebooks = shareNotebooks;
-            allAppData.sharedUserInfos = sharedUserInfos;
-            allAppData.notes = notes;
-            allAppData.latestNotes = latestNotes;
-            allAppData.tagsJson = tagsJson;
-            allAppData.trackingLog = trackingLog;
-            console.log("using initial data");
-        }
-
-        localforage.setItem("allAppData", allAppData, function(err, value) {
-            console.log("allAppData saved");
-            callback();
-        }); 
-    },
-    
-    function(callback) {
-        console.log("running initPage");
-        initPage();
-        callback();
-    }
-]);
-
-
-//function sleep(miliseconds) {
-//   var currentTime = new Date().getTime();
+// 使用series
+//var isAtLocal = false;
+//var isConnected = true;
 //
-//   while (currentTime + miliseconds >= new Date().getTime()) {
-//   }
-//}
-//
-//localforage.getItem('allAppData', function(err, value) {
-//    console.log("check");
-//    if(value != null) {
-////        console.log("value is not null");
-////        flag = true;
-//        //load 
-//        console.log("Start loading");
+//async.series([
+//    function(callback) {
 //        localforage.getItem('allAppData', function(err, value) {
-//            // Run this code once the value has been
-//            // loaded from the offline store.
-//            allAppData = value;
-//            console.log("allAppData loaded");
-//            
+//            console.log("check");
+//            if(value != null) { // at local
+//                isAtLocal = true;
+//                allAppData = value;
+//            }
+//            callback();
+//        });
+//    },
+//    
+//    function(callback) {
+//        console.log(isAtLocal);
+//        if(isAtLocal) {
+//            console.log("loading data from local");
 //            UserInfo = allAppData.UserInfo;
 //            console.log("UserInfo updated");
 //            notebooks = allAppData.notebooks;
@@ -217,16 +99,44 @@ async.series([
 //            console.log("tagsJson updated");
 //            trackingLog = allAppData.trackingLog;
 //            console.log("trackingLog updated");
-//        });
-//    }
-//    else {
-//        // load initial data
-//        
-//        var isConnected = true;
-//        if(isConnected) {
-//            allAppData = getAllAppData(UserInfo.UserId);
-//            console.log(allAppData);
-//            console.log("Retrieving data from server");
+//            callback();
+//        }
+//    },
+//    
+//    function(callback) {
+//        console.log("Test");
+//        if(!isAtLocal && isConnected) {
+//            console.log("loading from the server");
+//            $.ajax({
+//                type: 'GET', // added,
+//                url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
+//                data: "UserId=" + UserInfo.UserId ,
+//            //                dataType: "json",
+//            //                contentType: "application/json; charset=UTF-8",
+//                //dataType: 'jsonp' - removed
+//                //jsonpCallback: 'callback' - removed
+//                contentType: "text/plain", 
+//                async:false, 
+//                success: function (data) {
+//                    console.log("Retrieved data from server");
+//                    var parsedData = jQuery.parseJSON(data);
+//            //                    $('#lblResponse').html(ret.msg);
+//                    // var parsedData = JSON.parse(data);
+//                    console.log(parsedData.UserInfo.UserId);
+//                    allAppData = parsedData;
+//                    callback();
+//                },
+//                error: function (xhr, status, error) {
+//                    console.log('Error: ' + error.message);
+//                    $('#lblResponse').html('Error connecting to the server.');
+//                    callback();
+//                }
+//            });
+//        }
+//    },
+//    
+//    function(callback) {
+//        if(!isAtLocal && isConnected) {
 //            UserInfo = allAppData.UserInfo;
 //            console.log("UserInfo updated");
 //            notebooks = allAppData.notebooks;
@@ -244,7 +154,7 @@ async.series([
 //            trackingLog = allAppData.trackingLog;
 //            console.log("trackingLog updated");
 //        }
-//        else {
+//        else if(!isAtLocal && !isConnected) {
 //            //initial data    
 //            allAppData.UserInfo = UserInfo;
 //            allAppData.notebooks = notebooks;
@@ -256,12 +166,105 @@ async.series([
 //            allAppData.trackingLog = trackingLog;
 //            console.log("using initial data");
 //        }
-//        
+//
 //        localforage.setItem("allAppData", allAppData, function(err, value) {
 //            console.log("allAppData saved");
-//        });
-//
+//            callback();
+//        }); 
+//    },
+//    
+//    function(callback) {
+//        console.log("running initPage");
+//        initPage();
+//        callback();
 //    }
-//});
-//
-//sleep(4000);
+//]);
+
+// 老方法
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
+localforage.getItem('allAppData', function(err, value) {
+    console.log("check");
+    if(value != null) { //如果本地有数据，使用本地的
+//        console.log("value is not null");
+//        flag = true;
+        //load 
+        console.log("Start loading");
+        localforage.getItem('allAppData', function(err, value) {
+            // Run this code once the value has been
+            // loaded from the offline store.
+            allAppData = value;
+            console.log("allAppData loaded");
+            
+            UserInfo = allAppData.UserInfo;
+            console.log("UserInfo updated");
+            notebooks = allAppData.notebooks;
+            console.log("notebooks updated");
+            shareNotebooks = allAppData.shareNotebooks;
+            console.log("shareNotebooks updated");
+            sharedUserInfos = allAppData.sharedUserInfos;
+            console.log("sharedUserInfos updated");
+            notes = allAppData.notes;
+            console.log("notes updated");
+            latestNotes = allAppData.latestNotes;
+            console.log("latestNotes updated");
+            tagsJson = allAppData.tagsJson;
+            console.log("tagsJson updated");
+            trackingLog = allAppData.trackingLog;
+            console.log("trackingLog updated");
+            console.log("call initPage()");
+            initPage();
+        });
+    }
+    else { //如果没有：1 从server端拿；2 使用初始数据
+        // load initial data
+        
+        var isConnected = false;
+        if(isConnected) { //从server端拿
+            allAppData = getAllAppData(UserInfo.UserId);
+            console.log(allAppData);
+            console.log("Retrieving data from server");
+            UserInfo = allAppData.UserInfo;
+            console.log("UserInfo updated");
+            notebooks = allAppData.notebooks;
+            console.log("notebooks updated");
+            shareNotebooks = allAppData.shareNotebooks;
+            console.log("shareNotebooks updated");
+            sharedUserInfos = allAppData.sharedUserInfos;
+            console.log("sharedUserInfos updated");
+            notes = allAppData.notes;
+            console.log("notes updated");
+            latestNotes = allAppData.latestNotes;
+            console.log("latestNotes updated");
+            tagsJson = allAppData.tagsJson;
+            console.log("tagsJson updated");
+            trackingLog = allAppData.trackingLog;
+            console.log("trackingLog updated");
+        }
+        else { //使用初始数据
+            //initial data    
+            allAppData.UserInfo = UserInfo;
+            allAppData.notebooks = notebooks;
+            allAppData.shareNotebooks = shareNotebooks;
+            allAppData.sharedUserInfos = sharedUserInfos;
+            allAppData.notes = notes;
+            allAppData.latestNotes = latestNotes;
+            allAppData.tagsJson = tagsJson;
+            allAppData.trackingLog = trackingLog;
+            console.log("using initial data");
+        }
+        console.log("call initPage()");
+        initPage();
+        
+        localforage.setItem("allAppData", allAppData, function(err, value) {
+            console.log("allAppData saved");
+        });
+    }
+});
+
+sleep(2000);
