@@ -21,7 +21,7 @@
     LEA.locale = "en";
     var UrlPrefix = 'http:\/\/leanote.com';
     var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
-    var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
+//    var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
     var curNoteId = "";
     var curNotebookId = "";
     var curSharedNoteNotebookId = "";
@@ -60,7 +60,22 @@
     allAppData.latestNotes = latestNotes;
     allAppData.tagsJson = tagsJson;
     allAppData.trackingLog = trackingLog;
-</script>    
+
+</script>   
+    
+<!--Google custome search engine-->
+<script>
+  (function() {
+    var cx = '002065199802402464377:fhffmdhncda';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
 
 <!--<link rel="stylesheet" href="public/css/theme/default.css" type="text/css" id="themeLink"/>-->
     
@@ -147,11 +162,14 @@ function webaddress(){
 							<span class="new-note-text-abbr">New</span>
 						</a>
 						<span class="new-split">|</span>
+<!--
 						<a class="new-note new-markdown" id="newNoteMarkdownBtn" title="New markdown note">
 
 							<span class="new-markdown-text">New markdown note</span>
 							<span class="new-markdown-text-abbr">Md</span>
 						</a>
+-->
+
 						<span class="for-split"> - </span>
 
 <!--                        为了方便获取当前notebookId：用于创建新note-->
@@ -266,6 +284,9 @@ function webaddress(){
 				</div>
 -->
 
+				<div class="pull-right top-nav" id="downloadTracking">
+					<a onclick="downloadTrakcingLog()"><span>Download tracking log</span></a>
+				</div>
 
 				<div style="clear: both"></div>
 			</div>
@@ -649,6 +670,11 @@ function webaddress(){
                               <big><big><i class="fa fa-globe"></i></big></big>
                            </a>
                         </li>
+                        <li><a href="#searchEngine" data-toggle="tab" title="Search Engine">
+                              <big><big><i class="fa fa-globe"></i></big></big>
+                           </a>
+                        </li>
+                        
                     </ul>
                     <div id="myTabContent" class="tab-content">
                        <div class="tab-pane fade in active" id="audioRecording">
@@ -676,11 +702,16 @@ function webaddress(){
                           <iframe id="displayedFile" class="display" name="awindow" frameborder=1 src="" height=600px></iframe>
                         </form>
                        </div>
+                        
                        <div class="tab-pane fade" id="webBrowser">
 
-                       <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>
-                       <iframe id="webpage" src="http://baidu.com" width=100% height=900></iframe>
-                          <!-- <iframe id="webpage" class="display" src="http://baidu.com"></iframe> -->
+                           <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>
+                           <iframe id="webpage" src="http://baidu.com" width=100% height=900 onchange="" nwdisable nwfaketop></iframe>
+                              <!-- <iframe id="webpage" class="display" src="http://baidu.com"></iframe> -->
+                       </div>
+                       <div class="tab-pane fade" id="searchEngine">
+                           <gcse:search></gcse:search> 
+
                        </div>
                     </div>
                 </div>
@@ -1085,8 +1116,9 @@ function webaddress(){
 </div>
 
 
-<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
-<!--<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
+<!--<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>-->
+<script src="public/js/tinymce/js/tinymce/tinymce.min.js"></script>
+
 <script src="public/js/DND.js"></script>  
 <script src="public/js/i18n/msg.en.js?t=b"></script>
 
@@ -1137,6 +1169,9 @@ function webaddress(){
 //    } catch (ex) {
 //        console.log(ex.message);
 //    }
+
+    require('nw.gui').Window.get().showDevTools() 
+
 </script>
 
 
@@ -1152,6 +1187,11 @@ function webaddress(){
 
 <script src="public/js/media.js"></script>
 <!--    Media Window (must be put after the initPage()-->
+    
+<!--    tracking-->
+<script src="public/js/tracking/Blob.js" ></script>
+<script src="public/js/tracking/FileSaver.js" ></script>
+<script src="public/js/tracking/tracking.js" ></script>
 
 </body>
 </html>

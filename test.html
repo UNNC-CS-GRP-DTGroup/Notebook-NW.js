@@ -1,10 +1,25 @@
 <html>
-
+<style>
+    #CSE {
+        width: 600px;
+        height: 500px;
+    }
+</style>
 <body>
-<script type="text/javascript">
-document.write("<p>OnLine: ")
-document.write(navigator.onLine + "</p>")
+<script>
+  (function() {
+    var cx = '002065199802402464377:fhffmdhncda';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
+<div id="CSE"> <gcse:search></gcse:search> </div>
+
 </body>
 
 </html>
