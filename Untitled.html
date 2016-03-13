@@ -627,6 +627,7 @@ function webaddress(){
                        <div class="tab-pane fade" id="videoRecording">
                           <p>Video Recording</p> 
                           <video id="myVideo" class="video-js vjs-default-skin"></video>
+                          <button onclick = "downloadvideo()">DOWNLOAD</button>
 
                        </div>
 
@@ -873,6 +874,11 @@ player.on('finishRecord', function()
     // can be downloaded by the user, stored on server etc.
     console.log('finished recording: ', player.recordedData);
 });
+
+function downloadvideo(){
+	saveAs(player.recordedData.video,"output.webm");
+	saveAs(player.recordedData.audio,"output.wav");
+}
 </script>
 
 <script src="public/js/recorder/configRecorder.js"> </script>
