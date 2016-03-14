@@ -383,69 +383,70 @@ function webaddress(){
 						<br />
 						loading...
 					</div>
-
-<!--                    笔记list-->
-					<div id="noteList">
-                        <div class="clearfix" id="notesAndSort" style="position: relative">
-                            <div class="pull-left">
-
-                                <div class="dropdown" id="myNotebookNavForListNav">
-                                    <a class="ios7-a dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-                                        <span id="curNotebookForListNote">Newest</span>
-
-                                    </a>
-
-                                </div>
-
-
-                                <div class="dropdown" id="sharedNotebookNavForListNav" style="display: none">
-                                    <a class="ios7-a dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">
-                                        <span id="curSharedNotebookForListNote">Newest</span>
-
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu"
-                                        aria-labelledby="dropdownMenu2" style="left: 5px;" id="sharedNotebookNavForListNote">
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="pull-left" id="tagSearch" style="line-height: 38px">
-                            </div>
-
-                            <div id="sortType">
-                                <div class="dropdown">
-                                    <a class="ios7-a dropdown-toggle" id="dropdownMenu1"
-                                        data-toggle="dropdown">
-
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div id="noteItemListWrap">
-                            <ul id="noteItemList">
-                            </ul>
-                        </div>
-				    </div>
-
-<!--                左二split-->
-				    <div class="noteSplit" id="noteSplitter"></div>
-
-                    <div id="note">
+					
+				    <!-- <div id="note">  -->
 <!--                删除class="read-only-editor"-->
+				
+                        <!-- <div id="noteMask" class="note-mask"></div>
 
-
-                        <div id="noteMask" class="note-mask"></div>
-
-                        <div id="noteMaskForLoading" class="note-mask">
+                        <div id="noteMaskForLoading" class="note-mask">  
                             <img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
                             <br />
                             loading...
-                        </div>
+                        </div> -->
+						
+						<div id="noteList">
+							<div class="clearfix" id="notesAndSort" style="position: absolute" >
+								<div class="pull-left">
 
-                        <div id="editorMask">
+									<div class="dropdown" id="myNotebookNavForListNav">
+										<a class="ios7-a dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+											<span id="curNotebookForListNote">Newest</span>
+										</a>
+
+									</div>
+
+
+									<div class="dropdown" id="sharedNotebookNavForListNav" style="display: none">
+										<a class="ios7-a dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">
+											<span id="curSharedNotebookForListNote">Sharelist</span>
+										</a>
+										<ul class="dropdown-menu" role="menu"
+											aria-labelledby="dropdownMenu2" style="left: 5px;" id="sharedNotebookNavForListNote">
+										</ul>
+									</div>
+								</div>
+								
+								<div class="pull-left" id="tagSearch" style="line-height: 38px">
+								</div>
+								
+								<div id="sortType">
+									<div class="dropdown">
+										<a class="ios7-a dropdown-toggle" id="dropdownMenu1"
+											data-toggle="dropdown"> 
+										</a>
+
+									</div>
+								</div>
+							</div>
+<!--
+								<div id="noteItemListWrap" >
+									<div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100%; height: 150px;">
+                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
+									</ul>
+                                    </div>
+								</div>
+-->
+                            
+                                <div id="noteItemListWrap" >
+<!--									<div class="scrolls">-->
+                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
+									</ul>
+<!--                                    </div>-->
+								</div>
+						</div>
+
+                        <div id="editorMask">  
                             The notebook is empty, why not...
                             <br />
                             <br />
@@ -457,7 +458,8 @@ function webaddress(){
                                 Sorry, cannot new note in here, please choose a notebook at first.
                             </div>
                         </div>
-                        <div id="batchMask" class="note-mask">
+						
+                        <div id="batchMask" class="note-mask">  
                             <div class="batch-ctn" id="batchCtn"></div>
                             <div class="batch-info">
                                 <span></span> notes selected
@@ -465,21 +467,21 @@ function webaddress(){
                             </div>
                         </div>
 
-                        <div id="noteTop">
+                        <!-- <div id="noteTop"> -->
                             <div id="tool" class="clearfix">
                                 <div class="pull-left" id="tag">
                                     <div id="tags" style="display: inline-block; line-height: 25px;">
                                     </div>
                                     <div class="dropdown" style="display: inline-block"
                                         id="tagDropdown">
-                                        <i class="fa fa-bookmark-o"></i>
+                                        <i class="fa fa-bookmark-o"></i> 
                                         <a
                                             class="metro-a dropdown-toggle" data-toggle="dropdown"
                                             id="addTagTrigger" style="cursor: text; padding-left: 0">
                                             <span class="add-tag-text">
                                             Click to add Tag
                                             </span>
-                                        </a>
+                                        </a> 
                                         <input type="text" id="addTagInput" />
                                         <ul class="dropdown-menu" role="menu" id="tagColor">
                                             <li role="presentation"><span class="label label-red">red</span>
@@ -502,13 +504,13 @@ function webaddress(){
                                     <li><a class="ios7-a " id="saveBtn"
                                         data-toggle="dropdown" title="ctrl/cmd+s Save">
                                         <span class="fa fa-save"></span></a></li>
-
+                                    
                                     <li class="dropdown" id="noteInfoDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" title="Information">
                                             <span class="fa fa-info"></span>
                                         </a>
                                         <div class="dropdown-menu" id="noteInfo"></div>
-
+                                        
                                     </li>
                                     <li class="dropdown" id="attachDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" id="showAttach" title="Attachments">
@@ -557,96 +559,24 @@ function webaddress(){
                                     <span id="noteReadTags"></span>
 
 
-                                    <i class="fa fa-clock-o"></i> Update
-                                    <span id="noteReadUpdatedTime"></span>
+                                    <i class="fa fa-clock-o"></i> Update 
+                                    <span id="noteReadUpdatedTime"></span>  
 
 
-                                    <i class="fa fa-clock-o"></i> Create
+                                    <i class="fa fa-clock-o"></i> Create 
                                     <span id="noteReadCreatedTime"></span>
                                 </div>
                             </div>
-                        </div>
-
+                        <!-- </div> -->
+                        
 <!--                        editor !!!! ! ! ! ! !-->
-                        <div id="editor">
+                        <div id="editor"> 
 <!--                    删除class="read-only"-->
 <!--                            <h1>A</h1>-->
 <!--                            <div draggable="true">B</div>-->
 <!--                            <div draggable="true">C</div>-->
                         </div>
-					</div>
-
-<!--
-					<div id="mdEditor" class="read-only">
-						<div class="layout-wrapper-l1">
-						    <div class="layout-wrapper-l2">
-						        <div class="navbar navbar-default">
-						            <div class="navbar-inner" id="wmd-button-bar">
-						            	<div id="mdInfoToolbar" class="info-toolbar invisible">
-							              <span class="lang">Created</span>: <span class="created-time"></span>
-							              <span class="lang">Updated</span>: <span class="updated-time"></span>
-							            </div>
-
-						            	<div class="wmd-button-bar-inner clearfix">
-							                <ul class="nav left-buttons">
-							                    <li class="wmd-button-group1 btn-group"></li>
-							                </ul>
-							                <ul class="nav left-buttons">
-							                    <li class="wmd-button-group2 btn-group"></li>
-							                </ul>
-							                <ul class="nav left-buttons">
-							                    <li class="wmd-button-group3 btn-group"></li>
-							                </ul>
-							                <ul class="nav left-buttons">
-							                    <li class="wmd-button-group4 btn-group"></li>
-							                </ul>
-
-							                 <ul class="nav left-buttons">
-							                    <li class="wmd-button-group6 btn-group">
-							                    	<li class="wmd-button btn btn-success" id="wmd-help-button" title="Markdown syntax" style="left: 0px; display: none;"><span style="display: none; background-position: 0px 0px;"></span><i class="fa fa-question-circle"></i></li>
-							                    </li>
-							                </ul>
-
-
-						                </div>
-						            </div>
-						            <div class="editorBg"></div>
-						        </div>
-						        <div class="layout-wrapper-l3">
-						        	<div id="left-column">
-							            <pre id="wmd-input" class="form-control"><div class="editor-content mousetrap" contenteditable=true></div><div class="editor-margin"></div></pre>
-
-							            <div class="textarea-helper"></div>
-						            </div>
-						            <div id="right-column">
-						            <div class="preview-panel panel-open" id="preview-panel">
-							            <div id="mdSplitter2" class="layout-resizer layout-resizer-preview open" style="-webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); touch-action: none;"></div>
-						                <div class="layout-toggler layout-toggler-preview btn btn-info open" title="Toggle preview" data-open="1"><i class="fa fa-angle-right"></i></div>
-						                <div class="preview-container">
-						                    <div id="preview-contents">
-						                        <div id="wmd-preview" class="preview-content"></div>
-						                    </div>
-						                </div>
-						            </div>
-						            </div>
-						        </div>
-						        <div class="extension-preview-buttons">
-									<div id="leanoteNavMd" class="leanoteNav">
-										<h1>
-											<i class="fa fa-align-justify" title="Note nav"></i>
-											<span>Note nav</span>
-										</h1>
-										<div id="leanoteNavContentMd" class="leanoteNavContent table-of-contents">
-										</div>
-									</div>
-						        </div>
-						    </div>
-						    <div id="wmd-button-bar" class="hide"></div>
-						</div>
-
-
-					</div>
--->
+					<!-- </div> -->
 				</div>
                 <div class="noteSplit" id="mediaSplitter"></div>
 
