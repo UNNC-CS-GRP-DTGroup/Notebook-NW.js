@@ -514,10 +514,10 @@ a.raw:hover {
 }
 
 .new-note {
-	background-color: #000;
+	background-color: #bdbdbd;
 	border-radius: 3px;
 	padding: 3px 5px;
-	border: 1px solid #080303
+	border: 1px solid #ebeff2
 }
 
 .new-note,.new-note a {
@@ -525,7 +525,7 @@ a.raw:hover {
 }
 
 .new-note:hover {
-	background: #3d3b3b;
+	background: #9e9e9e;
 	border-color: transparent
 }
 
@@ -591,7 +591,7 @@ a.raw:hover {
 }
 
 a {
-	color: #000;
+	color: #ffffff;
 	cursor: pointer
 }
 
@@ -602,15 +602,15 @@ a:hover {
 
 #header {
 	height: 60px;
-	background-color: #25313e;
-	border-bottom: 1px solid #25313e;
+	background-color: #03a9f4;
+	border-bottom: 1px solid #03a9f4;
 	color: #fff;
 	webkit-user-select: none;
 	-webkit-app-region: drag
 }
 
 #header a {
-	color: #ccc
+	color: #fff
 }
 
 #header li,#header li a {
@@ -673,7 +673,7 @@ a:hover {
 	border-color: #ebeff2;
 	border: none;
 	color: #ccc;
-	background-color: #000;
+	background-color: #ffffff;
 	padding-left: 14px;
 	border-radius: 5px;
 	height: 30px;
@@ -1407,7 +1407,7 @@ textarea#wmd-input {
 	bottom: 0;
 	top: 0;
 	right: 0;
-	background-color: #41586e;
+	background-color: #03a9f4;
 	overflow-y: auto;
 	overflow-x: auto;
 	z-index: 2
@@ -1439,7 +1439,7 @@ textarea#wmd-input {
 	z-index: 1;
 	overflow-y: visible;
 	overflow-x: visible;
-	background-color: #41586e
+	background-color: #03a9f4
 }
 
 #notebookMin div.minContainer {
@@ -1666,7 +1666,7 @@ textarea#wmd-input {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	background-color: #37485e
+	background-color: #03a9f4
 }
 
 .folderBody li {
@@ -1724,9 +1724,10 @@ textarea#wmd-input {
 }
 
 #notesAndSort {
-	background-color: #eee;
-	border-bottom: 1px solid #ebeff2;
-	height: 36px
+	background-color: #bdbdbd;
+	border-bottom: 2px solid #ebeff2;
+	height: 36px;
+	border-radius: 1px
 }
 
 #sortType {
@@ -2678,7 +2679,7 @@ h1,h2,h3 {
 #searchNotebookForList {
 	color: #ccc;
 	border: 1px solid rgba(255,255,255,.1);
-	background-color: #37485e
+	background-color: #ffffff
 }
 
 #searchNotebookForList:focus {
@@ -2711,7 +2712,7 @@ h1,h2,h3 {
 }
 
 .ztree li a {
-	color: #ADBECE
+	color: #ffffff
 }
 
 .ztree li a.tmpTargetNode_inner {
