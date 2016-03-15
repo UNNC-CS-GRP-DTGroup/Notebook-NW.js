@@ -514,10 +514,17 @@ a.raw:hover {
 }
 
 .new-note {
+<<<<<<< HEAD
 	background-color: #005b8c;
 	border-radius: 3px;
 	padding: 3px 5px;
 	border: 1px solid #005b8c;
+=======
+	background-color: #bdbdbd;
+	border-radius: 3px;
+	padding: 3px 5px;
+	border: 1px solid #ebeff2
+>>>>>>> new_feature#22
 }
 
 .new-note,.new-note a {
@@ -525,7 +532,11 @@ a.raw:hover {
 }
 
 .new-note:hover {
+<<<<<<< HEAD
 	background: #0073b3;
+=======
+	background: #9e9e9e;
+>>>>>>> new_feature#22
 	border-color: transparent
 }
 
@@ -591,7 +602,7 @@ a.raw:hover {
 }
 
 a {
-	color: #000;
+	color: #ffffff;
 	cursor: pointer
 }
 
@@ -610,7 +621,11 @@ a:hover {
 }
 
 #header a {
+<<<<<<< HEAD
 	color: #eee
+=======
+	color: #fff
+>>>>>>> new_feature#22
 }
 
 #header li,#header li a {
@@ -672,8 +687,13 @@ a:hover {
 	background-size: 18px 13px;
 	border-color: #ebeff2;
 	border: none;
+<<<<<<< HEAD
 	color: #aaa;
 	background-color: #fff;
+=======
+	color: #ccc;
+	background-color: #ffffff;
+>>>>>>> new_feature#22
 	padding-left: 14px;
 	border-radius: 5px;
 	height: 30px;
@@ -1424,7 +1444,11 @@ textarea#wmd-input {
 	bottom: 0;
 	top: 0;
 	right: 0;
+<<<<<<< HEAD
 	background-color: #75d6ff;
+=======
+	background-color: #03a9f4;
+>>>>>>> new_feature#22
 	overflow-y: auto;
 	overflow-x: auto;
 	z-index: 2
@@ -1456,7 +1480,11 @@ textarea#wmd-input {
 	z-index: 1;
 	overflow-y: visible;
 	overflow-x: visible;
+<<<<<<< HEAD
 	background-color: #75d6ff
+=======
+	background-color: #03a9f4
+>>>>>>> ed3ccf99acf6cd9b3e486dc1f53c0a014f169969
 }
 
 #notebookMin div.minContainer {
@@ -1683,7 +1711,15 @@ textarea#wmd-input {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+<<<<<<< HEAD
 	background-color: #00f0b4;
+=======
+<<<<<<< HEAD
+	background-color: #00a888;
+=======
+	background-color: #03a9f4
+>>>>>>> new_feature#22
+>>>>>>> ed3ccf99acf6cd9b3e486dc1f53c0a014f169969
 }
 
 .folderBody li {
@@ -1742,12 +1778,19 @@ textarea#wmd-input {
 }
 
 #notesAndSort {
+<<<<<<< HEAD
 	left: 0;
 	top: 0;
 	bottom: 0;
 	width: 66px;
 	background-color: #eee;
 	border-right: 1px solid #ebeff2;
+=======
+	background-color: #bdbdbd;
+	border-bottom: 2px solid #ebeff2;
+	height: 36px;
+	border-radius: 1px
+>>>>>>> new_feature#22
 }
 
 #sortType {
@@ -2707,7 +2750,7 @@ h1,h2,h3 {
 #searchNotebookForList {
 	color: #ccc;
 	border: 1px solid rgba(255,255,255,.1);
-	background-color: #37485e
+	background-color: #ffffff
 }
 
 #searchNotebookForList:focus {
@@ -2740,7 +2783,11 @@ h1,h2,h3 {
 }
 
 .ztree li a {
+<<<<<<< HEAD
 	color: #888
+=======
+	color: #ffffff
+>>>>>>> ed3ccf99acf6cd9b3e486dc1f53c0a014f169969
 }
 
 .ztree li a.tmpTargetNode_inner {
