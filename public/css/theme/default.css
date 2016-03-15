@@ -514,17 +514,10 @@ a.raw:hover {
 }
 
 .new-note {
-<<<<<<< HEAD
 	background-color: #005b8c;
 	border-radius: 3px;
 	padding: 3px 5px;
 	border: 1px solid #005b8c;
-=======
-	background-color: #bdbdbd;
-	border-radius: 3px;
-	padding: 3px 5px;
-	border: 1px solid #ebeff2
->>>>>>> new_feature#22
 }
 
 .new-note,.new-note a {
@@ -532,11 +525,7 @@ a.raw:hover {
 }
 
 .new-note:hover {
-<<<<<<< HEAD
 	background: #0073b3;
-=======
-	background: #9e9e9e;
->>>>>>> new_feature#22
 	border-color: transparent
 }
 
@@ -1444,11 +1433,7 @@ textarea#wmd-input {
 	bottom: 0;
 	top: 0;
 	right: 0;
-<<<<<<< HEAD
 	background-color: #75d6ff;
-=======
-	background-color: #03a9f4;
->>>>>>> new_feature#22
 	overflow-y: auto;
 	overflow-x: auto;
 	z-index: 2
@@ -1711,15 +1696,7 @@ textarea#wmd-input {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-<<<<<<< HEAD
 	background-color: #00f0b4;
-=======
-<<<<<<< HEAD
-	background-color: #00a888;
-=======
-	background-color: #03a9f4
->>>>>>> new_feature#22
->>>>>>> ed3ccf99acf6cd9b3e486dc1f53c0a014f169969
 }
 
 .folderBody li {
@@ -2777,17 +2754,13 @@ h1,h2,h3 {
 }
 
 .ztree li a.curSelectedNode {
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(0,0,0,.7);
 	border-radius: 3px;
-	color: #fff
+	color: #888
 }
 
 .ztree li a {
-<<<<<<< HEAD
 	color: #888
-=======
-	color: #ffffff
->>>>>>> ed3ccf99acf6cd9b3e486dc1f53c0a014f169969
 }
 
 .ztree li a.tmpTargetNode_inner {
