@@ -1806,9 +1806,9 @@
         // Maximum length of the recorded clip.
         maxLength: 10,
         // Width of the recorded video frames.
-        frameWidth: 320,
+        frameWidth: 480,
         // Height of the recorded video frames.
-        frameHeight: 240,
+        frameHeight: 360,
         // Enables console logging for debugging purposes.
         debug: false,
         // Audio recording library to use. Legal values are 'recordrtc',
