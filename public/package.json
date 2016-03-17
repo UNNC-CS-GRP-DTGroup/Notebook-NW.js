@@ -1,0 +1,13 @@
+{
+    "main": "Untitled.html", // 启动页面
+    "name": "ga",
+    "window": {
+        "toolbar": true, // 工具栏
+        "frame": true,   // 框架
+        "resizable": true  
+    },
+    "chromium-args": "--ppapi-flash-path=plugins/PepperFlashPlayer.plugin --ppapi-flash-version=21.0.0.182",
+    "webkit": {
+        "plugin": true
+    }
+}
