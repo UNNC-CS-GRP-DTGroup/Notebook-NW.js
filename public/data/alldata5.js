@@ -40,7 +40,7 @@ function getAllAppData(UserId) {
     //             var stringifiedJson = JSON.stringify(jsonData);
     $.ajax({
         type: 'GET', // added,
-        url: 'http://cs-linux.nottingham.edu.cn:8000/getAll',
+        url: baseUrl +'getAll',
         data: "UserId=" + UserId ,
     //                dataType: "json",
     //                contentType: "application/json; charset=UTF-8",
