@@ -418,6 +418,7 @@
 	overflow: hidden;
 	z-index: 3333;
 	cursor: col-resize;
+	left:12%
 }
 
 a.raw {
@@ -564,7 +565,7 @@ a.raw:hover {
 	cursor: pointer
 }
 
-#page.mini-left #notebook,#page.mini-left #mediaSplitter,#page.mini-left #media,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
+#page.mini-left #notebook,#page.mini-left #mediaSplitter,#page.mini-left #media,#page.mini-left #noteList,#page.mini-left #notebookSplitter,#page.mini-left #logo,#page.mini-left #leftSwitcher,#page.mini-left #leftNotebook .slimScrollDiv {
 	display: none
 }
 
@@ -582,13 +583,26 @@ a.raw:hover {
 
 #page.mini-left #noteAndEditor {
 	left: 30px!important;
-	width: 100%!important
+	width: 100%!important;
+	height: 100%
 }
 
 #page.mini-left #note {
 	width: 100%!important;
 	right: 0px
 }
+
+#page.mini-left #tool {
+	top:0px
+}
+
+#page.mini-left #noteTitleDiv {
+	top:36px
+}
+#page.mini-left #editor{
+	top:65px
+}
+
 
 a {
 	color: #000;
@@ -765,8 +779,7 @@ a:hover {
 	bottom: 0;
 	top: 0;
 	right: 0px;
-    left: 855px;
-	width: 38%;
+    left:67%;
 	padding-left: 5px;
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -787,7 +800,7 @@ a:hover {
 }
 
 #notebookSplitter {
-	left:200px
+	left:12%
 }
 
 #noteSplitter {
@@ -795,10 +808,10 @@ a:hover {
 }
 
 #mediaSplitter {
-	left: 855px
+	left: 67%
 }
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 #media {
   position: absolute;
 	bottom: 0;
@@ -812,7 +825,7 @@ a:hover {
 	border-left: 1px solid #cfcfcf;
 }
 =======
->>>>>>> new_feature#6
+>>>>>>> new_feature#6*/
 .ace_editor,.ace_editor * {
 	font-family: Monaco,Menlo,'Ubuntu Mono',Consolas,source-code-pro,Hiragino Sans GB,"Microsoft YaHei","微软雅黑"
 }
@@ -821,7 +834,7 @@ a:hover {
 	visibility: hidden!important
 }
 
-#editor,#mdEditor {
+#editor {
 	position: absolute;
 	z-index: 2;
 	top: 186px;
@@ -831,6 +844,7 @@ a:hover {
 	padding: 0;
 	display: none;
     overflow:auto;
+    width:100%
 }
 
 .leanoteNav {
@@ -1415,7 +1429,7 @@ textarea#wmd-input {
 	left: 0;
 	top: 0;
 	bottom: 0;
-	width: 170px
+	width: 12%
 }
 
 #notebook,#notebookMin {
@@ -1713,8 +1727,8 @@ textarea#wmd-input {
 	position: absolute;
 	bottom: 0;
 	top: 0;
-	right: 516px;
-	left: 170px
+	left:12%;
+	width:55%
 }
 
 #noteList {
@@ -2778,19 +2792,19 @@ h1,h2,h3 {
 	#noteItemList .item {
 		height: 120px
 	}
-
+/*
 	#leftNotebook {
 		width: 140px!important;
 		max-width: 140px
-	}
+	}*/
 
 	#notebook {
 		display: block!important
 	}
-
+/*
 	#leftNotebook .slimScrollDiv {
 		display: block!important
-	}
+	}*/
 
 	#switcher {
 		padding-top: 0;
