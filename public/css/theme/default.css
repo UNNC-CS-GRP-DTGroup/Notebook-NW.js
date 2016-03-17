@@ -837,7 +837,7 @@ a:hover {
 #editor {
 	position: absolute;
 	z-index: 2;
-	top: 186px;
+	top: 134px;
 	bottom: 1px;
 	right: 1px;
 	left: 1px;
@@ -1737,7 +1737,7 @@ textarea#wmd-input {
 	left: 0;
 	right: 0;
 	width: 100%!important;
-	height: 120px;
+	height: 68px;
 	border-top: 1px solid #cfcfcf;
 	border-bottom: 1px solid #cfcfcf;
 	/*z-index: 333*/
@@ -1762,6 +1762,7 @@ textarea#wmd-input {
 	width: 66px;
 	background-color: #eee;
 	border-right: 1px solid #ebeff2;
+	text-align: center
 }
 
 #sortType {
@@ -1803,9 +1804,9 @@ textarea#wmd-input {
 }
 
 #noteItemList .item {
-    width: 100px;
+    width: 210px;
 	position: relative;
-	height: 110px;
+	height: 55px;
 	overflow: hidden;
 	cursor: pointer;
 	border: 1px solid #ebeff2;
@@ -1835,11 +1836,11 @@ textarea#wmd-input {
 	width: 100px;
 	overflow: hidden;
 	position: absolute;
-	z-index: 1;
+	/*z-index: 1;*/
 	right: 0;
 	top: 4px;
 	height: 100px;
-	background-color: #fff;
+	/*background-color: #fff;*/
 	margin-right: 5px;
 	line-height: 100px;
 	text-align: center
@@ -1929,7 +1930,7 @@ textarea#wmd-input {
 }
 
 #tool {
-	top: 120px;
+	top: 68px;
 	left:0;
 	height: 36px;
 	border-bottom: 1px solid #ddd;
@@ -2248,7 +2249,7 @@ textarea#wmd-input {
 
 #noteTitleDiv {
 	position: absolute;
-	top: 156px;
+	top: 104px;
 	left:0;
 	height: 30px;
 	width: 100%;
