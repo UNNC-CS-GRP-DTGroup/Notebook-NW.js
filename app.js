@@ -144,6 +144,38 @@ app.post("/logIn", function(req, res) {
 	});
 });
 
+
+app.post("/addShareNote", function(req, res) {
+}
+
+
+app.get("/share/listShareNotes", function(req, res) {
+    console.log("/share/listShareNotes activated");
+	var UserId = req.query.userId;
+    var NotebookId = req.query.notebookId;
+    // 分享的是一个整个笔记本
+    if(NotebookId) {
+        var query = {"UserInfo.UserId": UserId};
+	   req.db.collection("allAppData").findOne(query, function(err, item) {
+		if(err) console.log("err is: " + err);
+		else {
+			if(item) {
+				console.log("Found data");
+                var notes = item.
+				res.json(JSON.stringify(item));
+			}
+			else {
+				console.log("Not found data");
+				res.end('{"msg": "Not found data", "status": "fail"}');
+			}
+		}
+		
+	});
+    }
+}
+   
+
+
 app.get("/getAll", function(req, res) {
 	// res.header('Access-Control-Allow-Origin', '*'); // implementation of CORS
 	console.log("get activated");
