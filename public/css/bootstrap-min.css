@@ -3496,8 +3496,8 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav>li>a:focus,.nav>li>a:hover {
-	color: #006399;
-	background-color: #00bf8f;
+	color: #64ffda;
+	background-color: #444;
 }
 
 .nav>li.disabled>a {
@@ -3545,7 +3545,7 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav-tabs>li>a {
-	color: #666666;
+	color: #aaa;
 	/* margin-right: 2px; */
 	line-height: 1.428571429;
 	border: 1px solid #000000;

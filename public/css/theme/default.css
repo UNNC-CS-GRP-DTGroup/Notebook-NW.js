@@ -616,8 +616,8 @@ a:hover {
 
 #header {
 	height: 60px;
-	background-color: #000000;
-	border-bottom: 1px solid #25313e;
+	background-color: #444;
+	border-bottom: 1px solid #444;
 	color: #fff;
 	webkit-user-select: none;
 	-webkit-app-region: drag
@@ -654,7 +654,7 @@ a:hover {
 }
 
 #switcher i:hover {
-	color: #0fb264
+	color: #64ffda
 }
 
 #switcher span {
@@ -1471,7 +1471,7 @@ textarea#wmd-input {
 	z-index: 1;
 	overflow-y: visible;
 	overflow-x: visible;
-	background-color: #41586e
+	background-color: #444
 }
 
 #notebookMin div.minContainer {
@@ -1686,7 +1686,7 @@ textarea#wmd-input {
 	width: 90%;
 	margin: 3px auto;
 	margin-top: 0;
-	border-color: #ebeff2;
+	border-color: #444;
 	box-shadow: none
 }
 
@@ -2722,7 +2722,7 @@ h1,h2,h3 {
 #searchNotebookForList {
 	color: #ccc;
 	border: 1px solid rgba(255,255,255,.1);
-	background-color: #000000
+	background-color: #111
 }
 
 #searchNotebookForList:focus {
