@@ -3534,7 +3534,7 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 
 .nav-tabs {
 	padding-right: 2px;
-	border-bottom: 1px solid #00c795;
+	border-bottom: 1px solid #000000
 }
 
 .nav-tabs>li {
@@ -3545,10 +3545,10 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav-tabs>li>a {
-	color: #006399;
+	color: #666666;
 	/* margin-right: 2px; */
 	line-height: 1.428571429;
-	border: 1px solid #00c795;
+	border: 1px solid #000000;
 	border-left: 0px;
 	border-top: 0px;
 	/* border-radius: 10px 10px 0 0 */
@@ -3559,10 +3559,10 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {
-	color: #006399;
+	color: #000000;
 	cursor: default;
 	background-color: #fff;
-	border: 1px solid #00c795;
+	border: 1px solid #000000;
 	border-left: 0px;
 	border-top: 0px;
 	border-bottom-color: transparent
