@@ -149,8 +149,8 @@
 
 <script>
 function webaddress(){
-	var x =document.getElementById("address");
-	document.getElementById("webpage").src = x.value;
+	//var x =document.getElementById("address");
+	document.getElementById("webpage").src = document.getElementById("address").value;
 }
 </script>
 </head>
@@ -243,14 +243,14 @@ function webaddress(){
 							</li>
 -->
 
-<!--
+
 							<li role="presentation" id="setTheme">
 								<a>
 								<i class="fa fa-sun-o"></i>
 								Theme
 								</a>
 							</li>
--->
+
 
 <!--
 							<li role="presentation" class="divider"></li>
@@ -623,7 +623,7 @@ function webaddress(){
                               <big><big><i class="fa fa-folder"></i></big></big>
                            </a>
                         </li>
-                        <li><a href="#webBrowser" data-toggle="tab" title="Web Browser">
+                        <li><a id ="webicon" href="#webBrowser" data-toggle="tab" title="Web Browser">
                               <big><big><i class="fa fa-globe"></i></big></big>
                            </a>
                         </li>
@@ -666,7 +666,7 @@ function webaddress(){
                        <div class="tab-pane fade" id="webBrowser">
 
                            <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>
-                           <iframe id="webpage" src="http://baidu.com" width=100% height=900 onchange="" nwdisable nwfaketop></iframe>
+                           <iframe id="webpage" name = "viewframe" src="http://baidu.com" width=100% height=900 onchange="" nwdisable nwfaketop></iframe>
                               <!-- <iframe id="webpage" class="display" src="http://baidu.com"></iframe> -->
                        </div>
                        <div class="tab-pane fade" id="searchEngine" overflow="auto">
@@ -1177,15 +1177,40 @@ function downloadvideo(){
    // $(".gs-title").on("click","a",function(){
    //    alert("asdf");
    // });
-   // function cse(){
-		 //   	$(".gs-title").on("click","a",function(){
-		 //    $(this).alert("123");
-		 //  	});
-   // 		};
-   // $(document).ready(function(){
-   // 		setInterval(cse,1000);
+
+  //  function bindEvent(func){
+  //  		onClickFunc = func;
+  //  	}
+
+  //  function onClickFunc() {
+		// bindEvent(function(){
+		// 	alert("123");
+		// });
+  //  }
+
+   function onClickFunc2() {
+   		// location.href="#webpage";
+   		$(this).attr("target", "viewframe");
+   		var href = $(this).attr("href");
+   		document.getElementById("address").value = href;
+   		webaddress();
+   		//$("#webBrowser").click();
+   		$("#webicon").trigger("click");
+   		//$(this).attr("href", "#webBrowser");
+   }
+
+   function cse(){
+   			$(".gs-title").unbind();
+		   	$(".gs-title").on("click","a",onClickFunc2);
+
+		   	$("#editor a").click(onClickFunc2);
+		   	// $("#webpage a").click(onClickFunc2);
+		};
+
+   $(document).ready(function(){
+   		setInterval(cse,1000);
    		 
-   // });
+   });
 
 
 
