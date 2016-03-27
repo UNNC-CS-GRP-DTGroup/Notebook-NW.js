@@ -616,8 +616,8 @@ a:hover {
 
 #header {
 	height: 60px;
-	background-color: #25313e;
-	border-bottom: 1px solid #25313e;
+	background-color: #444;
+	border-bottom: 1px solid #444;
 	color: #fff;
 	webkit-user-select: none;
 	-webkit-app-region: drag
@@ -654,7 +654,7 @@ a:hover {
 }
 
 #switcher i:hover {
-	color: #0fb264
+	color: #64ffda
 }
 
 #switcher span {
@@ -687,7 +687,7 @@ a:hover {
 	border-color: #ebeff2;
 	border: none;
 	color: #ccc;
-	background-color: #000;
+	background-color: #666666;
 	padding-left: 14px;
 	border-radius: 5px;
 	height: 30px;
@@ -1438,7 +1438,8 @@ textarea#wmd-input {
 	bottom: 0;
 	top: 0;
 	right: 0;
-	background-color: #41586e;
+	background-color: #444444;
+	border-right: 2px solid #354b66;
 	overflow-y: auto;
 	overflow-x: auto;
 	z-index: 2
@@ -1446,7 +1447,7 @@ textarea#wmd-input {
 
 #addNotebookPlus {
 	padding-right: 10px;
-	color: #adbece
+	color: #c0c0c0
 }
 
 #addNotebookPlus .fa {
@@ -1470,7 +1471,7 @@ textarea#wmd-input {
 	z-index: 1;
 	overflow-y: visible;
 	overflow-x: visible;
-	background-color: #41586e
+	background-color: #444
 }
 
 #notebookMin div.minContainer {
@@ -1540,14 +1541,14 @@ textarea#wmd-input {
 	min-height: 35px;
 	line-height: 35px;
 	cursor: pointer;
-	border-bottom: 1px solid transparent;
+	border-bottom: 1px solid #ffffff;
 	border-color: rgba(255,255,255,.05)
 }
 
 .folderHeader span {
 	display: inline-block;
 	line-height: 35px;
-	color: #fff;
+	color: #ffffff;
 	font-size: 16px
 }
 
@@ -1558,7 +1559,7 @@ textarea#wmd-input {
 	width: 35px;
 	border-right: 1px solid rgba(255,255,255,.05);
 	text-align: center;
-	color: #fff
+	color: #64ffdf
 }
 
 .friend-header {
@@ -1685,7 +1686,7 @@ textarea#wmd-input {
 	width: 90%;
 	margin: 3px auto;
 	margin-top: 0;
-	border-color: #ebeff2;
+	border-color: #444;
 	box-shadow: none
 }
 
@@ -1697,7 +1698,7 @@ textarea#wmd-input {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	background-color: #37485e
+	background-color: #444444
 }
 
 .folderBody li {
@@ -1760,7 +1761,7 @@ textarea#wmd-input {
 	top: 0;
 	bottom: 0;
 	width: 66px;
-	background-color: #eee;
+	background-color: #ddd;
 	border-right: 1px solid #ebeff2;
 }
 
@@ -1819,7 +1820,7 @@ textarea#wmd-input {
 }
 
 .item-active,#noteItemList .item-active:hover {
-	background-color: #00bf8f!important;
+	background-color: #666666!important;
 	color: #fff
 }
 
@@ -2721,7 +2722,7 @@ h1,h2,h3 {
 #searchNotebookForList {
 	color: #ccc;
 	border: 1px solid rgba(255,255,255,.1);
-	background-color: #37485e
+	background-color: #111
 }
 
 #searchNotebookForList:focus {
@@ -2743,7 +2744,7 @@ h1,h2,h3 {
 }
 
 .ztree>li {
-	border-bottom: 1px solid transparent;
+	border-bottom: 1px solid #ffffff;
 	border-color: rgba(255,255,255,.05)
 }
 
@@ -2754,7 +2755,7 @@ h1,h2,h3 {
 }
 
 .ztree li a {
-	color: #ADBECE
+	color: #ffffff
 }
 
 .ztree li a.tmpTargetNode_inner {

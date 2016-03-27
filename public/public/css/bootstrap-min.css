@@ -3470,7 +3470,7 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav {
-	background-color: #81f7d4;
+	background-color: #FFFFFF;
 	/* padding: 12px 5px 0 5px; */
 	margin-bottom: 0;
 	padding-left: 0px;
@@ -3496,8 +3496,8 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav>li>a:focus,.nav>li>a:hover {
-	color: #006399;
-	background-color: #00bf8f;
+	color: #64ffda;
+	background-color: #444;
 }
 
 .nav>li.disabled>a {
@@ -3534,7 +3534,7 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 
 .nav-tabs {
 	padding-right: 2px;
-	border-bottom: 1px solid #00c795;
+	border-bottom: 1px solid #000000
 }
 
 .nav-tabs>li {
@@ -3545,10 +3545,10 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav-tabs>li>a {
-	color: #006399;
+	color: #aaa;
 	/* margin-right: 2px; */
 	line-height: 1.428571429;
-	border: 1px solid #00c795;
+	border: 1px solid #000000;
 	border-left: 0px;
 	border-top: 0px;
 	/* border-radius: 10px 10px 0 0 */
@@ -3559,10 +3559,10 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 }
 
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover {
-	color: #006399;
+	color: #000000;
 	cursor: default;
 	background-color: #fff;
-	border: 1px solid #00c795;
+	border: 1px solid #000000;
 	border-left: 0px;
 	border-top: 0px;
 	border-bottom-color: transparent

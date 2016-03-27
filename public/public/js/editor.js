@@ -13,8 +13,10 @@ function initEditor() {
     tinymce.init({
         selector: '#editor',
         inline: true,
-        theme: 'modern',
+        width: 1500,
+        //theme: 'modern',
         //valid_elements: 'a[href|target=_blank]',
+        skin: 'memeda',
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
