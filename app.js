@@ -173,7 +173,6 @@ app.get("/share/listShareNotes", function(req, res) {
                     var curNotebook = notebooks[i];
                     if(curNotebook.NotebookId == NotebookId) {
                         console.log("Found notebook");
-                        res.json(JSON.stringify(curNotebook));
                         isFound = !0;
                         break;
                     }
@@ -182,7 +181,16 @@ app.get("/share/listShareNotes", function(req, res) {
                     res.end('{"msg": "Not found notebook", "status": "fail"}');
                 }
                 else {
-                    res.end('{"msg": "found notebook", "status": "success"}');
+                    var allNotes = [];
+                    var notes = item.notes;
+                    for(var i in notes) {
+                        var curNote = notes[i];
+                        if(curNote.NotebookId == NotebookId) {
+                            allNotes.push(curNote);
+                        }
+                    }
+                    res.json(JSON.stringify(allNotes));
+//                    res.end('{"msg": "found notebook", "status": "success"}');
                 }
 				
 			}
