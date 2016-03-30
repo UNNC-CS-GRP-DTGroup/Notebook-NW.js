@@ -153,6 +153,8 @@ app.get("/share/listShareNotes", function(req, res) {
 	var UserId = req.query.userId;
     var NotebookId = req.query.notebookId;
     // 分享的是一个整个笔记本
+    console.log("UserId is " + UserId);
+    console.log("NotebookId is " + NotebookId);
     if(NotebookId) {
     	var query = {"UserInfo.UserId": UserId};
     	req.db.collection("allAppData").findOne(query, function(err, item) {
@@ -163,6 +165,7 @@ app.get("/share/listShareNotes", function(req, res) {
                 var notebooks = item.notebooks;
                 var isFound = !1;
                 for(var i in notebooks) {
+                    console.log(i);
                     var curNotebook = notebooks[i];
                     if(curNotebook.NotebookId == NotebookId) {
                         console.log("Found notebook");
