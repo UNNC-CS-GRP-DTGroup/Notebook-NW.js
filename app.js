@@ -29,7 +29,7 @@ console.log("db starts");
 app.use('/updateAll', bodyParser.text());
 app.use('/register', bodyParser.text());
 app.use('/logIn', bodyParser.text());
-app.use('/share/listShareNotes', bodyParser.text());
+//app.use('/share/listShareNotes', bodyParser.text());
 //app.use(bodyParser.json());
 
 console.log("server starts");
@@ -151,9 +151,11 @@ app.post("/logIn", function(req, res) {
 
 app.get("/share/listShareNotes", function(req, res) {
     console.log("/share/listShareNotes activated");
-    var parsedData = JSON.parse(req.body);
-	var UserId = parsedData.userId;
-    var NotebookId = parsedData.notebookId;
+//    var parsedData = JSON.parse(req.body);
+//	var UserId = parsedData.userId;
+//    var NotebookId = parsedData.notebookId;
+    var UserId = req.query.UserId;
+    var NotebookId =  req.query.NotebookId;
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
@@ -203,7 +205,7 @@ app.get("/getAll", function(req, res) {
 	console.log("get activated");
 	// console.log(req);
 	var UserId = req.query.UserId;
-    	console.log("UserId is: " + UserId);
+    console.log("UserId is: " + UserId);
 	var query = {"UserInfo.UserId": UserId};
 	req.db.collection("allAppData").findOne(query, function(err, item) {
 		if(err) console.log("err is: " + err);
