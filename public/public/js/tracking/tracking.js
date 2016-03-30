@@ -28,44 +28,44 @@ var TrackLogRecord = {
 //        })
 //    },
 
-    checkIfDone: function() {
-        if(this.curActivity.ActivityName == "") return;
-        if(this.curActivity.EndTime == "") {
-            this.curActivity.EndTime = (new Date).toTimeString();
-        }
-        this.cache.push(this.curActivity);
-//        alert(this.curActivity.ActivityName);
-        this.clearCurActivity();
-//        alert(this.cache.pop().curActivity);
-    },
+//     checkIfDone: function() {
+//         if(this.curActivity.ActivityName == "") return;
+//         if(this.curActivity.EndTime == "") {
+//             this.curActivity.EndTime = (new Date).toTimeString();
+//         }
+//         this.cache.push(this.curActivity);
+// //        alert(this.curActivity.ActivityName);
+//         this.clearCurActivity();
+// //        alert(this.cache.pop().curActivity);
+//     },
     
-    clearCurActivity: function() {
-        this.curActivity = {
-            ActivityName: "",
-            StartTime: "",
-            EndTime: "",
-            Description: ""
-        }
-    },
+    // clearCurActivity: function() {
+    //     this.curActivity = {
+    //         ActivityName: "",
+    //         StartTime: "",
+    //         EndTime: "",
+    //         Description: ""
+    //     }
+    // },
     
-    newStartRecordingRecord: function() {
-//        this.checkIfDone();
-//        this.curActivity.ActivityName = "Start audio recording";
-        this.curRecordingActivity.StartTime = (new Date).toTimeString();
-//        this.curActivity.EndTime = "NA";
-        this.curActivity.Description = "NA";
-//        this.checkIfDone();
-//        if(this.)
-    },
+//     newStartRecordingRecord: function() {
+// //        this.checkIfDone();
+// //        this.curActivity.ActivityName = "Start audio recording";
+//         this.curRecordingActivity.StartTime = (new Date).toTimeString();
+// //        this.curActivity.EndTime = "NA";
+//         this.curActivity.Description = "NA";
+// //        this.checkIfDone();
+// //        if(this.)
+//     },
     
-    newStopRecordingRecord: function() {
-        this.checkIfDone();
-        this.curActivity.ActivityName = "Stop audio recording";
-        this.curActivity.StartTime = (new Date).toTimeString();
-        this.curActivity.EndTime = "NA";
-        this.curActivity.Description = "NA";
-        this.checkIfDone();
-    },
+    // newStopRecordingRecord: function() {
+    //     this.checkIfDone();
+    //     this.curActivity.ActivityName = "Stop audio recording";
+    //     this.curActivity.StartTime = (new Date).toTimeString();
+    //     this.curActivity.EndTime = "NA";
+    //     this.curActivity.Description = "NA";
+    //     this.checkIfDone();
+    // },
     
     newWritingRecord: function(desc) {
 //        this.checkIfDone();

@@ -1,10 +1,15 @@
 {
-    "main": "Untitled.html", // 启动页面
-    "name": "ga",
+    "main": "LogIn.html", // 启动页面
+    "name": "QuirckNote",
     "window": {
-        "toolbar": true, // 工具栏
+        "transparent": true,
+        "toolbar": false, // 工具栏
         "frame": true,   // 框架
-        "resizable": true  
+        "resizable": false,
+        "position": "mouse",
+        "show_in_taskbar": true,
+        "width": 1600,
+        "height": 900  
     },
     "chromium-args": "--ppapi-flash-path=plugins/PepperFlashPlayer.plugin --ppapi-flash-version=21.0.0.182",
     "webkit": {
