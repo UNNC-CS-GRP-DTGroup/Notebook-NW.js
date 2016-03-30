@@ -155,8 +155,8 @@ app.get("/share/listShareNotes", function(req, res) {
     var NotebookId = req.query.notebookId;
     // 分享的是一个整个笔记本
     if(NotebookId) {
-        var query = {"UserInfo.UserId": UserId};
-	   req.db.collection("allAppData").findOne(query, function(err, item) {
+    	var query = {"UserInfo.UserId": UserId};
+    	req.db.collection("allAppData").findOne(query, function(err, item) {
 		if(err) console.log("err is: " + err);
 		else {
 			if(item) {
@@ -172,7 +172,7 @@ app.get("/share/listShareNotes", function(req, res) {
 		
 	});
     }
-}
+});
    
 
 
