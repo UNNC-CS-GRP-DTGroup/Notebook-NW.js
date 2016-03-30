@@ -387,6 +387,14 @@
 	content: "\f034"
 }
 
+.fa-webback:before{
+	content: "\f053"
+}
+
+.fa-webforward:before{
+	content: "\f054"
+}
+
 .fa-text-width:before {
 	content: "\f035"
 }
