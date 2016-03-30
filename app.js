@@ -29,6 +29,7 @@ console.log("db starts");
 app.use('/updateAll', bodyParser.text());
 app.use('/register', bodyParser.text());
 app.use('/logIn', bodyParser.text());
+app.use('/share/listShareNotes', bodyParser.text());
 //app.use(bodyParser.json());
 
 console.log("server starts");
@@ -155,7 +156,7 @@ app.get("/share/listShareNotes", function(req, res) {
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
-    if(NotebookId) {
+    if(NotebookId && UserId) {
     	var query = {"UserInfo.UserId": UserId};
     	req.db.collection("allAppData").findOne(query, function(err, item) {
 		if(err) console.log("err is: " + err);
@@ -187,8 +188,10 @@ app.get("/share/listShareNotes", function(req, res) {
 				res.end('{"msg": "Not found user", "status": "fail"}');
 			}
 		}
-		
 	});
+    }
+    else {
+        res.end('{"msg": "wrong input", "status": "fail"}');
     }
 });
    
