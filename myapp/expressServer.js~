@@ -36,7 +36,7 @@ app.post("/updateAll", function(req, res) {
 	// console.log(req);
     	console.log("Body is: " + req.body);
 	var parsedData = JSON.parse(req.body);
-	var UserId = parsedData.UserInfo.UserId
+	var UserId = parsedData.UserInfo.UserId;
     	console.log("The UserId is: " + parsedData.UserInfo.UserId);
 
 	//req.db.collection('allAppData').insert(parsedData, function(err, data) {
@@ -47,7 +47,7 @@ app.post("/updateAll", function(req, res) {
 	//});
 
 	var query = {"UserInfo.UserId": UserId};
-	req.db.collection('allAppData').update(query, parsedData, function(err, data) {
+	req.db.collection('allAppData').update(query, parsedData, true, function(err, data) {
 		if(err) console.log(err);
 		else {
 			console.log("data updated to db");

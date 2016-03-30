@@ -47,7 +47,7 @@ app.post("/updateAll", function(req, res) {
 	//});
 
 	var query = {"UserInfo.UserId": UserId};
-	req.db.collection('allAppData').update(query, parsedData, function(err, data) {
+	req.db.collection('allAppData').update(query, parsedData, {upsert: true}, function(err, data) {
 		if(err) console.log(err);
 		else {
 			console.log("data updated to db");
