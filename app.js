@@ -159,13 +159,29 @@ app.get("/share/listShareNotes", function(req, res) {
 		if(err) console.log("err is: " + err);
 		else {
 			if(item) {
-				console.log("Found data");
-                var notes = item.
-				res.json(JSON.stringify(item));
+				console.log("Found User");
+                var notebooks = item.notebooks;
+                var isFound = !1;
+                for(var i in notebooks) {
+                    var curNotebook = notebooks[i];
+                    if(curNotebook.NotebookId == NotebookId) {
+                        console.log("Found notebook");
+                        res.json(JSON.stringify(curNotebook));
+                        isFound = !0;
+                        break;
+                    }
+                }
+                if(!isFound) {
+                    res.end('{"msg": "Not found notebook", "status": "fail"}');
+                }
+                else {
+                    res.end('{"msg": "found notebook", "status": "success"}');
+                }
+				
 			}
 			else {
-				console.log("Not found data");
-				res.end('{"msg": "Not found data", "status": "fail"}');
+				console.log("Not found user");
+				res.end('{"msg": "Not found user", "status": "fail"}');
 			}
 		}
 		
