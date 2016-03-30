@@ -112,7 +112,7 @@ app.post("/register", function(req, res) {
 app.post("/logIn", function(req, res) {
 	// res.header('Access-Control-Allow-Origin', '*'); // implementation of CORS
 	console.log("logIn activated");
-    	console.log("Body is: " + req.body);
+    console.log("Body is: " + req.body);
 	var parsedData = JSON.parse(req.body);
 
 	var findQuery = {"Email": parsedData.Email};
@@ -151,8 +151,9 @@ app.post("/logIn", function(req, res) {
 
 app.get("/share/listShareNotes", function(req, res) {
     console.log("/share/listShareNotes activated");
-	var UserId = req.query.userId;
-    var NotebookId = req.query.notebookId;
+    var parsedData = JSON.parse(req.body);
+	var UserId = parsedData.userId;
+    var NotebookId = parsedData.notebookId;
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
