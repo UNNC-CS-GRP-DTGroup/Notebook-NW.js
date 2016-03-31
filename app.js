@@ -163,7 +163,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                 var notebooks = item.notebooks;
                 var isFound = !1;
                 for(var i in notebooks) {
-                    console.log(i);
+//                    console.log(i);
                     var curNotebook = notebooks[i];
                     if(curNotebook.NotebookId == NotebookId) {
                         console.log("Found notebook");
@@ -175,7 +175,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                     res.end('{"msg": "Not found notebook", "status": "fail"}');
                 }
                 else {
-                    res.end('{"msg": "Not found notebook", "status": "success"}');
+                    res.end('{"msg": "Found notebook", "status": "success"}');
                 }
             }
         }
