@@ -274,6 +274,10 @@ app.post("/share/addShareNotebook", function(req, res) {
                     });
                 }
             }
+            else {
+                console.log("Note found sender");
+                res.end('{"msg": "sender not found", "status": "fail"}');
+            }
         }
     });
 });
