@@ -154,7 +154,6 @@ app.post("/share/addShareNotebook", function(req, res) {
     var senderUserId = parsedData.SenderUserId;
     var Email = parsedData.Email;
     var NotebookId = parsedData.NotebookId;
-    var ToUserId = "";
     var Perm = parsedData.Perm;
     
     var query = {"UserInfo.UserId": senderUserId};
@@ -167,7 +166,6 @@ app.post("/share/addShareNotebook", function(req, res) {
             if(item) {
                 console.log("Found sender");
                 var notebooks = item.notebooks;
-//                ToUserId = item.UserInfo.UserId;
                 var targetNotebook;
                 var senderUserInfo = item.UserInfo;
                 console.log("sender userId is " + senderUserInfo.UserId);
@@ -203,6 +201,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                                 
                                 var targetUserInfo = item.UserInfo;  
                                 var shareNotebooks = item.shareNotebooks;
+                                var ToUserId = targetUserInfo.UserId;
                                 console.log("receiver id is " + targetUserInfo.UserId);
                                 // 更新目标ShareUserInfos
                                 var anotherUserInfo = {};
