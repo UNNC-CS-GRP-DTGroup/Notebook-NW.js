@@ -196,7 +196,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                     anotherUserInfo.Usn = item.Usn;
                     
                     var query = {"UserInfo.UserId": ToUserId};
-                    req.db.collection('allAppData').update(query, {$set:{"sharedUserInfos:" anotherUserInfo}}, {upsert: true}, function(err, data) {
+                    req.db.collection('allAppData').update(query, {$set:{"sharedUserInfos": anotherUserInfo}}, {upsert: true}, function(err, data) {
                         if(err) console.log(err);
                         else {
                             
@@ -221,7 +221,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                             anotherNotebook.IsDefault = targetNotebook.IsDefault;
 
                             var query = {"UserInfo.UserId": ToUserId};
-                            req.db.collection('allAppData').update(query, {$set:{"shareNotebooks:" anotherNotebook}}, {upsert: true}, function(err, data) {
+                            req.db.collection('allAppData').update(query, {$set:{"shareNotebooks": anotherNotebook}}, {upsert: true}, function(err, data) {
                                 if(err) console.log(err);
                                 else {
                                 }
