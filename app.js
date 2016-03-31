@@ -29,6 +29,8 @@ console.log("db starts");
 app.use('/updateAll', bodyParser.text());
 app.use('/register', bodyParser.text());
 app.use('/logIn', bodyParser.text());
+app.use('/share/addShareNotebook', bodyParser.text());
+
 //app.use('/share/listShareNotes', bodyParser.text());
 //app.use(bodyParser.json());
 
@@ -145,8 +147,41 @@ app.post("/logIn", function(req, res) {
 	});
 });
 
-//app.post("/addShareNote", function(req, res) {
-//}
+app.post("/share/addShareNotebook", function(req, res) {
+    console.log("/share/addShareNotebook activated");
+    console.log("Body is: " + req.body);
+	var parsedData = JSON.parse(req.body);
+    var Email = parsedData.Email;
+    var NotebookId = parsedData.NotebookId;
+    
+    var query = {"UserInfo.Email": Email};
+    req.db.collection("allAppData").findOne(query, function(err, item) {
+		if(err) console.log("err is: " + err);
+        else {
+            if(item) {
+                console.log("Found user");
+                var notebooks = item.notebooks;
+                var isFound = !1;
+                for(var i in notebooks) {
+                    console.log(i);
+                    var curNotebook = notebooks[i];
+                    if(curNotebook.NotebookId == NotebookId) {
+                        console.log("Found notebook");
+                        isFound = !0;
+                        break;
+                    }
+                }
+                if(!isFound) {
+                    res.end('{"msg": "Not found notebook", "status": "fail"}');
+                }
+                else {
+                    res.end('{"msg": "Not found notebook", "status": "success"}');
+                }
+            }
+        }
+    });
+});
+                                            
 
 
 app.get("/share/listShareNotes", function(req, res) {
