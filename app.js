@@ -30,6 +30,7 @@ app.use('/updateAll', bodyParser.text());
 app.use('/register', bodyParser.text());
 app.use('/logIn', bodyParser.text());
 app.use('/share/addShareNotebook', bodyParser.text());
+app.use('/share/addShareNote', bodyParser.text());
 
 //app.use('/share/listShareNotes', bodyParser.text());
 //app.use(bodyParser.json());
