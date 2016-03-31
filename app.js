@@ -29,6 +29,7 @@ console.log("db starts");
 app.use('/updateAll', bodyParser.text());
 app.use('/register', bodyParser.text());
 app.use('/logIn', bodyParser.text());
+//app.use('/share/listShareNotes', bodyParser.text());
 //app.use(bodyParser.json());
 
 console.log("server starts");
@@ -111,7 +112,7 @@ app.post("/register", function(req, res) {
 app.post("/logIn", function(req, res) {
 	// res.header('Access-Control-Allow-Origin', '*'); // implementation of CORS
 	console.log("logIn activated");
-    	console.log("Body is: " + req.body);
+    console.log("Body is: " + req.body);
 	var parsedData = JSON.parse(req.body);
 
 	var findQuery = {"Email": parsedData.Email};
@@ -150,26 +151,58 @@ app.post("/logIn", function(req, res) {
 
 app.get("/share/listShareNotes", function(req, res) {
     console.log("/share/listShareNotes activated");
-	var UserId = req.query.userId;
-    var NotebookId = req.query.notebookId;
+//    var parsedData = JSON.parse(req.body);
+//	var UserId = parsedData.userId;
+//    var NotebookId = parsedData.notebookId;
+    var UserId = req.query.UserId;
+    var NotebookId =  req.query.NotebookId;
     // 分享的是一个整个笔记本
-    if(NotebookId) {
+    console.log("UserId is " + UserId);
+    console.log("NotebookId is " + NotebookId);
+    if(NotebookId && UserId) {
     	var query = {"UserInfo.UserId": UserId};
     	req.db.collection("allAppData").findOne(query, function(err, item) {
 		if(err) console.log("err is: " + err);
 		else {
 			if(item) {
-				console.log("Found data");
-                var notes = item.
-				res.json(JSON.stringify(item));
+				console.log("Found User");
+                var notebooks = item.notebooks;
+                var isFound = !1;
+                for(var i in notebooks) {
+                    console.log(i);
+                    var curNotebook = notebooks[i];
+                    if(curNotebook.NotebookId == NotebookId) {
+                        console.log("Found notebook");
+                        isFound = !0;
+                        break;
+                    }
+                }
+                if(!isFound) {
+                    res.end('{"msg": "Not found notebook", "status": "fail"}');
+                }
+                else {
+                    var allNotes = [];
+                    var notes = item.notes;
+                    for(var i in notes) {
+                        var curNote = notes[i];
+                        if(curNote.NotebookId == NotebookId) {
+                            allNotes.push(curNote);
+                        }
+                    }
+                    res.json(JSON.stringify(allNotes));
+//                    res.end('{"msg": "found notebook", "status": "success"}');
+                }
+				
 			}
 			else {
-				console.log("Not found data");
-				res.end('{"msg": "Not found data", "status": "fail"}');
+				console.log("Not found user");
+				res.end('{"msg": "Not found user", "status": "fail"}');
 			}
 		}
-		
 	});
+    }
+    else {
+        res.end('{"msg": "wrong input", "status": "fail"}');
     }
 });
    
@@ -180,7 +213,7 @@ app.get("/getAll", function(req, res) {
 	console.log("get activated");
 	// console.log(req);
 	var UserId = req.query.UserId;
-    	console.log("UserId is: " + UserId);
+    console.log("UserId is: " + UserId);
 	var query = {"UserInfo.UserId": UserId};
 	req.db.collection("allAppData").findOne(query, function(err, item) {
 		if(err) console.log("err is: " + err);
