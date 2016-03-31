@@ -202,7 +202,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                                 
                                 var targetUserInfo = item.UserInfo;  
                                 var shareNotebooks = item.shareNotebooks;
-                                
+                                console.log("receiver id is " + targetUserInfo.UserId);
                                 // 更新目标ShareUserInfos
                                 var anotherUserInfo = {};
 
@@ -251,6 +251,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                                             shareNotebooks.senderUserId.push(anotherNotebook);
                                         }
                                         else {
+                                            console.log("new sender")
                                             shareNotebooks.senderUserId = [];
                                             shareNotebooks.senderUserId.push(anotherNotebook);
                                         }
