@@ -158,7 +158,10 @@ app.post("/share/addShareNotebook", function(req, res) {
     
     var query = {"UserInfo.Email": Email};
     req.db.collection("allAppData").findOne(query, function(err, item) {
-		if(err) console.log("err is: " + err);
+		if(err) {
+            console.log("err is: " + err);
+            res.end('{"msg": "DB error", "status": "fail"}');
+        }
         else {
             if(item) {
                 console.log("Found user");
@@ -197,8 +200,12 @@ app.post("/share/addShareNotebook", function(req, res) {
                     
                     var query = {"UserInfo.UserId": ToUserId};
                     req.db.collection('allAppData').update(query, {$set:{"sharedUserInfos": anotherUserInfo}}, {upsert: true}, function(err, data) {
-                        if(err) console.log(err);
+                        if(err) {
+                            console.log(err);
+                            res.end('{"msg": "DB error", "status": "fail"}');
+                        }
                         else {
+                            console.log("successfully update ShareUserInfos");
                             
                             // 更新目标ShareNotebooks
                             var anotherNotebook = {};
@@ -222,14 +229,19 @@ app.post("/share/addShareNotebook", function(req, res) {
 
                             var query = {"UserInfo.UserId": ToUserId};
                             req.db.collection('allAppData').update(query, {$set:{"shareNotebooks": anotherNotebook}}, {upsert: true}, function(err, data) {
-                                if(err) console.log(err);
+                                if(err) {
+                                    console.log(err);
+                                    res.end('{"msg": "DB error", "status": "fail"}');
+                                }
                                 else {
+                                    console.log("successfully update ShareNotebooks");
+                                    res.end('{"msg": "Updated scuccessfully", "status": "success"}');
                                 }
                             });
                         }
                     });
                     
-                    res.end('{"msg": "Updated scuccessfully", "status": "success"}');
+
                 }
             }
         }
