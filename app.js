@@ -269,6 +269,10 @@ app.post("/share/addShareNotebook", function(req, res) {
                                     }
                                 });
                             }
+                            else {
+                                console.log("Note found receiver");
+                                res.end('{"msg": "receiver not found", "status": "fail"}');
+                            }
                         }
                     });
                 }
@@ -303,7 +307,7 @@ app.get("/share/listShareNotes", function(req, res) {
                 var notebooks = item.notebooks;
                 var isFound = !1;
                 for(var i in notebooks) {
-                    console.log(i);
+//                    console.log(i);
                     var curNotebook = notebooks[i];
                     if(curNotebook.NotebookId == NotebookId) {
                         console.log("Found notebook");
@@ -312,6 +316,7 @@ app.get("/share/listShareNotes", function(req, res) {
                     }
                 }
                 if(!isFound) {
+                    console.log("Not found notebook")
                     res.end('{"msg": "Not found notebook", "status": "fail"}');
                 }
                 else {
