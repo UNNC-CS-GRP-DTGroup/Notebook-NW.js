@@ -185,6 +185,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                 }
                 
                 if(!isFound) { // 没找到
+                    console.log("Not found");
                     res.end('{"msg": "Not found notebook", "status": "fail"}');
                 }
                 else { // 找到了要分享的notebook
