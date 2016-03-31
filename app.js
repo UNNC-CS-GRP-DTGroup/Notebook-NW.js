@@ -168,6 +168,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                 var notebooks = item.notebooks;
                 ToUserId = item.UserInfo.UserId;
                 var targetNotebook;
+                var targetUserInfo = item.UserInfo;
                 var isFound = !1;
                 for(var i in notebooks) {
 //                    console.log(i);
@@ -187,19 +188,20 @@ app.post("/share/addShareNotebook", function(req, res) {
                     
                     // 更新目标ShareUserInfos
                     var anotherUserInfo = {};
-                    anotherUserInfo.UserId = item.UserId;
-                    anotherUserInfo.Email = item.Email;
-                    anotherUserInfo.Verified = item.Verified;
-                    anotherUserInfo.Username = item.Username;
-                    anotherUserInfo.CreatedTime = item.CreatedTime;
-                    anotherUserInfo.Logo = item.Logo;
-                    anotherUserInfo.Theme = item.Theme;
-                    anotherUserInfo.FromUserId = item.FromUserId;
-                    anotherUserInfo.NoteCnt = item.NoteCnt;
-                    anotherUserInfo.Usn = item.Usn;
+                    var original
+                    anotherUserInfo.UserId = targetUserInfo.UserId;
+                    anotherUserInfo.Email = targetUserInfo.Email;
+                    anotherUserInfo.Verified = targetUserInfo.Verified;
+                    anotherUserInfo.Username = targetUserInfo.Username;
+                    anotherUserInfo.CreatedTime = targetUserInfo.CreatedTime;
+                    anotherUserInfo.Logo = targetUserInfo.Logo;
+                    anotherUserInfo.Theme = targetUserInfo.Theme;
+                    anotherUserInfo.FromUserId = targetUserInfo.FromUserId;
+                    anotherUserInfo.NoteCnt = targetUserInfo.NoteCnt;
+                    anotherUserInfo.Usn = targetUserInfo.Usn;
                     
                     var query = {"UserInfo.UserId": ToUserId};
-                    req.db.collection('allAppData').update(query, {$set:{"sharedUserInfos": anotherUserInfo}}, {upsert: true}, function(err, data) {
+                    req.db.collection('allAppData').update(query, {$addToSet:{"sharedUserInfos": anotherUserInfo}}, {upsert: true}, function(err, data) {
                         if(err) {
                             console.log(err);
                             res.end('{"msg": "DB error", "status": "fail"}');
@@ -228,7 +230,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                             anotherNotebook.IsDefault = targetNotebook.IsDefault;
 
                             var query = {"UserInfo.UserId": ToUserId};
-                            req.db.collection('allAppData').update(query, {$set:{"shareNotebooks": anotherNotebook}}, {upsert: true}, function(err, data) {
+                            req.db.collection('allAppData').update(query, {$addToSet:{"shareNotebooks": anotherNotebook}}, {upsert: true}, function(err, data) {
                                 if(err) {
                                     console.log(err);
                                     res.end('{"msg": "DB error", "status": "fail"}');
