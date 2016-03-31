@@ -210,7 +210,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                             anotherNotebook.UpdatedTime = targetNotebook.UpdatedTime;
                             anotherNotebook.Usn = targetNotebook.Usn;
                             anotherNotebook.IsDeleted = targetNotebook.IsDeleted;
-                            anotherNotebook.ShareNotebookId = """";
+                            anotherNotebook.ShareNotebookId = "";
                             anotherNotebook.ToUserId = ToUserId;
                             anotherNotebook.ToGroupId = ""; 
                             anotherNotebook.ToGroup = {};
