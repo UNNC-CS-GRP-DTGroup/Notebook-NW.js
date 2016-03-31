@@ -170,7 +170,7 @@ app.post("/share/addShareNotebook", function(req, res) {
 //                ToUserId = item.UserInfo.UserId;
                 var targetNotebook;
                 var senderUserInfo = item.UserInfo;
-                console.log("sender userinfo is " + senderUserInfo);
+                console.log("sender userId is " + senderUserInfo.UserId);
 //                var shareNotebooks = item.shareNotebooks;
 
                 var isFound = !1;
@@ -217,7 +217,7 @@ app.post("/share/addShareNotebook", function(req, res) {
                                 anotherUserInfo.FromUserId = senderUserInfo.FromUserId;
                                 anotherUserInfo.NoteCnt = senderUserInfo.NoteCnt;
                                 anotherUserInfo.Usn = senderUserInfo.Usn;
-                                console.log("anotherUserInfo is " + anotherUserInfo);
+                                console.log("anotherUserInfo email is " + anotherUserInfo.Email);
                                 // 更新receiver的sharedUserInfos
                                 var query = {"UserInfo.UserId": ToUserId};
                                 req.db.collection('allAppData').update(query, {$addToSet:{"sharedUserInfos": anotherUserInfo}}, {upsert: true}, function(err, data) {
