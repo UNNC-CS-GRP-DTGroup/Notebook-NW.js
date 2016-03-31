@@ -248,12 +248,12 @@ app.post("/share/addShareNotebook", function(req, res) {
                                         anotherNotebook.IsDefault = targetNotebook.IsDefault;
 
                                         if(shareNotebooks.hasOwnProperty(senderUserId)) { // 如果receiver已经有过sender的share记录
-                                            shareNotebooks.senderUserId.push(anotherNotebook);
+                                            shareNotebooks[senderUserId].push(anotherNotebook);
                                         }
                                         else {
                                             console.log("new sender")
-                                            shareNotebooks.senderUserId = [];
-                                            shareNotebooks.senderUserId.push(anotherNotebook);
+                                            shareNotebooks[senderUserId] = [];
+                                            shareNotebooks[senderUserId].push(anotherNotebook);
                                         }
                                         var query = {"UserInfo.UserId": ToUserId};
                                         req.db.collection('allAppData').update(query, {$set:{"shareNotebooks": shareNotebooks}}, {upsert: true}, function(err, data) {
