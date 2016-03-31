@@ -153,6 +153,8 @@ app.post("/share/addShareNotebook", function(req, res) {
 	var parsedData = JSON.parse(req.body);
     var Email = parsedData.Email;
     var NotebookId = parsedData.NotebookId;
+    var ToUserId = "";
+    var Perm = parsedData.Perm;
     
     var query = {"UserInfo.Email": Email};
     req.db.collection("allAppData").findOne(query, function(err, item) {
@@ -161,21 +163,73 @@ app.post("/share/addShareNotebook", function(req, res) {
             if(item) {
                 console.log("Found user");
                 var notebooks = item.notebooks;
+                ToUserId = item.UserInfo.UserId;
+                var targetNotebook;
                 var isFound = !1;
                 for(var i in notebooks) {
 //                    console.log(i);
                     var curNotebook = notebooks[i];
                     if(curNotebook.NotebookId == NotebookId) {
                         console.log("Found notebook");
+                        targetNotebook = curNotebook;
                         isFound = !0;
                         break;
                     }
                 }
-                if(!isFound) {
+                
+                if(!isFound) { // 没找到
                     res.end('{"msg": "Not found notebook", "status": "fail"}');
                 }
-                else {
-                    res.end('{"msg": "Found notebook", "status": "success"}');
+                else { // 找到
+                    
+                    // 更新目标ShareUserInfos
+                    var anotherUserInfo = {};
+                    anotherUserInfo.UserId = item.UserId;
+                    anotherUserInfo.Email = item.Email;
+                    anotherUserInfo.Verified = item.Verified;
+                    anotherUserInfo.Username = item.Username;
+                    anotherUserInfo.CreatedTime = item.CreatedTime;
+                    anotherUserInfo.Logo = item.Logo;
+                    anotherUserInfo.Theme = item.Theme;
+                    anotherUserInfo.FromUserId = item.FromUserId;
+                    anotherUserInfo.NoteCnt = item.NoteCnt;
+                    anotherUserInfo.Usn = item.Usn;
+                    
+                    var query = {"UserInfo.UserId": ToUserId};
+                    req.db.collection('allAppData').update(query, {$set:{"sharedUserInfos:" anotherUserInfo}}, {upsert: true}, function(err, data) {
+                        if(err) console.log(err);
+                        else {
+                            
+                            // 更新目标ShareNotebooks
+                            var anotherNotebook = {};
+                            anotherNotebook.ParentNotebookId = targetNotebook.ParentNotebookId;
+                            anotherNotebook.Title = targetNotebook.Title;
+                            anotherNotebook.UrlTitle = targetNotebook.UrlTitle;
+                            anotherNotebook.NumberNotes = targetNotebook.NumberNotes;
+                            anotherNotebook.IsBlog = targetNotebook.IsBlog;
+                            anotherNotebook.UpdatedTime = targetNotebook.UpdatedTime;
+                            anotherNotebook.Usn = targetNotebook.Usn;
+                            anotherNotebook.IsDeleted = targetNotebook.IsDeleted;
+                            anotherNotebook.ShareNotebookId = """";
+                            anotherNotebook.ToUserId = ToUserId;
+                            anotherNotebook.ToGroupId = ""; 
+                            anotherNotebook.ToGroup = {};
+                            anotherNotebook.Perm = Perm;
+                            anotherNotebook.Subs = targetNotebook.Subs;
+                            anotherNotebook.Seq = targetNotebook.Seq;
+                            anotherNotebook.NotebookId = targetNotebook.NotebookId;
+                            anotherNotebook.IsDefault = targetNotebook.IsDefault;
+
+                            var query = {"UserInfo.UserId": ToUserId};
+                            req.db.collection('allAppData').update(query, {$set:{"shareNotebooks:" anotherNotebook}}, {upsert: true}, function(err, data) {
+                                if(err) console.log(err);
+                                else {
+                                }
+                            });
+                        }
+                    });
+                    
+                    res.end('{"msg": "Updated scuccessfully", "status": "success"}');
                 }
             }
         }
