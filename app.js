@@ -352,7 +352,7 @@ app.post("/share/addShareNote", function(req, res) {
                                 }
                                 else {
                                     console.log("successfully update ShareUserInfos");
-                                    res.end('{"msg": "success", "status": "success", "ToUserId":' + JSON.stringify(ToUserID) + '}');
+                                    res.end('{"msg": "success", "status": "success", "ToUserId":' + ToUserID + '}');
 //                                    res.json(JSON.stringify(ToUserId));
                                 }
                             });
