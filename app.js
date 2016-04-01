@@ -380,7 +380,7 @@ app.get("/share/listShareNotes", function(req, res) {
 //    var NotebookId = parsedData.notebookId;
     var UserId = req.query.UserId;
     var NotebookId =  req.query.NotebookId;
-    var CurUserId = req.query.CurUserId; // 被share的user的id
+    var CurEmail = req.query.CurEmail; // 被share的user的id
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
@@ -396,8 +396,8 @@ app.get("/share/listShareNotes", function(req, res) {
                     console.log("this is single notes sharing")
                     var shareNotebookDefault = item.shareNotebookDefault;
                     
-                    var thisShareNotes = shareNotebookDefault[CurUserId];
-                    if(thisShareNotes) {
+                    var thisShareNotes = shareNotebookDefault[CurEmail];
+                    if(thisShareNotes != undefined) {
                         var notes = item.notes;
                         for(var i in thisShareNotes) {
                             var curNoteId = thisShareNotes[i].NoteId;
