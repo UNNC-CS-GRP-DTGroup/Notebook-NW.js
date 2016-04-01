@@ -351,7 +351,8 @@ app.post("/share/addShareNote", function(req, res) {
                                     res.end('{"msg": "DB error", "status": "fail"}');
                                 }
                                 else {
-                                    console.log("successfully update ShareUserInfos");                                    
+                                    console.log("successfully update ShareUserInfos");   
+                                    res.end('{"msg": "share successfully", "status": "success"}');
                                 }
                             });
                         }
