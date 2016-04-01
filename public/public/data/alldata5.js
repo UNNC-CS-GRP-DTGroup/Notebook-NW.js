@@ -347,6 +347,7 @@ $.ajax({
             allAppData.latestNotes = latestNotes;
             allAppData.tagsJson = tagsJson;
             allAppData.trackingLog = trackingLog;
+            allAppData.shareNotebookDefault = shareNotebookDefault;
             console.log("using initial data");
             console.log("call initPage()");
             initPage();
@@ -376,6 +377,8 @@ $.ajax({
         console.log("tagsJson updated from server");
         trackingLog = allAppData.trackingLog;
         console.log("trackingLog updated from server");
+        shareNotebookDefault = allAppData.shareNotebookDefault;
+        console.log("shareNotebookDefault updated from server");
         console.log("call initPage()");
         initPage();
         localforage.setItem("allAppData", allAppData, function(err, value) {
@@ -407,6 +410,8 @@ $.ajax({
                     console.log("tagsJson updated from local");
                     trackingLog = allAppData.trackingLog;
                     console.log("trackingLog updated from local");
+                    shareNotebookDefault = allAppData.shareNotebookDefault;
+                    console.log("shareNotebookDefault updated from local");
                     console.log("call initPage() from local");
                     initPage();
                     localforage.setItem("allAppData", allAppData, function(err, value) {
@@ -423,6 +428,7 @@ $.ajax({
                 allAppData.latestNotes = latestNotes;
                 allAppData.tagsJson = tagsJson;
                 allAppData.trackingLog = trackingLog;
+                allAppData.shareNotebookDefault = shareNotebookDefault;
                 console.log("using initial data");
                 console.log("call initPage()");
                 initPage();
