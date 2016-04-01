@@ -380,6 +380,7 @@ app.get("/share/listShareNotes", function(req, res) {
 //    var NotebookId = parsedData.notebookId;
     var UserId = req.query.UserId;
     var NotebookId =  req.query.NotebookId;
+    var CurUserId = req.query.CurUserId; // 被share的user的id
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
@@ -392,16 +393,26 @@ app.get("/share/listShareNotes", function(req, res) {
 				console.log("Found User");
                 var allNotes = [];
                 if(NotebookId == "share0") { // if it is in default sharing notebook
+                    console.log("this is single notes sharing")
                     var shareNotebookDefault = item.shareNotebookDefault;
-                    var notes = item.notes;
-                    for(var i in shareNotebookDefault) {
-                        var curNoteId = shareNotebookDefault[i].NoteId;
-                        for(var j in notes) {
-                            if(curNoteId == notes[j].NoteId) {
-                                allNotes.push(notes[j]);
+                    
+                    var thisShareNotes = shareNotebookDefault[CurUserId];
+                    if(thisShareNotes) {
+                        var notes = item.notes;
+                        for(var i in thisShareNotes) {
+                            var curNoteId = thisShareNotes[i].NoteId;
+                            for(var j in notes) {
+                                if(curNoteId == notes[j].NoteId) {
+                                    allNotes.push(notes[j]);
+                                }
                             }
                         }
                     }
+                    else { // 不存在share给当前用户的笔记
+                        console.log("Not found any note");
+				        res.end('{"msg": "Not found any note", "status": "fail"}');
+                    }
+                    
                 }
                 else {     
                     var notebooks = item.notebooks;
