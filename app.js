@@ -351,8 +351,9 @@ app.post("/share/addShareNote", function(req, res) {
                                     res.end('{"msg": "DB error", "status": "fail"}');
                                 }
                                 else {
-                                    console.log("successfully update ShareUserInfos");   
-                                    res.end('{"msg": "share successfully", "status": "success"}');
+                                    console.log("successfully update ShareUserInfos");
+                                    res.end('{"msg": "success", "status": "success", "ToUserId":' + JSON.stringify(ToUserID) + '}');
+//                                    res.json(JSON.stringify(ToUserId));
                                 }
                             });
                         }
@@ -380,7 +381,7 @@ app.get("/share/listShareNotes", function(req, res) {
 //    var NotebookId = parsedData.notebookId;
     var UserId = req.query.UserId;
     var NotebookId =  req.query.NotebookId;
-    var CurEmail = req.query.CurEmail; // 被share的user的id
+    var CurUserId = req.query.CurUserId; // 被share的user的id
     // 分享的是一个整个笔记本
     console.log("UserId is " + UserId);
     console.log("NotebookId is " + NotebookId);
@@ -396,7 +397,7 @@ app.get("/share/listShareNotes", function(req, res) {
                     console.log("this is single notes sharing")
                     var shareNotebookDefault = item.shareNotebookDefault;
                     
-                    var thisShareNotes = shareNotebookDefault[CurEmail];
+                    var thisShareNotes = shareNotebookDefault[CurUserId];
                     if(thisShareNotes != undefined) {
                         var notes = item.notes;
                         for(var i in thisShareNotes) {
