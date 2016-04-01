@@ -390,34 +390,34 @@ app.get("/share/listShareNotes", function(req, res) {
 		else {
 			if(item) {
 				console.log("Found User");
-                var notebooks = item.notebooks;
-                var isFound = !1;
-                for(var i in notebooks) {
-//                    console.log(i);
-                    var curNotebook = notebooks[i];
-                    if(curNotebook.NotebookId == NotebookId) {
-                        console.log("Found notebook");
-                        isFound = !0;
-                        break;
-                    }
-                }
-                if(!isFound) {
-                    console.log("Not found notebook")
-                    res.end('{"msg": "Not found notebook", "status": "fail"}');
-                }
-                else {
-                    var allNotes = [];
-                    if(NotebookId == "share0") { // if it is in default sharing notebook
-                        var shareNotebookDefault = item.shareNotebookDefault;
-                        var notes = item.notes;
-                        for(var i in shareNotebookDefault) {
-                            var curNoteId = shareNotebookDefault[i].NoteId;
-                            for(var j in notes) {
-                                if(curNoteId == notes[j].NoteId) {
-                                    allNotes.push(notes[j]);
-                                }
+                var allNotes = [];
+                if(NotebookId == "share0") { // if it is in default sharing notebook
+                    var shareNotebookDefault = item.shareNotebookDefault;
+                    var notes = item.notes;
+                    for(var i in shareNotebookDefault) {
+                        var curNoteId = shareNotebookDefault[i].NoteId;
+                        for(var j in notes) {
+                            if(curNoteId == notes[j].NoteId) {
+                                allNotes.push(notes[j]);
                             }
                         }
+                    }
+                }
+                else {     
+                    var notebooks = item.notebooks;
+                    var isFound = !1;
+                    for(var i in notebooks) {
+    //                    console.log(i);
+                        var curNotebook = notebooks[i];
+                        if(curNotebook.NotebookId == NotebookId) {
+                            console.log("Found notebook");
+                            isFound = !0;
+                            break;
+                        }
+                    }
+                    if(!isFound) {
+                        console.log("Not found notebook")
+                        res.end('{"msg": "Not found notebook", "status": "fail"}');
                     }
                     else {
                         var notes = item.notes;
@@ -428,11 +428,9 @@ app.get("/share/listShareNotes", function(req, res) {
                             }
                         }
                     }
-
-                    res.json(JSON.stringify(allNotes));
-//                    res.end('{"msg": "found notebook", "status": "success"}');
                 }
-				
+                res.json(JSON.stringify(allNotes));
+    //                    res.end('{"msg": "found notebook", "status": "success"}');
 			}
 			else {
 				console.log("Not found user");
