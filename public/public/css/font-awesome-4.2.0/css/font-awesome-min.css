@@ -388,11 +388,13 @@
 }
 
 .fa-webback:before{
-	content: "\f053"
+	content: "\f053";
+    font-size: 18px
 }
 
 .fa-webforward:before{
-	content: "\f054"
+	content: "\f054";
+    font-size: 18px
 }
 
 .fa-text-width:before {
@@ -412,7 +414,7 @@
 }
 
 .fa-align-justify:before {
-	content: "\f039"
+	content: "\f060"
 }
 
 .fa-list:before {
