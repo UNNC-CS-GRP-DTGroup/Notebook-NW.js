@@ -34,7 +34,8 @@
     var UserInfo = {"UserId":"","Email":"me@nottingham.edu.cn","Verified":false,"Username":"unknown","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"unknown"};
 
     var notebooks = [{"NotebookId":"0","UserId":"56a82c7bab64417776002a5c","Title":"Newest","UrlTitle":"","NumberNotes":1,"CreatedTime":"0001-01-01T00:00:00Z", "drop":!1, "drag":!1},
-    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        {"NotebookId":"56a82c7bab64417776002a5e","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
+    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        
+     {"NotebookId":"56a82c7bab64417776002a5e","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
 
     {"NotebookId":"56a82c7bab64417776002a5f","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"work","UrlTitle":"","NumberNotes":1,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
 
@@ -45,12 +46,16 @@
     
 //    var sharedUserInfos = [{"UserId":"52d26b4e99c37b609a000001","Email":"leanote@leanote.com","Verified":true,"Username":"leanote","UsernameRaw":"leanote","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
 
-    var shareNotebooks = {"56fb70aed922a81ac2000000":[{"ParentNotebookId":"","Title":"testshare","UrlTitle":"","NumberNotes":5,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"56a82c7bab64417776002a5d", "IsDefault":false}
-    ]};
+//    var shareNotebooks = {"56fb70aed922a81ac2000000":[{"ParentNotebookId":"","Title":"testshare","UrlTitle":"","NumberNotes":5,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"56a82c7bab64417776002a5d", "IsDefault":false}
+//    ]};
 
-    var sharedUserInfos = [{"UserId":"56fb70aed922a81ac2000000","Email":"qy","Verified":true,"Username":"qy","UsernameRaw":"qy","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
+    var shareNotebooks = {};
     
-    var shareNotebookDefault = {"52d26b4e99c37b609a000001": ["noteId",""]}
+//    var sharedUserInfos = [{"UserId":"56fb70aed922a81ac2000000","Email":"qy","Verified":true,"Username":"qy","UsernameRaw":"qy","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
+    
+    var sharedUserInfos = [];
+    
+    var shareNotebookDefault = {};
 
 
     var notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"unknown","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
@@ -71,6 +76,7 @@
     allAppData.latestNotes = latestNotes;
     allAppData.tagsJson = tagsJson;
     allAppData.trackingLog = trackingLog;
+    allAppData.shareNotebookDefault = shareNotebookDefault;
 
 </script>   
     
@@ -266,14 +272,12 @@ function forwardpage(){
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu li-a" role="menu">
-<!--
 							<li role="presentation">
 								<a href="/member" target="_blank">
 								<i class="fa fa-user"></i>
 								Member Center
 								</a>
 							</li>
--->
 
 
 							<li role="presentation" id="setTheme">
