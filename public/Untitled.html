@@ -672,22 +672,39 @@ function forwardpage(){
                     </ul>
                     <div id="myTabContent" class="tab-content">
                        <div class="tab-pane fade in active" id="audioRecording">
-							<p>Audio Recording</p>
+							<!-- <p>Audio Recording</p> -->
 					        <div id = "test" style="visibility:hidden;">
 							<audio controls="controls"></audio>
 							</div>
 
-							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=35 alt="Record" title="Record"/>
-							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=35 alt="Stop" title="Stop"/>
-							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=35 alt="Download" title="Download"/>
-							<input onclick="clearRecord()" type="image" class="audio-buttons" src="public\images\buttons\clear.png" height=35 alt="Clear" title="Clear"/><br/>
+							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=60 alt="Record" title="Record"/> &nbsp &nbsp &nbsp &nbsp
+							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=60 alt="Stop" title="Stop"/>&nbsp &nbsp &nbsp &nbsp
+							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=60 alt="Download" title="Download"/>&nbsp &nbsp &nbsp &nbsp
+							<input onclick="clearRecord()" type="image" class="audio-buttons" src="public\images\buttons\clear.png" height=60 alt="Clear" title="Clear"/><br/>
 
-							<b id="count"></b>
+							<b id="count"></b> <br/><br/><br/><br/><br/><br/><br/>
+
+							<div id = audioDoc>
+							<h1>Audio Recording</h1>
+							<h4>1. Start recording </h4>
+							<h4>2. Stop recording </h4>
+							<h4>3. Then you can download it or clear it ^ ^ </h4>
+							</div>
+
+
                        </div>
                        <div class="tab-pane fade" id="videoRecording">
-                          <p>Video Recording</p> 
+                          <!-- <p>Video Recording</p>  --><br/>
                           <video id="myVideo" class="video-js vjs-default-skin"></video>
-                          <button onclick = "downloadvideo()">DOWNLOAD</button>
+                          <button id="downloadbtn" onclick = "downloadvideo()">DOWNLOAD</button><br/><br/><br/><br/>
+                          <div id = audioDoc>
+							<h1>Video Recording</h1>
+							<h4>1. Click "camera" to open your camera </h4>
+							<h4>2. Start recording </h4>
+							<h4>3. Stop recording </h4>
+							<h4>4. Then you can download it or record again</h3>
+							<p>P.S. You will download 2 files once. One for video and another for audio.</p>
+							</div>
 
                        </div>
 
