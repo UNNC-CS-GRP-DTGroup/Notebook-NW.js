@@ -663,7 +663,8 @@ input[type=file]
 
 input[type=file],legend {
 	display: inline-block;
-	width: 100px;
+	width: auto;
+    height:auto;
 	color: white;
 }
 
@@ -3551,6 +3552,8 @@ select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,sel
 	border: 1px solid #000000;
 	border-left: 0px;
 	border-top: 0px;
+    width: 80px;
+    text-align: center;
 	/* border-radius: 10px 10px 0 0 */
 }
 
@@ -6212,7 +6215,7 @@ td.hidden-lg,th.hidden-lg {
 	content: "\f07c";
 	font-family: FontAwesome;
 	display: inline-block;
-	background: -webkit-linear-gradient(top, #02f7ba, #00dba4);
+	background: -webkit-linear-gradient(top, #555, #555);
 	border-radius: 3px;
 	padding: 0px 8px;
 	outline: none;
@@ -6227,7 +6230,7 @@ td.hidden-lg,th.hidden-lg {
 
 .browseFile:hover::before
 {
-	background: -webkit-linear-gradient(top, #96ffe5, #17ffc5);
+	background: -webkit-linear-gradient(top, #ccc, #ccc);
 }
 
 .browseFile:active::before

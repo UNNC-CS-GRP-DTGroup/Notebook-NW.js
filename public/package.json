@@ -5,7 +5,7 @@
         "transparent": true,
         "toolbar": false, // 工具栏
         "frame": true,   // 框架
-        "resizable": false,
+        "resizable": true,
         "position": "center",
         "show_in_taskbar": true,
         "width": 1600,

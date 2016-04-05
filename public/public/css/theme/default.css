@@ -425,6 +425,7 @@ a.raw {
 	color: #428bca
 }
 
+
 a.raw:hover {
 	color: #2a6496
 }
@@ -556,6 +557,62 @@ a.raw:hover {
 	border-radius: 50%
 }
 
+#address {
+    font-size: 15px;
+        padding: 5px;
+        line-height: normal;
+    width:77%
+}
+
+#addressbtn {
+    width:15%;
+    font-family:Arial Rounded MT Bold;
+    font-size: 17px;
+    color: #fff;
+/*    font-weight: bold;*/
+    padding: 0 8px;
+    height: 30px;
+    min-width: 54px;
+    background-color: #333333;
+    border: 1px solid #000;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    cursor:pointer
+}
+
+#downloadbtn{
+    width:150px;
+    font-family:Arial Rounded MT Bold;
+    font-size: 17px;
+    color: #fff;
+/*    font-weight: bold;*/
+    padding: 0 8px;
+    height: 30px;
+    min-width: 54px;
+    background-color: #333333;
+    border: 1px solid #000;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    cursor:pointer
+}
+
+#audioDoc{
+    color: #bbb;
+        text-align:center;
+    -moz-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  -khtml-user-select:none;
+  user-select:none
+}
+
+#audioRecording{
+    text-align:center
+}
+
+
 .ios7-a {
 	display: inline-block;
 	padding: 0 10px;
@@ -658,7 +715,7 @@ a:hover {
 }
 
 #webBrowser i:hover {
-	color: #64ffda;
+	color: #cccccc;
 	cursor: pointer
 }
 
@@ -2691,11 +2748,11 @@ textarea#wmd-input {
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
-	font-family: 'Open Sans',Helvetica,Tahoma,Arial,Hiragino Sans GB,"Microsoft YaHei","微软雅黑","Micro Hei",SimSun,"宋体",Heiti,"黑体",sans-serif
+	font-family: Arial Rounded MT Bold
 }
 
 body {
-	font-family: 'Open Sans',Helvetica,Tahoma,Arial,Hiragino Sans GB,"Microsoft YaHei","微软雅黑","Micro Hei",SimSun,"宋体",Heiti,"黑体",sans-serif;
+	font-family: Arial Rounded MT Bold;
 	font-weight: 400;
 	font-size: 14px
 }
