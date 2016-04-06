@@ -34,10 +34,10 @@
     var UserInfo = {"UserId":"","Email":"me@nottingham.edu.cn","Verified":false,"Username":"unknown","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"unknown"};
 
     var notebooks = [{"NotebookId":"0","UserId":"56a82c7bab64417776002a5c","Title":"Newest","UrlTitle":"","NumberNotes":1,"CreatedTime":"0001-01-01T00:00:00Z", "drop":!1, "drag":!1},
-    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        
-     {"NotebookId":"56a82c7bab64417776002a5e","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
-
-    {"NotebookId":"56a82c7bab64417776002a5f","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"work","UrlTitle":"","NumberNotes":1,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
+//    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        
+//     {"NotebookId":"56a82c7bab64417776002a5e","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
+//
+//    {"NotebookId":"56a82c7bab64417776002a5f","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"work","UrlTitle":"","NumberNotes":1,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
 
     {"NotebookId":"-1","UserId":"56a82c7bab64417776002a5c","Title":"Trash","UrlTitle":"","NumberNotes":0,"CreatedTime":"0001-01-01T00:00:00Z","drop":!1, "drag":!1}];
 
@@ -58,9 +58,13 @@
     var shareNotebookDefault = {};
 
 
-    var notes = [{"NoteId":"56a831ae03f3314265000003","UserId":"unknown","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
+    var notes = [
+//    {"NoteId":"56a831ae03f3314265000003","UserId":"unknown","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}
+    ];
 
-    var latestNotes = [{"NoteId":"56a831ae03f3314265000003","UserId":"unknown","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}];
+    var latestNotes = [
+//        {"NoteId":"56a831ae03f3314265000003","UserId":"unknown","CreatedUserId":"","NotebookId":"56a82c7bab64417776002a5f","Title":"Default note","Desc":"Default note","ImgSrc":"","Tags":[""],"IsTrash":false,"IsBlog":false,"UrlTitle":"2d7a82199fb9","IsRecommend":false,"IsTop":false,"HasSelfDefined":false,"ReadNum":0,"LikeNum":0,"CommentNum":0,"IsMarkdown":false,"AttachNum":0,"CreatedTime":"2016-01-27T10:55:38.656+08:00","UpdatedTime":"2016-01-27T17:40:20.762+08:00","RecommendTime":"0001-01-01T00:00:00Z","PublicTime":"2016-01-27T10:55:38.656+08:00","UpdatedUserId":"56a82c7bab64417776002a5c","Usn":10,"IsDeleted":false, "Content":"9"}
+    ];
 
     var tagsJson = [{"TagId":"56e22e02ab64415add000da6","UserId":"unknown","Tag":"test","Usn":90,"Count":1,"CreatedTime":"2016-03-11T10:31:30.348+08:00","UpdatedTime":"2016-03-11T10:31:30.348+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002d","UserId":"unknown","Tag":"welcome","Usn":41,"Count":1,"CreatedTime":"2016-02-27T13:56:59.078+08:00","UpdatedTime":"2016-02-27T13:56:59.078+08:00","IsDeleted":false}];
 
@@ -559,22 +563,29 @@ function forwardpage(){
 
                                 <ul class="pull-right" id="editorTool">
                                     <li><a class="ios7-a " id="addBtn"
-                                        data-toggle="dropdown" title="ctrl/cmd+n Toggle Modify with Readonly">
+                                        data-toggle="dropdown" title="Add a new paragraph">
                                         <span class="fa fa-plus"></span></a></li>
+                                    
+<!--
                                     <li><a class="ios7-a " id="editBtn"
                                         data-toggle="dropdown" title="ctrl/cmd+e Toggle Modify with Readonly">
                                         <span class="fa"></span></a></li>
+-->
+                                    
                                     <li><a class="ios7-a " id="saveBtn"
-                                        data-toggle="dropdown" title="ctrl/cmd+s Save">
+                                        data-toggle="dropdown" title="Save">
                                         <span class="fa fa-save"></span></a></li>
                                     
+<!--
                                     <li class="dropdown" id="noteInfoDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" title="Information">
                                             <span class="fa fa-info"></span>
                                         </a>
                                         <div class="dropdown-menu" id="noteInfo"></div>
-                                        
                                     </li>
+-->
+                                    
+<!--
                                     <li class="dropdown" id="attachDropdown">
                                         <a class="ios7-a dropdown-toggle" data-toggle="dropdown" id="showAttach" title="Attachments">
                                             <span class="fa fa-paperclip"></span>
@@ -601,13 +612,18 @@ function forwardpage(){
                                             </form>
                                         </div>
                                     </li>
+-->
 
+<!--
                                     <li><a class="ios7-a " id="contentHistory"
                                         data-toggle="dropdown" title="Histories">
                                         <span class="fa fa-history"></span></a></li>
+-->
+<!--
                                     <li><a class="ios7-a " id="tipsBtn"
                                         data-toggle="dropdown" title="Tips">
                                         <span class="fa fa-question"></span></a></li>
+-->
                                 </ul>
                             </div>
                             <div id="noteTitleDiv">
@@ -677,9 +693,9 @@ function forwardpage(){
 							<audio controls="controls"></audio>
 							</div>
 
-							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=60 alt="Record" title="Record"/> &nbsp &nbsp &nbsp &nbsp
-							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=60 alt="Stop" title="Stop"/>&nbsp &nbsp &nbsp &nbsp
-							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=60 alt="Download" title="Download"/>&nbsp &nbsp &nbsp &nbsp
+							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=60 alt="Record" title="Record"/>
+							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=60 alt="Stop" title="Stop"/>
+							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=60 alt="Download" title="Download"/>
 							<input onclick="clearRecord()" type="image" class="audio-buttons" src="public\images\buttons\clear.png" height=60 alt="Clear" title="Clear"/><br/>
 
 							<b id="count"></b> <br/><br/><br/><br/><br/><br/><br/>
@@ -703,7 +719,7 @@ function forwardpage(){
 							<h4>1. Click "camera" to open your camera </h4>
 							<h4>2. Start recording </h4>
 							<h4>3. Stop recording </h4>
-							<h4>4. Then you can download it or record again</h3>
+							<h4>4. Then you can download it or record again</h4>
 							<p>P.S. You will download 2 files once. One for video and another for audio.</p>
 							</div>
 
@@ -721,13 +737,27 @@ function forwardpage(){
                        <div class="tab-pane fade" id="webBrowser">
                        	   <i class="fa fa-webback" onclick="backpage()"></i>
                        	   <i class="fa fa-webforward" onclick="forwardpage()"></i>
-                           <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>&nbsp
+                           <input id="address" type="text" placeholder="Enter address..." size="22" onkeydown="if(event.keyCode==13) {webaddress();return false;}"/>
                            <button id="addressbtn" onclick="webaddress()">Search</button>
                            <iframe id="webpage" name = "viewframe" src="http://baidu.com" width=100% height=900 onchange="" nwdisable nwfaketop></iframe>
                               <!-- <iframe id="webpage" class="display" src="http://baidu.com"></iframe> -->
                        </div>
                        <div class="tab-pane fade" id="searchEngine" overflow="auto">
                            <gcse:search></gcse:search> 
+                           
+<!--
+                        <div class="top-search">
+                            <form method="get" id="searchform" id="searchbox_002556101758618985822:mbg5wo_jkvg" action="search-result.html">
+                                <div>
+                                    <input value="002556101758618985822:mbg5wo_jkvg" name="cx" type="hidden"/>
+                                    <input value="FORID:11" name="cof" type="hidden"/>
+                                    <input type="text" value="Search..." name="s" id="s" onfocus="defaultInput(this)" onblur="clearInput(this)" />
+                                    <input type="submit" id="searchsubmit" value=" " />
+                                </div>
+                            </form>
+                        </div>
+-->
+
 
                            
                            <div id = gscDoc>
@@ -739,6 +769,7 @@ function forwardpage(){
 							<h4>Drag the best elements into your note<br> and add your own content.</h4>
 							
 							</div>
+
 
 
 
