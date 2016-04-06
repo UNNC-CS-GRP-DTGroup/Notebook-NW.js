@@ -697,6 +697,7 @@ function forwardpage(){
                           <!-- <p>Video Recording</p>  --><br/>
                           <video id="myVideo" class="video-js vjs-default-skin"></video>
                           <button id="downloadbtn" onclick = "downloadvideo()">DOWNLOAD</button><br/><br/><br/><br/>
+<!--                           <i id="videodownload" class = "fa fa-downloadbtn"></i>-->
                           <div id = audioDoc>
 							<h1>Video Recording</h1>
 							<h4>1. Click "camera" to open your camera </h4>
@@ -727,6 +728,19 @@ function forwardpage(){
                        </div>
                        <div class="tab-pane fade" id="searchEngine" overflow="auto">
                            <gcse:search></gcse:search> 
+
+                           
+                           <div id = gscDoc>
+                            <br><br><br><br><br><br>
+							<h1>Search</h1>
+							<h4>This is a google custom search engine.<br> You can use it as Google.<br> Of course, you need VPN.</h4>
+                               <br><br>
+							<h1>Add Content</h1>
+							<h4>Drag the best elements into your note<br> and add your own content.</h4>
+							
+							</div>
+
+
 
                        </div>
                     </div>
@@ -1193,7 +1207,7 @@ function forwardpage(){
 var player = videojs("myVideo",
 {
     controls: true,
-    width: 480,
+    width: 477,
     height: 360,
     plugins: {
         record: {
@@ -1255,11 +1269,17 @@ function downloadvideo(){
    		//$(this).attr("href", "#webBrowser");
    }
 
+   function hidecontent(){
+   		document.getElementById("gscDoc").style.display="none";
+   }
+
    function cse(){
    			$(".gs-title").unbind();
 		   	$(".gs-title").on("click","a",onClickFunc2);
 
 		   	$("#editor a").click(onClickFunc2);
+//		   	$(".gsc-search-button").on("click",hidecontent());
+        $(".gsc-input").change(hidecontent);
 		   	// $("#webpage a").click(onClickFunc2);
 		};
 
@@ -1279,6 +1299,9 @@ function downloadvideo(){
 <script type="text/javascript">
 	require('nw.gui').Window.get().resizeTo(1600,900);
 	require('nw.gui').Window.get().setResizable(true);
+</script>
+<script>
+    $("#videodownload").on("click",downloadvideo())
 </script>
 <script src="public/js/recorder/configRecorder.js"> </script>
 <script src="public/js/recorder/recorder.js"> </script>

@@ -633,6 +633,11 @@
 	content: "\f073"
 }
 
+.fa-downloadbtn:before {
+    content: "\f019";
+    font-size: 50px
+}
+
 .fa-random:before {
 	content: "\f074"
 }

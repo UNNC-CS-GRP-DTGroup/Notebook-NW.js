@@ -561,12 +561,12 @@ a.raw:hover {
     font-size: 15px;
         padding: 5px;
         line-height: normal;
-    width:77%
+    width:73%
 }
 
 #addressbtn {
     width:15%;
-    font-family:Arial Rounded MT Bold;
+    font-family:Helvetica;
     font-size: 17px;
     color: #fff;
 /*    font-weight: bold;*/
@@ -581,9 +581,13 @@ a.raw:hover {
     cursor:pointer
 }
 
+#videoRecording {
+    text-align: center
+}
+
 #downloadbtn{
     width:150px;
-    font-family:Arial Rounded MT Bold;
+    font-family:Helvetica ;
     font-size: 17px;
     color: #fff;
 /*    font-weight: bold;*/
@@ -599,6 +603,16 @@ a.raw:hover {
 }
 
 #audioDoc{
+    color: #bbb;
+        text-align:center;
+    -moz-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  -khtml-user-select:none;
+  user-select:none
+}
+
+#gscDoc{
     color: #bbb;
         text-align:center;
     -moz-user-select:none;
@@ -2748,11 +2762,11 @@ textarea#wmd-input {
 }
 
 *,.h1,.h2,.h3,.h4,.h5,.h6 {
-	font-family: Arial Rounded MT Bold
+	font-family: 'Open Sans',Helvetica,Tahoma,Arial,Hiragino Sans GB,"Microsoft YaHei","微软雅黑","Micro Hei",SimSun,"宋体",Heiti,"黑体",sans-serif;
 }
 
 body {
-	font-family: Arial Rounded MT Bold;
+	font-family: Helvetica;
 	font-weight: 400;
 	font-size: 14px
 }
