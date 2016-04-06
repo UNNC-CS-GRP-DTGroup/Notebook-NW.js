@@ -40,6 +40,8 @@ function handleDrop(e) {
     // Set the source column's HTML to the HTML of the column we dropped on.
     dragSrcEl.innerHTML = this.innerHTML;
     this.innerHTML = e.dataTransfer.getData('text/html');
+      
+      
   }
 
   return false;
@@ -47,7 +49,7 @@ function handleDrop(e) {
 
 function handleDragEnd(e) {
   // this/e.target is the source node.
-
+    dragSrcEl.style.opacity = '1.0';
   [].forEach.call(cols, function (col) {
     col.classList.remove('over');
   });
