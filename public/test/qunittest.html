@@ -90,13 +90,16 @@
 	Notebook.doAddNotebook("Notebook1", "testNotebook1", "");
     Notebook.doAddNotebook("-1", "trash", "");
     Note.newNote("Notebook1");
-    
-
+    // var i=1;
+    // Note.newNote("'Notebook'+i");
 </script>   
 
 <script>
 test("New Notebook", function() {
     ok(2 == Object.getOwnPropertyNames(Notebook.cache).length, "PASSED!");
+    ok("testNotebook1" == Notebook.cache["Notebook1"].Title, "PASSED!");
+    ok("trash" == Notebook.cache["-1"].Title, "PASSED!");
+
 });
 
 test("New Note",function(){
@@ -107,8 +110,7 @@ test("New Note",function(){
 test("Delete Note",function(){
     Note.moveNoteWithId("NoteId","-1");
     ok(1 == Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
-    // var trash = Notebook.getNotebook("-1");
-    // ok(1 == trash.NumberNotes,"PASSED");
+
 });
 
 test("New Tag",function(){
@@ -123,13 +125,13 @@ test("New Tag",function(){
         Usn: 94
     };
     Tag.addTagNav(newTag);
-    ok(2 == Object.getOwnPropertyNames(Tag.tags).length, "PASSED!");
+    ok(1 == Tag.tags.length, "PASSED!");
     ok("Red" == Tag.tags[0].Tag,"PASSED");
 });
 
 test("Delete Tag",function(){
     Tag.deleteTagNav("Red");
-    ok(1 == Object.getOwnPropertyNames(Tag.tags).length, "PASSED!")
+    ok(0 == Tag.tags.length, "PASSED!")
 })
 </script>
 </head>
