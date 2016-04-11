@@ -84,8 +84,8 @@
 test("Save into local storage", function(assert) {
     var done = assert.async();
     
-    localforage.clear();
-    sleep(500);
+//    localforage.clear();
+//    sleep(500);
     
 //    there are two notebooks
     Notebook.doAddNotebook("Notebook1", "testNotebook1", "");
@@ -130,13 +130,13 @@ test("Save into local storage", function(assert) {
             trackingLog = allAppData.trackingLog;
             shareNotebookDefault = allAppData.shareNotebookDefault;
 
-            ok(2 == notebooks.length, "Notebooks in the local storage are right");
-            ok(2 == notes.length, "Notes in the local storage are right");
-            ok(1 == tagsJson.length, "Tags in the local storage are right");
+            ok(2 == notebooks.length, "Notebooks in the local storage are correct");
+            ok(2 == notes.length, "Notes in the local storage are correct");
+            ok(1 == tagsJson.length, "Tags in the local storage are correct");
             done();
         }
         else {
-            ok(0, "error");
+            ok(0, "get local data successfully");
             done();
         }
     });
@@ -152,8 +152,8 @@ test("Server side: Log in", function(assert) {
     var correctPassword = "";
     var incorrectPassword = "wrong";
     var correctJsonData = {"Email": Email, "Password": correctPassword}; 
-    var incorrectJsonData1= {"Email": Email, "Password": incorrectPassword}; // right email but wrong password
-    var incorrectJsonData2= {"Email": inexistentEmai, "Password": correctPassword}; // wrong email but right password
+    var incorrectJsonData1= {"Email": Email, "Password": incorrectPassword}; // correct email but wrong password
+    var incorrectJsonData2= {"Email": inexistentEmai, "Password": correctPassword}; // wrong email but correct password
     var correctUserId = "570b56f8d922a8399d000000";
     var stringifiedJson = JSON.stringify(correctJsonData);
     var incorrectStringifiedJson1 = JSON.stringify(incorrectJsonData1);
@@ -197,7 +197,7 @@ test("Server side: Log in", function(assert) {
             }
             else {
                 localStorage.UserId = res.UserId;
-                ok(0, "Log in faid because of the wrong password");
+                ok(0, "Log in failed because of the wrong password");
                 done1();
             }
         },
@@ -234,10 +234,178 @@ test("Server side: Log in", function(assert) {
 test("Server side: retrieve user data", function(assert) {
     var done = assert.async();
     
-    var result = retrieveData();
-    done();
-    ok(2 == result, "Data is retrieved from the server successfully");
+    $.ajax({
+        type: 'GET', // added,
+        url: baseUrl + 'getAll',
+        data: "UserId=" + UserId ,
+        contentType: "text/plain", 
+        async:false, 
+        success: function (data) {
+            var parsedData = jQuery.parseJSON(data);
+            if(parsedData.status && parsedData.status == "fail") { // 服务端没有数据：使用初始数据
+                console.log("not found data");
+                //使用初始数据
+                //initial data    
+                allAppData.UserInfo = UserInfo;
+                allAppData.notebooks = notebooks;
+                allAppData.shareNotebooks = shareNotebooks;
+                allAppData.sharedUserInfos = sharedUserInfos;
+                allAppData.notes = notes;
+                allAppData.latestNotes = latestNotes;
+                allAppData.tagsJson = tagsJson;
+                allAppData.trackingLog = trackingLog;
+                allAppData.shareNotebookDefault = shareNotebookDefault;
+                console.log("using initial data");
+                console.log("call initPage()");
+                initPage();
+                localforage.setItem("allAppData", allAppData, function(err, value) {
+                    console.log("allAppData saved");
+                });
+                return;
+            } 
+            allAppData = parsedData;    
+            console.log(allAppData.UserInfo.UserId);
+
+            console.log("allAppData loaded from server");
+
+            UserInfo = allAppData.UserInfo;
+            console.log("UserInfo updated from server");
+            notebooks = allAppData.notebooks;
+            console.log("notebooks updated from server");
+            shareNotebooks = allAppData.shareNotebooks;
+            console.log("shareNotebooks updated from server");
+            sharedUserInfos = allAppData.sharedUserInfos;
+            console.log("sharedUserInfos updated from server");
+            notes = allAppData.notes;
+            console.log("notes updated from server");
+            latestNotes = allAppData.latestNotes;
+            console.log("latestNotes updated from server");
+            tagsJson = allAppData.tagsJson;
+            console.log("tagsJson updated from server");
+            trackingLog = allAppData.trackingLog;
+            console.log("trackingLog updated from server");
+            shareNotebookDefault = allAppData.shareNotebookDefault;
+            console.log("shareNotebookDefault updated from server");
+            console.log("call initPage()");
+            localforage.setItem("allAppData", allAppData, function(err, value) {
+                console.log("allAppData saved");
+            });
     
+//            test notebooks
+            ok(5 == notebooks.length, "Data is retrieved from the server successfully: number of notebooks is correct");
+            ok("Newest" == notebooks[0].Title, "Data is retrieved from the server successfully: title of notebooks is correct");
+            ok("Welcome" == notebooks[1].Title, "Data is retrieved from the server successfully: title of notebooks is correct");
+            ok("Trash" == notebooks[2].Title, "Data is retrieved from the server successfully: title of notebooks is correct");
+            ok("testnotebook1" == notebooks[3].Title, "Data is retrieved from the server successfully: title of notebooks is correct");
+            ok("testnotebook2" == notebooks[4].Title, "Data is retrieved from the server successfully: title of notebooks is correct");
+    
+//            test notes
+            ok(3 == notes.length, "Data is retrieved from the server successfully: number of notes is correct");
+            ok("Welcome" == notes[0].Title, "Data is retrieved from the server successfully: title of notes is correct");
+            ok("test1" == notes[1].Title, "Data is retrieved from the server successfully: title of notes is correct");
+            ok("test2" == notes[2].Title, "Data is retrieved from the server successfully: title of notes is correct");
+            ok(null != notes[0].Content, "Data is retrieved from the server successfully: content of notes is correct");
+            ok(null != notes[1].Content, "Data is retrieved from the server successfully: content of notes is correct");
+            ok(null != notes[2].Content, "Data is retrieved from the server successfully: content of notes is correct");
+    
+//            test tags
+            ok(2 == tagsJson.length, "Data is retrieved from the server successfully: number of tags is correct");
+            ok("default" == tagsJson[0].Tag, "Data is retrieved from the server successfully: title of tag is correct");
+            ok("test" == tagsJson[1].Tag, "Data is retrieved from the server successfully: title of tag is correct");
+    
+            done();
+        },
+        error: function (xhr, status, error) {
+            console.log('Error: ' + error.message);
+
+            localforage.getItem('allAppData', function(err, value) {
+                console.log("check");
+                if(value != null) { //如果本地有数据，使用本地的
+                        allAppData = value;
+                        console.log("allAppData loaded from local");
+
+                        UserInfo = allAppData.UserInfo;
+                        console.log("UserInfo updated from local");
+                        notebooks = allAppData.notebooks;
+                        console.log("notebooks updated from local");
+                        shareNotebooks = allAppData.shareNotebooks;
+                        console.log("shareNotebooks updated from local");
+                        sharedUserInfos = allAppData.sharedUserInfos;
+                        console.log("sharedUserInfos updated from local");
+                        notes = allAppData.notes;
+                        console.log("notes updated from local");
+                        latestNotes = allAppData.latestNotes;
+                        console.log("latestNotes updated from local");
+                        tagsJson = allAppData.tagsJson;
+                        console.log("tagsJson updated from local");
+                        trackingLog = allAppData.trackingLog;
+                        console.log("trackingLog updated from local");
+                        shareNotebookDefault = allAppData.shareNotebookDefault;
+                        console.log("shareNotebookDefault updated from local");
+                        console.log("call initPage() from local");
+                        localforage.setItem("allAppData", allAppData, function(err, value) {
+                            console.log("allAppData saved");
+                        });
+                }
+                else { //使用初始数据
+                    //initial data    
+                    allAppData.UserInfo = UserInfo;
+                    allAppData.notebooks = notebooks;
+                    allAppData.shareNotebooks = shareNotebooks;
+                    allAppData.sharedUserInfos = sharedUserInfos;
+                    allAppData.notes = notes;
+                    allAppData.latestNotes = latestNotes;
+                    allAppData.tagsJson = tagsJson;
+                    allAppData.trackingLog = trackingLog;
+                    allAppData.shareNotebookDefault = shareNotebookDefault;
+                    console.log("using initial data");
+                    console.log("call initPage()");
+                    localforage.setItem("allAppData", allAppData, function(err, value) {
+                        console.log("allAppData saved");
+                    });
+                }
+            });
+        }
+    });   
+});
+    
+
+test("Server side: upload user data", function(assert) {
+    var done = assert.async();
+    var Server = {};
+    Server.transfer = function (jsonData) {
+        var stringifiedJson = JSON.stringify(jsonData);
+        var url1 = baseUrl + "updateAll";
+        var url2 = 'http://localhost:8000';
+        $.ajax({
+            type: 'POST',
+            url: url1,
+            data: stringifiedJson,
+            contentType: "text/plain",
+            success: function (data) {
+                console.log(JSON.parse(data).msg);
+            },
+            error: function (xhr, status, error) {
+                console.log('Error: ' + error.message);
+                $('#lblResponse').html('Error connecting to the server.');
+            }
+        });
+    };
+
+    Server.uploadToServer = function() {
+        var newAllAppData = {};
+        newAllAppData.UserInfo = UserInfo;
+        newAllAppData.notebooks = transform(Notebook.cache);
+        newAllAppData.shareNotebooks = shareNotebooks;
+        newAllAppData.sharedUserInfos = sharedUserInfos;
+        newAllAppData.notes = transform(Note.cache);
+        newAllAppData.latestNotes = transform(Note.cache);
+        newAllAppData.tagsJson = clone(Tag.tags);
+        newAllAppData.trackingLog = trackingLog;
+        newAllAppData.shareNotebookDefault = shareNotebookDefault;
+
+        Server.transfer(newAllAppData);
+    }
 });
 </script>
 </head>

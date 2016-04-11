@@ -169,5 +169,3 @@ function retrieveData() {
         }
     });   
 }
-
-retrieveData();

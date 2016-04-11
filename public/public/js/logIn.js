@@ -26,7 +26,7 @@ function register(e) {
         contentType: "text/plain",
         success: function (data) {
             var res = jQuery.parseJSON(data);
-            alert(res.msg);
+//            alert(res.msg);
             if(res.status == "success") { // jump to homepage
                 localStorage.email = Email;
                 localStorage.password = Password;

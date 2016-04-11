@@ -66,9 +66,13 @@ app.post("/updateAll", function(req, res) {
 
 	var query = {"UserInfo.UserId": UserId};
 	req.db.collection('allAppData').update(query, parsedData, {upsert: true}, function(err, data) {
-		if(err) console.log(err);
+		if(err) {
+            console.log(err);
+            res.end('{"msg": "Synchronized failed", "status": "fail"}');
+        }
 		else {
 			console.log("data updated to db");
+            res.end('{"msg": "Synchronized successfully", "status": "success"}');
 		}
 	});
 });
