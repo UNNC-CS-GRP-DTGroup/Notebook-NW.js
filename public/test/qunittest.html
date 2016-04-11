@@ -90,21 +90,37 @@
 	Notebook.doAddNotebook("Notebook1", "testNotebook1", "");
     Notebook.doAddNotebook("-1", "trash", "");
     Note.newNote("Notebook1");
-    // var i=1;
-    // Note.newNote("'Notebook'+i");
+    // Note.newNote("555");
 </script>   
 
 <script>
 test("New Notebook", function() {
     ok(2 == Object.getOwnPropertyNames(Notebook.cache).length, "PASSED!");
     ok("testNotebook1" == Notebook.cache["Notebook1"].Title, "PASSED!");
+
     ok("trash" == Notebook.cache["-1"].Title, "PASSED!");
+
+    for(var i = 0; i<100; i++){
+        Notebook.doAddNotebook(i.toString(), "Notebook"+i.toString(), "");
+    }
+    ok(102 == Object.getOwnPropertyNames(Notebook.cache).length, "PASSED!");
+    ok("Notebook18" == Notebook.cache["18"].Title, "PASSED!");
+
+    for(var j = 101; j<1101; j++){
+        Notebook.doAddNotebook(j.toString(), "Notebook"+j.toString(), "");
+    }
+    ok(1102 == Object.getOwnPropertyNames(Notebook.cache).length, "PASSED!" );
+    ok("Notebook555" == Notebook.cache["555"].Title, "PASSED!");
 
 });
 
 test("New Note",function(){
     ok("NoteId" == Note.cache["NoteId"].NoteId, "PASSED!");
     ok(1==Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
+
+    // for(var a = 1; a<100; a++){
+    //     Note.newNote("1");
+    // }
 });
 
 test("Delete Note",function(){
