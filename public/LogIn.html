@@ -75,7 +75,7 @@
         var allAppData = {};
         
         // register event handlers
-        $("#loginBtn").click(logIn);
+        $("#loginBtn").click(logIn); // logIn/register take "this event" as argument automatically
         $("#regBtn").click(register);
 
         require('nw.gui').Window.get().setResizable(true);

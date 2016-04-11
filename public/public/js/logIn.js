@@ -12,7 +12,7 @@ function getObjectId() {
 };
 
 function register(e) {
-//    e.preventDefault();
+    e.preventDefault();
     var Email = $("#Username2").val();
     var Password = $("#Password2").val();
     var UserId = getObjectId();
@@ -41,7 +41,7 @@ function register(e) {
 };
 
 function logIn(e) {
-//    e.preventDefault();
+    e.preventDefault();
     var Email = $("#Username").val();
     var Password = $("#Password").val();
     localStorage.email = Email;
