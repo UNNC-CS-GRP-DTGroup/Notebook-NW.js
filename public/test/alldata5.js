@@ -77,7 +77,7 @@ function retrieveData() {
                 localforage.setItem("allAppData", allAppData, function(err, value) {
                     console.log("allAppData saved");
                 });
-                return;
+                return 1;
             } 
             allAppData = parsedData;    
             console.log(allAppData.UserInfo.UserId);
@@ -103,10 +103,12 @@ function retrieveData() {
             shareNotebookDefault = allAppData.shareNotebookDefault;
             console.log("shareNotebookDefault updated from server");
             console.log("call initPage()");
-            initPage();
+            // initPage();
             localforage.setItem("allAppData", allAppData, function(err, value) {
                 console.log("allAppData saved");
             });
+
+            return 2;
         },
         error: function (xhr, status, error) {
             console.log('Error: ' + error.message);
@@ -136,10 +138,12 @@ function retrieveData() {
                         shareNotebookDefault = allAppData.shareNotebookDefault;
                         console.log("shareNotebookDefault updated from local");
                         console.log("call initPage() from local");
-                        initPage();
+                        // initPage();
                         localforage.setItem("allAppData", allAppData, function(err, value) {
                             console.log("allAppData saved");
                         });
+
+                        return 3;
                 }
                 else { //使用初始数据
                     //initial data    
@@ -154,10 +158,12 @@ function retrieveData() {
                     allAppData.shareNotebookDefault = shareNotebookDefault;
                     console.log("using initial data");
                     console.log("call initPage()");
-                    initPage();
+                    // initPage();
                     localforage.setItem("allAppData", allAppData, function(err, value) {
                         console.log("allAppData saved");
                     });
+
+                    return 4;
                 }
             });
         }

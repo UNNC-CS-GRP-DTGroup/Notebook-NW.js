@@ -7,12 +7,14 @@
 <title>QUnit Example</title>
 <script src="dep.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.23.0.css">
+<script>
+    var baseUrl = "http:\/\/115.28.134.156:3000\/";
+</script>
 <script src="https://code.jquery.com/qunit/qunit-1.23.0.js"></script>
 <script src="msg.en.js"></script>
 <script src="../public/data/localForage-1.4.0/dist/localforage.js"></script>
-<script type="">
-	
-	var baseUrl = "http:\/\/115.28.134.156:3000\/";
+<script src="alldata5.js"></script>
+<script>
     var LEA = {};
     LEA.sPath = "https:\/\/dn-leanote.qbox.me";
     LEA.locale = "en";
@@ -73,10 +75,17 @@
        while (currentTime + miliseconds >= new Date().getTime()) {
        }
     }
+    
+    var baseUrl = "http:\/\/115.28.134.156:3000\/";
+    
 </script>   
 
 <script>
-asyncTest("Save into local storage", function() {
+test("Save into local storage", function(assert) {
+    var done = assert.async();
+    
+    localforage.clear();
+    sleep(500);
     
 //    there are two notebooks
     Notebook.doAddNotebook("Notebook1", "testNotebook1", "");
@@ -104,8 +113,10 @@ asyncTest("Save into local storage", function() {
     };
     Tag.addTagNav(newTag);
     ok(1 == Tag.tags.length, "1 tag created successfully!");
+    Tag.renderTagNav(Tag.tags);
     
     saveIntoLocal();
+    
     localforage.getItem('allAppData', function(err, value) {
         if(value != null) { //如果本地有数据，使用本地的
             allAppData = value;
@@ -121,17 +132,34 @@ asyncTest("Save into local storage", function() {
 
             ok(2 == notebooks.length, "Notebooks in the local storage are right");
             ok(2 == notes.length, "Notes in the local storage are right");
-            ok(2 == tagsJson.length, "Tags in the local storage are right");
+            ok(1 == tagsJson.length, "Tags in the local storage are right");
+            done();
+        }
+        else {
+            ok(0, "error");
+            done();
         }
     });
 });
 
-asyncTest("Server side: Log in", function() {
+test("Server side: Log in", function(assert) {
+    var done = assert.async();
+    var done1 = assert.async();
+    var done2 = assert.async();
+
     var Email = "whiteBoxTester";
-    var correctPassword = "1";
+    var inexistentEmai = "inexistent";
+    var correctPassword = "";
+    var incorrectPassword = "wrong";
     var correctJsonData = {"Email": Email, "Password": correctPassword}; 
-    var stringifiedJson = JSON.stringify(jsonData);
+    var incorrectJsonData1= {"Email": Email, "Password": incorrectPassword}; // right email but wrong password
+    var incorrectJsonData2= {"Email": inexistentEmai, "Password": correctPassword}; // wrong email but right password
+    var correctUserId = "570b56f8d922a8399d000000";
+    var stringifiedJson = JSON.stringify(correctJsonData);
+    var incorrectStringifiedJson1 = JSON.stringify(incorrectJsonData1);
+    var incorrectStringifiedJson2 = JSON.stringify(incorrectJsonData2);
     var url = baseUrl + 'logIn';
+
     $.ajax({
         type: 'POST',
         url: url,
@@ -139,20 +167,78 @@ asyncTest("Server side: Log in", function() {
         contentType: "text/plain",
         success: function (data) {
             var res = jQuery.parseJSON(data);
-            if(res.status == "fail") { // 
-                alert(res.msg);
+            if(res.status == "fail") {
+                ok(0, "Log in successfully, UserId is correct");
+                done();
             }
             else {
                 localStorage.UserId = res.UserId;
-                location.href = "Untitled.html";
+                UserId = res.UserId;
+                ok(correctUserId == res.UserId, "Log in successfully and returned UserId is correct")
+                done();
             }
         },
         error: function (xhr, status, error) {
-            alert('Error: ' + error.message);
+            ok(0, "Log in successfully, UserId is correct");
+            done();
         }
     });
-}
-})
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: incorrectStringifiedJson1,
+        contentType: "text/plain",
+        success: function (data) {
+            var res = jQuery.parseJSON(data);
+            if(res.status == "fail") {
+                ok("wrong password" == res.msg, "Log in faid because of the wrong password");
+                done1();
+            }
+            else {
+                localStorage.UserId = res.UserId;
+                ok(0, "Log in faid because of the wrong password");
+                done1();
+            }
+        },
+        error: function (xhr, status, error) {
+            ok(0, "Log in successfully, UserId is correct");
+            done1();
+        }
+    });
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: incorrectStringifiedJson2,
+        contentType: "text/plain",
+        success: function (data) {
+            var res = jQuery.parseJSON(data);
+            if(res.status == "fail") {
+                ok("wrong email" == res.msg, "Log in faid because of the inexistent email");
+                done2();
+            }
+            else {
+                localStorage.UserId = res.UserId;
+                ok(0, "Log in faid because of the inexistent email");
+                done2();
+            }
+        },
+        error: function (xhr, status, error) {
+            ok(0, "Log in faid because of the inexistent email");
+            done2();
+        }
+    });
+});
+    
+test("Server side: retrieve user data", function(assert) {
+    var done = assert.async();
+    
+    var result = retrieveData();
+    done();
+    ok(2 == result, "Data is retrieved from the server successfully");
+    
+});
 </script>
 </head>
 
