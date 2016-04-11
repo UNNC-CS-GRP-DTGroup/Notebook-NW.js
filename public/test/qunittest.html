@@ -114,7 +114,7 @@ test("Delete Note",function(){
     // Note.moveNoteWithId("NoteId","-1");
     // ok(1 == Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
     for(var noteId in Note.cache) {
-        Note.moveNoteWithId(noteId.toString(),"-1");
+        Note.moveNoteWithId(noteId,"-1");
         break;
     }
     ok(1001 == Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
