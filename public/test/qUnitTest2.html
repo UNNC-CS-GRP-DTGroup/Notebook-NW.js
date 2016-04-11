@@ -1,0 +1,169 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>QUnit Example</title>
+<script src="dep.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.23.0.css">
+<script src="https://code.jquery.com/qunit/qunit-1.23.0.js"></script>
+<script src="msg.en.js"></script>
+<script src="../public/data/localForage-1.4.0/dist/localforage.js"></script>
+<script type="">
+	
+	var baseUrl = "http:\/\/115.28.134.156:3000\/";
+    var LEA = {};
+    LEA.sPath = "https:\/\/dn-leanote.qbox.me";
+    LEA.locale = "en";
+    var UrlPrefix = 'http:\/\/leanote.com';
+    var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
+//    var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
+    var curNoteId = "";
+    var curNotebookId = "";
+    var curSharedNoteNotebookId = "";
+    var curSharedUserId = "";
+    var noteContentJson = [];
+
+    //需要同步的初始数据
+    var UserInfo = {"UserId":"","Email":"me@nottingham.edu.cn","Verified":false,"Username":"unknown","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"unknown"};
+
+    var notebooks = [{"NotebookId":"0","UserId":"56a82c7bab64417776002a5c","Title":"Newest","UrlTitle":"","NumberNotes":1,"CreatedTime":"0001-01-01T00:00:00Z", "drop":!1, "drag":!1},
+//    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        
+//     {"NotebookId":"56a82c7bab64417776002a5e","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"study","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
+//
+    {"NotebookId":"56a82c7bab64417776002a5f","UserId":"GRPDT","ParentNotebookId":"","Seq":-1,"Title":"Welcome","UrlTitle":"","NumberNotes":1,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},
+
+    {"NotebookId":"-1","UserId":"56a82c7bab64417776002a5c","Title":"Trash","UrlTitle":"","NumberNotes":0,"CreatedTime":"0001-01-01T00:00:00Z","drop":!1, "drag":!1}];
+
+//    var shareNotebooks = {"52d26b4e99c37b609a000001":[{"ParentNotebookId":"","Title":"Welcome","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"52d270c7bcbf214cfa000000","IsDefault":false},
+//    ]};
+    
+//    var sharedUserInfos = [{"UserId":"52d26b4e99c37b609a000001","Email":"leanote@leanote.com","Verified":true,"Username":"leanote","UsernameRaw":"leanote","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
+
+//    var shareNotebooks = {"56fb70aed922a81ac2000000":[{"ParentNotebookId":"","Title":"testshare","UrlTitle":"","NumberNotes":5,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"56a82c7bab64417776002a5d", "IsDefault":false}
+//    ]};
+
+    var shareNotebooks = {};
+    
+    var sharedUserInfos = [];
+    
+    var shareNotebookDefault = {};
+
+
+    var notes = [];
+
+    var latestNotes = [];
+
+    var tagsJson = [{"TagId":"56e22e02ab64415add000da6","UserId":"unknown","Tag":"test","Usn":90,"Count":1,"CreatedTime":"2016-03-11T10:31:30.348+08:00","UpdatedTime":"2016-03-11T10:31:30.348+08:00","IsDeleted":false},{"TagId":"56d13aabab64417fb100002d","UserId":"unknown","Tag":"welcome","Usn":41,"Count":1,"CreatedTime":"2016-02-27T13:56:59.078+08:00","UpdatedTime":"2016-02-27T13:56:59.078+08:00","IsDeleted":false}];
+
+    var trackingLog = [];
+    var allAppData = {};
+    
+    //initial data    
+    allAppData.UserInfo = UserInfo;
+    allAppData.notebooks = notebooks;
+    allAppData.shareNotebooks = shareNotebooks;
+    allAppData.sharedUserInfos = sharedUserInfos;
+    allAppData.notes = notes;
+    allAppData.latestNotes = latestNotes;
+    allAppData.tagsJson = tagsJson;
+    allAppData.trackingLog = trackingLog;
+    allAppData.shareNotebookDefault = shareNotebookDefault;
+</script>
+<script src="app.min.js"></script>
+
+
+<style>body { width: 500px; margin-left: auto; margin-right: auto; background-color: #f0f3f9; }</style>
+<script type="text/javascript">
+	
+</script>
+
+<script type="text/javascript">
+	
+    function sleep(miliseconds) {
+       var currentTime = new Date().getTime();
+
+       while (currentTime + miliseconds >= new Date().getTime()) {
+       }
+    }
+</script>   
+
+<script>
+test("Save into local", function() {
+    
+//    there are two notebooks
+    Notebook.doAddNotebook("Notebook1", "testNotebook1", "");
+    Notebook.doAddNotebook("-1", "trash", "");
+    
+    ok(2 == Object.getOwnPropertyNames(Notebook.cache).length, "2 notebooks created successfully");
+    ok("testNotebook1" == Notebook.cache["Notebook1"].Title, "2 notebooks created successfully!");
+    ok("trash" == Notebook.cache["-1"].Title, "2 notebooks created successfully!");
+    
+//    there are 2 notes
+    Note.newNote("Notebook1");
+    Note.newNote("Notebook1");
+    
+    ok(2 == Object.getOwnPropertyNames(Note.cache).length, "2 notes created successfully");
+
+
+    saveIntoLocal();
+    localforage.getItem('allAppData', function(err, value) {
+        if(value != null) { //如果本地有数据，使用本地的
+            allAppData = value;
+            UserInfo = allAppData.UserInfo;
+            notebooks = allAppData.notebooks;
+            shareNotebooks = allAppData.shareNotebooks;
+            sharedUserInfos = allAppData.sharedUserInfos;
+            notes = allAppData.notes;
+            latestNotes = allAppData.latestNotes;
+            tagsJson = allAppData.tagsJson;
+            trackingLog = allAppData.trackingLog;
+            shareNotebookDefault = allAppData.shareNotebookDefault;
+
+            ok(2 == notebooks.length, "The number of notebooks on the local storage is right");
+        }
+    });
+    
+    sleep(1000);
+});
+
+//test("New Note",function(){
+//    ok("NoteId" == Note.cache["NoteId"].NoteId, "PASSED!");
+//    ok(1==Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
+//});
+//
+//test("Delete Note",function(){
+//    Note.moveNoteWithId("NoteId","-1");
+//    ok(1 == Object.getOwnPropertyNames(Note.cache).length, "PASSED!");
+//
+//});
+//
+//test("New Tag",function(){
+//    var newTag = {
+//        Count: 1,
+//        CreatedTime: getCurDate(),
+//        IsDeleted: false,
+//        Tag: "Red",
+//        TagId: "testTag1",
+//        UpdatedTime: getCurDate(),
+//        UserId: "",
+//        Usn: 94
+//    };
+//    Tag.addTagNav(newTag);
+//    ok(1 == Tag.tags.length, "PASSED!");
+//    ok("Red" == Tag.tags[0].Tag,"PASSED");
+//});
+//
+//test("Delete Tag",function(){
+//    Tag.deleteTagNav("Red");
+//    ok(0 == Tag.tags.length, "PASSED!")
+//})
+</script>
+</head>
+
+<body>
+<div id="qunit"></div>
+ <div id="qunit-fixture"></div>
+</body>
+</html>
