@@ -383,11 +383,14 @@ test("Server side: upload user data", function(assert) {
             data: stringifiedJson,
             contentType: "text/plain",
             success: function (data) {
-                console.log(JSON.parse(data).msg);
+                var res = jQuery.parseJSON(data);
+                ok("success" == res.status, "Data is updated to the server successfully");
+                ok("Synchronized successfully" == res.msg, "Data is updated to the server successfully: returned message is correct");
+                done();
             },
             error: function (xhr, status, error) {
-                console.log('Error: ' + error.message);
-                $('#lblResponse').html('Error connecting to the server.');
+                ok(0, "Data is updated to the server successfully");
+                done();
             }
         });
     };
@@ -401,11 +404,15 @@ test("Server side: upload user data", function(assert) {
         newAllAppData.notes = transform(Note.cache);
         newAllAppData.latestNotes = transform(Note.cache);
         newAllAppData.tagsJson = clone(Tag.tags);
+
+    //    trackingLog.add(TrackLogbook); // if upload when use exits, it should already be added in by calling saveIntoLocal
         newAllAppData.trackingLog = trackingLog;
         newAllAppData.shareNotebookDefault = shareNotebookDefault;
 
         Server.transfer(newAllAppData);
     }
+    
+    Server.uploadToServer();
 });
 </script>
 </head>

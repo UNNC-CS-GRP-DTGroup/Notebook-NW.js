@@ -31,8 +31,11 @@ function register(e) {
                 localStorage.email = Email;
                 localStorage.password = Password;
                 localStorage.UserId = UserId;
-                location.href = "Untitled.html";
+                location.href = "QNote.html";
             } 
+            else {
+                alert(res.msg);
+            }
         },
         error: function (xhr, status, error) {
             alert('Error: ' + error.message);
@@ -52,7 +55,7 @@ function logIn(e) {
         allAppData = value;
         if(allAppData != null && allAppData.UserInfo.Email == Email && allAppData.UserInfo.Password == Password) { // 如果本地有数据且匹配
             localStorage.UserId = allAppData.UserInfo.UserId;
-            location.href = "Untitled.html";
+            location.href = "QNote.html";
         }
         else {
             // 与本地数据不匹配或者本地没有数据,与server比对
@@ -72,7 +75,7 @@ function logIn(e) {
                     }
                     else {
                         localStorage.UserId = res.UserId;
-                        location.href = "Untitled.html";
+                        location.href = "QNote.html";
                     }
                 },
                 error: function (xhr, status, error) {

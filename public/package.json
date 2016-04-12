@@ -2,7 +2,7 @@
     "main": "LogIn.html", // 启动页面
     "name": "QuirckNote",
     "window": {
-        "transparent": true,
+        // "transparent": true,
         "toolbar": true, // 工具栏
         "frame": true,   // 框架
         "resizable": true,
