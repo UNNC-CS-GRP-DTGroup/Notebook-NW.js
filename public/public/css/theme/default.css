@@ -690,8 +690,8 @@ a:hover {
 	background-color: #444;
 	border-bottom: 1px solid #444;
 	color: #fff;
-	webkit-user-select: none;
-	-webkit-app-region: drag
+/*	webkit-user-select: none;
+	-webkit-app-region: drag*/
 }
 
 #header a {
