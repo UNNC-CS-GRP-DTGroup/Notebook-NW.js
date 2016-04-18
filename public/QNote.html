@@ -24,7 +24,6 @@
      LEA.locale = "en";
     // var UrlPrefix = 'http:\/\/leanote.com';
     var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
-//    var tinyMCEPreInit = {base: 'https:\/\/dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce', suffix: '.min'};
     var curNoteId = "";
     var curNotebookId = "";
     var curSharedNoteNotebookId = "";
@@ -45,7 +44,7 @@
 //    var shareNotebooks = {"52d26b4e99c37b609a000001":[{"ParentNotebookId":"","Title":"Welcome","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"52d270c7bcbf214cfa000000","IsDefault":false},
 //    ]};
     
-//    var sharedUserInfos = [{"UserId":"52d26b4e99c37b609a000001","Email":"leanote@leanote.com","Verified":true,"Username":"leanote","UsernameRaw":"leanote","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
+//    var sharedUserInfos = [{"UserId":"52d26b4e99c37b609a000001","Email":"","Verified":true,"Username":"owner","UsernameRaw":"ownertinymce","CreatedTime":"2014-01-14T21:20:39.225+08:00","Logo":"public/upload/520/52d26b4e99c37b609a000001/images/logo/3fa3ca0e0a431b81ede3351cd091f17d.jpg","Theme":"default","NotebookWidth":201,"NoteListWidth":241,"MdEditorWidth":477,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":276,"Usn":203042,"FullSyncBefore":"0001-01-01T00:00:00Z"}];
 
 //    var shareNotebooks = {"56fb70aed922a81ac2000000":[{"ParentNotebookId":"","Title":"testshare","UrlTitle":"","NumberNotes":5,"IsTrash":false,"IsBlog":false,"UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"ShareNotebookId":"56a82c7b0431099237ea62bd","ToUserId":"56a82c7bab64417776002a5c","ToGroupId":"","ToGroup":{"GroupId":"","UserId":"","Title":"","UserCount":0,"CreatedTime":"0001-01-01T00:00:00Z","Users":null},"Perm":1,"Subs":null,"Seq":0,"NotebookId":"56a82c7bab64417776002a5d", "IsDefault":false}
 //    ]};
@@ -336,17 +335,15 @@ function forwardpage(){
 				</div>
 
 <!--                前往leannote主页的button-->
-<!--
 				<div class="pull-right top-nav writting-hide lea-blog">
-					<a target="_blank" href="http://leanote.com">
-						Leanote Home
+					<a target="_blank" href="http://qnote.com">
+						Q-Note Home
 					</a>
 				</div>
--->
 <!--                前往blog的button-->
 <!--
 				<div class="pull-right top-nav writting-hide" id="myBlog">
-					<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com">
+					<a target="_blank" href="">
 						Blog
 					</a>
 				</div>
@@ -367,7 +364,7 @@ function forwardpage(){
 
 			<div id="mainContainer" class="clearfix">
 				<div id="mainMask">
-					<img src="https://dn-leanote.qbox.me/images/loading-30.gif" />
+					<img src="public\images\loading-30.gif" />
 					<br />
 					<br />
 					loading...
@@ -453,7 +450,7 @@ function forwardpage(){
 <!--                笔记list+笔记部分-->
 				<div id="noteAndEditor">
 					<div id="noteAndEditorMask">
-						<img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
+						<img src="public\images\loading-24.gif"/>
 						<br />
 						loading...
 					</div>
@@ -1122,6 +1119,7 @@ function forwardpage(){
 			  </div>
 			</div>
 
+<!--
 			<div class="modal fade bs-modal-sm" id="sendRegisterEmailDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
 			    <div class="modal-content">
@@ -1150,6 +1148,7 @@ function forwardpage(){
 			    </div>
 			  </div>
 			</div>
+-->
 
 
 <!--
