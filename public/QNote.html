@@ -862,7 +862,7 @@ function forwardpage(){
                                               <tr>
                                                 <th>#</th>
                                                 <th>Friend email</th>
-                                                <th>Permission</th>
+<!--                                                <th>Permission</th>-->
                                                 <th width="150px">Delete</th>
                                               </tr>
                                             </thead>
@@ -872,10 +872,12 @@ function forwardpage(){
                                                 <td>
                                                     <input id="friendsEmail" type="text" class="form-control" placeholder="Friend email">
                                                 </td>
+<!--
                                                 <td>
                                                     <label for="readPerm1"><input type="radio" name="perm1" checked="checked" value="0" id="readPerm1"> Read only</label> 
                                                     <label for="writePerm1"><input type="radio" name="perm1" value="1" id="writePerm1"> Writable</label>
                                                 </td>
+-->
                                                 <td>
                                                     <button class="btn btn-success" data-loading-text="..." onclick="addShareNoteOrNotebook(1)">Share</button>
                                                     <button class="btn btn-warning" onclick="deleteShareNoteOrNotebook(1)">Delete</button>
