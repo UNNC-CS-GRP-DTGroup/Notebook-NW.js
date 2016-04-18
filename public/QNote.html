@@ -696,9 +696,9 @@ function forwardpage(){
 							<audio controls="controls"></audio>
 							</div>
 
-							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=60 alt="Record" title="Record"/>   &nbsp &nbsp &nbsp &nbsp 
-							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=60 alt="Stop" title="Stop"/> &nbsp &nbsp &nbsp &nbsp 
-							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=60 alt="Download" title="Download"/>&nbsp &nbsp &nbsp &nbsp
+							<input onclick="startRecording()" type="image" class="audio-buttons" src="public\images\buttons\record.png" height=60 alt="Record" title="Record"/>
+							<input onclick="stopRecording()" type="image" class="audio-buttons" src="public\images\buttons\stop.png" height=60 alt="Stop" title="Stop"/>
+							<input onclick="download()" type="image" class="audio-buttons" src="public\images\buttons\download.png" height=60 alt="Download" title="Download"/>
 							<input onclick="clearRecord()" type="image" class="audio-buttons" src="public\images\buttons\clear.png" height=60 alt="Clear" title="Clear"/><br/>
 
 							<b id="count"></b> <br/><br/><br/><br/><br/><br/><br/>
@@ -839,17 +839,19 @@ function forwardpage(){
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title" id="modalTitle">Share <b>Welcome to Leanote! 欢迎来到Leanote</b></h4>
+                            <h4 class="modal-title" id="modalTitle">Share your notes or notebooks</h4>
                         </div>
 
 
                         <div class="modal-body">
+<!--
                             <ul id="myTab" class="nav nav-tabs">
                                 <li class="active"><a href="#baseInfo" data-toggle="tab">Share to friends</a></li>
                                 <li class=""><a href="#groupInfo" data-toggle="tab">Share to group</a></li>
 
                                 <li class=""><a href="#shareInfo" data-toggle="tab">Share by password</a></li>
                             </ul>
+-->
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="baseInfo">
@@ -883,6 +885,7 @@ function forwardpage(){
                                             </tbody>
                                         </table> 
                                 </div>
+<!--
                                 <div class="tab-pane" id="groupInfo">
                                     <p>
                                     If you share your note to group, the member belongs to group will have the right to access the note.
@@ -901,7 +904,9 @@ function forwardpage(){
 
                                     </tbody></table>
                                 </div>
+-->
 
+<!--
                                 <div class="tab-pane" id="shareInfo">
                                     <p>
                                         <button class="btn btn-primary" id="genShareLink">Get link and password</button>
@@ -923,6 +928,8 @@ function forwardpage(){
                                       </div>
                                     </form>
                                 </div>
+-->
+                                
                             </div>
                         </div>
 
