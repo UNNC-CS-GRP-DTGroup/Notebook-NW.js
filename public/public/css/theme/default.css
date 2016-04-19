@@ -484,6 +484,11 @@ a.raw:hover {
 	padding: 2px
 }
 
+#curNotebookForNewNote {
+    color: #99ffcc
+}
+
+
 #logo {
 	font-size: 36px
 }
@@ -3187,6 +3192,8 @@ h1,h2,h3 {
 		display: none!important
 	}
 
+
+    
 	#tag {
 		position: absolute;
 		right: 160px;
