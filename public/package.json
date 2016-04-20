@@ -3,11 +3,11 @@
     "name": "QuirckNote",
     "window": {
         // "transparent": true,
-        "toolbar": true, // 工具栏
-        "frame": true,   // 框架
+        // "toolbar": true, // 工具栏
+        // "frame": true,   // 框架
         "resizable": true,
         // "position": "pointer",
-        "show_in_taskbar": true,
+        // "show_in_taskbar": true,
         "width": 1600,
         "height": 900  
     },
