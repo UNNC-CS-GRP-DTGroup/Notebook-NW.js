@@ -7,6 +7,18 @@
 	display: inline-block
 }
 
+.fa-synchronization:before{
+    content: "\f021";
+    font-size: 17px;
+    cursor:pointer
+}
+
+.fa-downloadTracking:before{
+    content: "\f0ed";
+    font-size: 17px;
+    cursor:pointer
+}
+
 .fa-fw,.fa-li {
 	text-align: center
 }

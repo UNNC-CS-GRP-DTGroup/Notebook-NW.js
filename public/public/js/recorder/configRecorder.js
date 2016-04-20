@@ -1,6 +1,6 @@
 
 			var c=1;
-
+            var boolrecorder = true;
 			
 
 			var onFail = function(e) {
@@ -27,7 +27,8 @@
 			var realaudio;
 
 			function startRecording() {
-				if (navigator.getUserMedia) {
+				if(boolrecorder){
+                    if (navigator.getUserMedia) {
                     // TrackLogRecord.newStartRecordingRecord(); 
                     
 					navigator.getUserMedia({audio: true}, onSuccess, onFail);
@@ -39,9 +40,12 @@
 				} else {
 					console.log('navigator.getUserMedia not present');
 				}
+                }
+                boolrecorder = false;
 			}
 
 			function stopRecording() {
+                boolrecorder = true;
                 // TrackLogRecord.newStopRecordingRecord();
                 
 				inter = window.clearInterval(inter);

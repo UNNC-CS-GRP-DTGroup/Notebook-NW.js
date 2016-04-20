@@ -230,7 +230,9 @@ function forwardpage(){
 							<span class="new-note-text">New note</span>
 							<span class="new-note-text-abbr">New</span>
 						</a>
+						
 						<span class="new-split">|</span>
+						&nbsp &nbsp
 <!--
 						<a class="new-note new-markdown" id="newNoteMarkdownBtn" title="New markdown note">
 
@@ -273,7 +275,7 @@ function forwardpage(){
 				<div class="pull-right" style="margin: 0 10px" id="myProfile">
 					<div class="dropdown">
 						<a class="dropdown-toggle" title="<semail" data-toggle="dropdown" style="line-height: 60px;">
-							<img alt="" title="" src="http://leanote.com/images/blog/default_avatar.png" id="myAvatar"/>
+							<img alt="" title="" src="public/images/Avatar.png" id="myAvatar"/>
 							<span class="username" id="username"> 
 <!--								pan.atopos@outlook.com-->
 							</span>
@@ -356,7 +358,10 @@ function forwardpage(){
 -->
 
 				<div class="pull-right top-nav" id="downloadTracking">
-					<a onclick="downloadTrakcingLog()"><span>Download tracking log</span></a>
+					<!-- <a onclick="downloadTrakcingLog()"><span>Download tracking log</span></a> -->
+					<i id = "synBtn" class = "fa fa-synchronization" title = "synchronization"></i>
+					&nbsp
+					<i class = "fa fa-downloadTracking" title = "Download tracking log" onclick = "downloadTrakcingLog()"></i>
 				</div>
 
 				<div style="clear: both"></div>
@@ -467,7 +472,7 @@ function forwardpage(){
                         </div> -->
 						
 						<div id="noteList">
-							<div class="clearfix" id="notesAndSort" style="position: absolute" >
+							<!-- <div class="clearfix" id="notesAndSort" style="position: absolute" >
 								<div class="pull-left">
 
 									<div class="dropdown" id="myNotebookNavForListNav">
@@ -499,7 +504,7 @@ function forwardpage(){
 
 									</div>
 								</div>
-							</div>
+							</div> -->
 <!--
 								<div id="noteItemListWrap" >
 									<div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100%; height: 150px;">
@@ -511,7 +516,7 @@ function forwardpage(){
                             
                                 <div id="noteItemListWrap" >
 <!--									<div class="scrolls">-->
-                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
+                                    <ul id="noteItemList" style = "overflow: auto; width: 100%;" >
 									</ul>
 <!--                                    </div>-->
 								</div>
@@ -577,7 +582,7 @@ function forwardpage(){
 -->
                                     
                                     <li><a class="ios7-a " id="saveBtn"
-                                        data-toggle="dropdown" title="Save">
+                                        data-toggle="dropdown" title="Save locally">
                                         <span class="fa fa-save"></span></a></li>
                                     
 <!--
