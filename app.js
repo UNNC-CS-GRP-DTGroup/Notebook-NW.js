@@ -17,7 +17,7 @@ app.use('/', express.static ('./public'));
 
 
 var server = http.createServer(app);
-server.listen(3000, function(){
+server.listen(80, function(){
   console.log('-----> SERVER STARTED ON PORT:', port, '<-----');
   console.log('-----> PROCESS PID:', process.pid, '<-----');
 });
