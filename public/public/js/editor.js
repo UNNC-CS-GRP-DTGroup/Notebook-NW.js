@@ -18,7 +18,7 @@ function initEditor() {
         //valid_elements: 'a[href|target=_blank]',
         skin: 'lightgray',
         plugins: [
-            'advlist autolink lists link image charmap print preview anchor',
+            'advlist autolink lists link image charmap print preview',
             'searchreplace visualblocks code fullscreen',
             'insertdatetime media table contextmenu imagetools textcolor'
     //                                      去除掉“paste”，DD时正常（不会多余复制）
