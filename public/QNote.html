@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name=”apple-mobile-web-app-capable” content=”yes” />
-<meta name="keywords" content="leanote,leanote.com">
+<meta name="keywords" content="Q-Note,Quick Note">
 <meta name="description" content="Q-Note">
 <title>Q-Note</title>
 <link rel="shortcut icon" href="public/images/favicon3.ico" type="image/x-icon" />
@@ -19,10 +19,8 @@
     // 不需要同步的数据
    // var baseUrl = "http:\/\/cs-linux.nottingham.edu.cn:8000\/";
     var baseUrl = "http:\/\/115.28.134.156:3000\/";
-     var LEA = {};
-    // LEA.sPath = "https:\/\/dn-leanote.qbox.me";
-     LEA.locale = "en";
-    // var UrlPrefix = 'http:\/\/leanote.com';
+    var LEA = {};
+    LEA.locale = "en";
     var GlobalConfigs = {"uploadAttachSize":0,"uploadAvatarSize":0,"uploadBlogLogoSize":0,"uploadImageSize":0};
     var curNoteId = "";
     var curNotebookId = "";
@@ -31,7 +29,7 @@
     var noteContentJson = [];
 
     //需要同步的初始数据
-    var UserInfo = {"UserId":"","Email":"me@nottingham.edu.cn","Verified":false,"Username":"unknown","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"http://leanote.com/images/blog/default_avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"unknown"};
+    var UserInfo = {"UserId":"","Email":"me@nottingham.edu.cn","Verified":false,"Username":"unknown","UsernameRaw":"","CreatedTime":"0001-01-01T00:00:00Z","Logo":"public/images/blog/Avatar.png","Theme":"","NotebookWidth":0,"NoteListWidth":0,"MdEditorWidth":0,"LeftIsMin":false,"ThirdUserId":"","ThirdUsername":"","ThirdType":0,"FromUserId":"","NoteCnt":0,"Usn":10,"FullSyncBefore":"0001-01-01T00:00:00Z","BlogUrl":"","PostUrl":"", "Password":"unknown"};
 
     var notebooks = [{"NotebookId":"0","UserId":"56a82c7bab64417776002a5c","Title":"Newest","UrlTitle":"","NumberNotes":1,"CreatedTime":"0001-01-01T00:00:00Z", "drop":!1, "drag":!1},
 //    {"NotebookId":"56a82c7bab64417776002a5d","UserId":"unknown","ParentNotebookId":"","Seq":-1,"Title":"life","UrlTitle":"","NumberNotes":0,"IsTrash":false,"IsBlog":false,"CreatedTime":"0001-01-01T00:00:00Z","UpdatedTime":"0001-01-01T00:00:00Z","Usn":0,"IsDeleted":false,"Subs":[]},        
@@ -100,7 +98,7 @@
   })();
 </script>
 
-<!--<link rel="stylesheet" href="public/css/theme/default.css" type="text/css" id="themeLink"/>-->
+<link rel="stylesheet" href="public/css/theme/default.css" type="text/css" id="themeLink"/>
     
 <script src="public/js/dep.min.js"></script>
 <!--定制版的JQuery；需要放在bootstrap之前-->
@@ -282,51 +280,6 @@ function forwardpage(){
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu li-a" role="menu">
-<!--
-							<li role="presentation">
-								<a href="/member" target="_blank">
-								<i class="fa fa-user"></i>
-								Member Center
-								</a>
-							</li>
-
-
-							<li role="presentation" id="setTheme">
-								<a>
-								<i class="fa fa-sun-o"></i>
-								Theme
-								</a>
-							</li>
--->
-
-
-<!--
-							<li role="presentation" class="divider"></li>
-							<li role="presentation">
-								<a href="/member/blog/index" target="_blank">
-								<i class="fa fa-bold"></i>
-								Blog Settings
-								</a>
-							</li>
--->
-
-<!--
-							<li role="presentation" class="my-link" >
-								<a target="_blank" href="http://blog.leanote.com/pan.atopos@outlook.com">
-								<i class="fa fa-bold"></i>
-								Blog</a>
-							</li>
--->
-
-<!--
-							<li role="presentation" class="divider my-link writing-mobile-hide"></li>
-							<li role="presentation" class="my-link toggle-editor-mode writing-mobile-hide" >
-								<a href="#writing" title="Writing Mode ctrl/cmd+e"><i class="fa fa-rocket"></i>
-								Writing Mode</a>
-							</li>
--->
-
-
 							<li role="presentation" class="divider"></li>
 							<li role="presentation" onclick="logout()">
 								<i class="fa fa-sign-out"></i>
@@ -336,14 +289,13 @@ function forwardpage(){
 					</div>
 				</div>
 
-<!--                前往leannote主页的button-->
+<!--                go to the feedback questionaire-->
 				<div class="pull-right top-nav writting-hide lea-blog">
 					<a target="_blank" href="http://www.sojump.com/jq/7951507.aspx">
 						<!-- Q-Note Home -->
 						Give us feedback
 					</a>
 				</div>
-<!--                前往blog的button-->
 <!--
 				<div class="pull-right top-nav writting-hide" id="myBlog">
 					<a target="_blank" href="">
@@ -460,61 +412,7 @@ function forwardpage(){
 						<br />
 						loading...
 					</div>
-					
-				    <!-- <div id="note">  -->
-<!--                删除class="read-only-editor"-->
-				
-                        <!-- <div id="noteMask" class="note-mask"></div>
-
-                        <div id="noteMaskForLoading" class="note-mask">  
-                            <img src="https://dn-leanote.qbox.me/images/loading-24.gif"/>
-                            <br />
-                            loading...
-                        </div> -->
-						
-						<div id="noteList">
-							<!-- <div class="clearfix" id="notesAndSort" style="position: absolute" >
-								<div class="pull-left">
-
-									<div class="dropdown" id="myNotebookNavForListNav">
-										<a class="ios7-a dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-											<span id="curNotebookForListNote">Newest</span>
-										</a>
-
-									</div>
-
-
-									<div class="dropdown" id="sharedNotebookNavForListNav" style="display: none">
-										<a class="ios7-a dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">
-											<span id="curSharedNotebookForListNote">Sharelist</span>
-										</a>
-										<ul class="dropdown-menu" role="menu"
-											aria-labelledby="dropdownMenu2" style="left: 5px;" id="sharedNotebookNavForListNote">
-										</ul>
-									</div>
-								</div>
-								
-								<div class="pull-left" id="tagSearch" style="line-height: 38px">
-								</div>
-								
-								<div id="sortType">
-									<div class="dropdown">
-										<a class="ios7-a dropdown-toggle" id="dropdownMenu1"
-											data-toggle="dropdown"> 
-										</a>
-
-									</div>
-								</div>
-							</div> -->
-<!--
-								<div id="noteItemListWrap" >
-									<div class="test3 ng-scope" ng-slimscroll="" horizontal-scroll="true" style="overflow: hidden; width: 100%; height: 150px;">
-                                    <ul id="noteItemList" style = "overflow: auto; width: 1000px;" >
-									</ul>
-                                    </div>
-								</div>
--->
-                            
+						<div id="noteList">            
                                 <div id="noteItemListWrap" >
 <!--									<div class="scrolls">-->
                                     <ul id="noteItemList" style = "overflow: auto; width: 100%;" >
@@ -838,11 +736,6 @@ function forwardpage(){
 				    </div>
 				  </div>
 			</div>			
-<!--
-			<div class="modal fade bs-modal-sm" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			</div>
--->
-            
 <!--            share开始-->
             <div class="modal fade bs-modal-sm in" id="leanoteDialogRemote" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">  
                 <div class="modal-dialog modal-sm">
@@ -950,252 +843,9 @@ function forwardpage(){
                         </div>
                     </div>
                 </div>
-                <script>
-//                var Share
-//                Share.dialogIsNote =  true ;
-//                Share.dialogNoteOrNotebookId = '56d53e56ab64417fb1001e25';
-//
-//                var getHost = function(url) { 
-//                    var host = "null";
-//                    if(typeof url == "undefined"
-//                                    || null == url)
-//                            url = window.location.href;
-//                    var regex = /.*\:\/\/([^\/]*).*/;
-//                    var match = url.match(regex);
-//                    if(typeof match != "undefined"
-//                                    && null != match)
-//                            host = match[1];
-//                    return host;
-//                }
-//
-//                $(function() {
-//
-//                setTimeout(function() {
-//                    $("#tr1 #friendsEmail").focus();
-//                }, 500);
-//
-//                var host = getHost();
-//                if (Share.dialogIsNote) {
-//                    var url = "/share/querySharePass";
-//                    var data = {noteId: Share.dialogNoteOrNotebookId};
-//                    ajaxPost(url, data, function(re) {
-//                        if(reIsOk(re)) {
-//                            if (re.Item >= 1000 && re.Item < 10000) {
-//                                var shareLink = host + '/share/note/56d53e56ab64417fb1001e25';
-//                                $("#shareLink").val(shareLink);
-//                                $("#sharePass").val(re.Item);
-//                            }
-//                        }
-//                    });
-//                }
-//
-//                var shareLink = "";
-//
-//                if ( false  && "") {
-//                    shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
-//                    $("#shareLink").val(shareLink);	
-//                    $("#sharePass").val("");
-//                    $("#disableShare").attr("disabled", false);
-//                }
-//
-//                $("#shareLink, #sharePass").click(function() {
-//                    $(this).focus(function(){
-//
-//                    }).select();
-//                });
-//
-//
-//
-//                $("#groupInfo").on("click", ".btn-share-or-not", function() {
-//                    var $t = $(this);
-//                    var $ptd = $t.closest("td");
-//                    var $ptr = $t.closest("tr");
-//                    var hasShared = $ptr.data('uid');
-//                    var groupId = $ptr.data('id');
-//                    var data = {groupId: groupId};
-//                    var url = "";
-//                    if(!hasShared) {
-//                        var perm = $ptr.find("input:checked").val();
-//                        data.perm = perm;
-//                        if(Share.dialogIsNote) {
-//                            data.noteId = Share.dialogNoteOrNotebookId;
-//                            url = "/share/addShareNoteGroup";
-//                        } else {
-//                            data.notebookId = Share.dialogNoteOrNotebookId;
-//                            url = "/share/addShareNotebookGroup";
-//                        }
-//                    } else {
-//                        if(Share.dialogIsNote) {
-//                            data.noteId = Share.dialogNoteOrNotebookId;
-//                            url = "/share/deleteShareNoteGroup";
-//                        } else {
-//                            data.notebookId = Share.dialogNoteOrNotebookId;
-//                            url = "/share/deleteShareNotebookGroup";
-//                        }
-//                    }
-//                    ajaxPost(url, data, function(re) {
-//                        if(reIsOk(re)) {
-//                            if(!hasShared) {
-//                                var text = '<button class="btn btn-success btn-share-or-not">已分享</button>';
-//                                $ptr.data('uid', 'xxxxxx');
-//                            } else {
-//                                var text = '<button class="btn btn-default btn-share-or-not">未分享</button>';
-//                                $ptr.data('uid', '');
-//                            }
-//                            $ptd.html(text);
-//                        }
-//                    });
-//                });
-//
-//
-//                $("#genShareLink").on("click", function() {
-//                    var sharePass = $("#sharePass").val();
-//
-//                    $("#disableShare").attr("disabled", false);
-//                    var url = "/share/genShareLinkPass";
-//                    var shareLink = 'http://' + host + '/share/note/56d53e56ab64417fb1001e25';
-//                    var data = {noteId: Share.dialogNoteOrNotebookId};
-//                    ajaxPost(url, data, function(re) {
-//                        if(reIsOk(re)) {
-//                            $("#shareLink").val(shareLink);
-//                            $("#sharePass").val(re.Item);
-//                        }
-//                    });
-//                });
-//
-//                $("#disableShare").on("click", function() {
-//                    var url = "/share/disableShare";
-//                    var data = {noteId: Share.dialogNoteOrNotebookId};
-//                    ajaxPost(url, data, function(re) {
-//                        if(reIsOk(re)) {
-//                            $("#shareLink").val("");
-//                            $("#sharePass").val("");
-//                            $("#disableShare").attr("disabled", "disabled");
-//                        } else {
-//                            alert(getMsg("error"));
-//                        }
-//                    });
-//                });
-//
-//                $(".group-perm").click(function() {
-//                    var $t = $(this);
-//                    var $ptr = $t.closest("tr");
-//                    var hasShared = $ptr.data('uid');
-//                    if(!hasShared) {
-//                        return;
-//                    }
-//                    var groupId = $ptr.data('id');
-//                    var data = {groupId: groupId, perm: $t.val()};
-//                    var url = ""
-//                    if(Share.dialogIsNote) {
-//                        data.noteId = Share.dialogNoteOrNotebookId;
-//                        url = "/share/updateShareNoteGroupPerm";
-//                    } else {
-//                        data.notebookId = Share.dialogNoteOrNotebookId;
-//                        url = "/share/updateShareNotebookGroupPerm";
-//                    }
-//                    ajaxPost(url, data, function(re) {
-//                        if(!reIsOk(re)) {
-//                            alert(re.Msg);
-//                        }
-//                    });
-//                });
-//
-//                });
-                </script>
             </div>
 			
 <!--            share结束-->
-			<div class="modal fade bs-modal-sm" id="leanoteDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-sm">
-			    <div class="modal-content">
-
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" id="modalTitle">操作</h4>
-			      </div>
-
-			      <div class="modal-body">
-					内容区
-			      </div>
-
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
-
-			    </div>
-			  </div>
-			</div>
-
-<!--
-			<div class="modal fade bs-modal-sm" id="sendRegisterEmailDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-sm">
-			    <div class="modal-content">
-
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" class="modalTitle">邀请好友</h4>
-			      </div>
-
-				   <div class="modal-body">
-						<form role="form">
-						  <div class="form-group">
-						  	<div id="registerEmailMsg" class="alert alert-warning" style="display: none">
-						  	</div>
-						  	<input type="hidden" id="toEmail"/>
-						    <label for="emailContent">邮件内容</label>
-						    <textarea class="form-control" id="emailContent">Hi, 我是life, leanote非常好用, 快来注册吧.</textarea>
-						  </div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-success" id="registerEmailBtn">发送</button>
-					</div>
-
-			    </div>
-			  </div>
-			</div>
--->
-
-
-<!--
-			<div class="modal fade bs-modal-sm" id="setThemeDialog" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-sm">
-			    <div class="modal-content">
-				  <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			        <h4 class="modal-title" class="modalTitle">Theme</h4>
-			      </div>
-					<div class="modal-body">
-				  		<table id="themeForm">
-				  			<tr>
-				  				<td>
-				  					<label>
-				  					<img src="https://dn-leanote.qbox.me/images/slider/all.gif" height="100px">
-				  					<br />
-				  					<input type="radio" name="theme" value="default"> Default
-				  					</label>
-				  				</td>
-				  				<td>
-					  				<label>
-				  					<img src="https://dn-leanote.qbox.me/images/slider/all-simple.gif" height="100px">
-				  					<br />
-				  					<input type="radio" name="theme" value="simple"> Simple
-				  					</label>
-				  				</td>
-				  			</tr>
-				  		</table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-			    </div>
-			  </div>
-			</div>
--->
-
 			<div class="display: hidden">
 			<div class="hide" id="copyDiv"></div>
 		</div>
@@ -1209,11 +859,6 @@ function forwardpage(){
 <script src="public/js/DND.js"></script>  
 <script src="public/js/i18n/msg.en.js?t=b"></script>
 
-<!--<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>-->
-
-
-<!--<script src="https://dn-leanote.qbox.me/tinymce_4.1.9/js/tinymce/tinymce.full.min.js?t=5"></script> //public里的有问题-->
-<!--<script src="public/libs/ace/ace.js?t=1"></script> //markdown editor-->
 <script src="public/js/app.min.js"></script>
     
 <script src="public/js/async.js"></script>
@@ -1327,11 +972,6 @@ function forwardpage(){
 <script src="public/js/recorder/configRecorder.js"> </script>
 <script src="public/js/recorder/recorder.js"> </script>
 <script src="public/js/recorder/recorderWorker.js"> </script>
-
-<!--<script src="https://dn-leanote.qbox.me/js/markdown-v2.min.js?t=h"></script>-->
-
-<!--unknown usage-->
-<!--<script src="https://dn-leanote.qbox.me/js/plugins/main.min.js"></script>-->
 <script src="public/js/plugins/main.min.js"></script>
 
 
