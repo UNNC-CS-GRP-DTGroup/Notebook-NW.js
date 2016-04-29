@@ -1,5 +1,4 @@
-# Notebook-NW.js
-Quick Note
+# Quick Note
 
 The server configuration codes are all placed in the root directory (/piblic).
 The client side condes are put in the public directory (/public/public) in the root directory.
