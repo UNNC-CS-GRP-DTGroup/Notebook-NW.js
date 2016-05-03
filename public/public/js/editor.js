@@ -23,7 +23,7 @@ function initEditor() {
             'insertdatetime media table contextmenu imagetools textcolor'
     //                                      去除掉“paste”，DD时正常（不会多余复制）
       ],
-        toolbar: 'insertfile undo redo | styleselect |fontsizeselect | fontselect | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image ',
+        toolbar: 'insertfile undo redo | styleselect | fontsizeselect | fontselect | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image ',
         fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
         font_formats: 'Arial=arial;Helverica=helvetica;Sans-serif=sans-serif;Courier New=courier new;Courier=courier;Monospace=monospace;AkrutiKndPadmini=Akpdmi-n',
         textcolor_map: [
